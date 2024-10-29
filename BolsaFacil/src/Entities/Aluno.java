@@ -4,11 +4,14 @@ import lombok.*;
 
 import java.util.Date;
 
+@Getter
+@Setter
 public class Aluno implements User{
 
-    @Getter private String email;
-    @Getter @Setter private String nomeAluno;
-    @Getter @Setter private String data_nascimento; // Pesquisar qual tipo de variável utilizar para formatação de datas
+    private long id;
+    private String email;
+    private String nomeAluno;
+    private String data_nascimento; // Pesquisar qual tipo de variável utilizar para formatação de datas
     private String senha;
     private UserTypes type = UserTypes.TYPE_ALUNO;
 
