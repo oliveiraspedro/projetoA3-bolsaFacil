@@ -2,10 +2,7 @@ package Repositories;
 
 import Entities.Aluno;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class AlunoRepository {
 
@@ -13,6 +10,8 @@ public class AlunoRepository {
     private final String url = "";
     private final String userName = "";
     private final String pwd = "";
+
+    // TO DO: Estabelecer a conexão com o banco de dados
 
     public AlunoRepository(){
         try {
@@ -47,11 +46,29 @@ public class AlunoRepository {
         }
     }
 
-    public Aluno update(Aluno aluno){
-        return aluno;
+    public Aluno findByEmail(String email){
+
+        // TO DO: Verificar se o email existe
+        String sql = "SELECT * FROM alunos WHERE email = ?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return new Aluno(
+                        resultSet.getString("email"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("data_nascimento"), // TO DO: Alterar o tipo do data_nascimento para Date ou LocalDate
+                        resultSet.getString("senha")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
-    public Aluno delete(Aluno aluno){
-        return aluno;
-    }
 }

@@ -15,6 +15,14 @@ public class Aluno implements User{
     private String senha;
     private UserTypes type = UserTypes.TYPE_ALUNO;
 
+    public Aluno(){}
+
+    public Aluno(String email, String nomeAluno, String data_nascimento, String senha) {
+        this.email = email;
+        this.nomeAluno = nomeAluno;
+        this.data_nascimento = data_nascimento;
+        this.senha = senha;
+    }
 
     @Override
     public void setEmail() {
@@ -33,10 +41,6 @@ public class Aluno implements User{
 
     @Override
     public boolean logout() {
-        return false;
-    }
-
-    public boolean cadastroAluno(String nomeAluno, String email, String senha, String data_nascimento){
         return false;
     }
 }

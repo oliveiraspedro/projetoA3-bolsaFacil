@@ -11,7 +11,7 @@ public class AlunoController {
     public String cadastrarAluno(AlunoDTO alunoDTO){
 
         try {
-            Aluno aluno = alunoService.criarAluno(alunoDTO);
+            Aluno aluno = alunoService.cadastrarAluno(alunoDTO);
             return "AlunoId: " + aluno.getId() + "\n" +
                     "AlunoEmail: " + aluno.getEmail() + "\n" +
                     "AlunoNome: " + aluno.getNomeAluno() + "\n" +
@@ -21,5 +21,19 @@ public class AlunoController {
         }
 
     }
+
+    public String login(AlunoDTO alunoDTO){
+
+        try {
+
+            return alunoService.login(alunoDTO);
+
+        } catch (Exception e){
+            return "Erro ao realizar o login";
+        }
+
+    }
+
+    public void recuperarSenha(String email){}
 
 }
