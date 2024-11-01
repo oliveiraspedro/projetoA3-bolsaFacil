@@ -22,18 +22,4 @@ public class AlunoController {
 
     }
 
-    public String login(AlunoDTO alunoDTO){
-
-        try {
-
-            return alunoService.login(alunoDTO);
-
-        } catch (Exception e){
-            return "Erro ao realizar o login";
-        }
-
-    }
-
-    public void recuperarSenha(String email){}
-
 }
