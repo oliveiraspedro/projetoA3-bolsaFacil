@@ -8,9 +8,9 @@ import java.sql.DriverManager;
 public class DBConnection {
 
     @Getter private Connection connection;
-    private final String url = "";
-    private final String userName = "";
-    private final String pwd = "";
+    private final String url = "jdbc:mysql://127.0.0.1:3306/BolsaFacilExample";
+    private final String userName = "root";
+    private final String pwd = "rootPwd";
 
     // TO DO: Estabelecer a conexão com o banco de dados
 
@@ -26,5 +26,4 @@ public class DBConnection {
             e.printStackTrace();
         }
     }
-
 }

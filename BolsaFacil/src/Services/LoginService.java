@@ -4,6 +4,8 @@ import DTOs.AlunoDTO;
 import Entities.Aluno;
 import Repositories.LoginRepository;
 
+import java.util.Objects;
+
 public class LoginService {
 
     LoginRepository loginRepository = new LoginRepository();
@@ -15,12 +17,12 @@ public class LoginService {
 
         Aluno aluno = loginRepository.findByEmail(alunoDTO.getEmail());
 
-        if (aluno.getEmail() == "admin" && aluno.getSenha().equals(alunoDTO.getSenha())){
+        if (Objects.equals(aluno.getEmail(), "admin@gmail.com") && aluno.getSenha().equals(alunoDTO.getSenha())){
             return "Admin logado com sucesso";
-        }
-
-        if (aluno != null && aluno.getSenha().equals(alunoDTO.getSenha())){
-            return "Aluno logado com sucesso!";
+        } else {
+            if (aluno != null && aluno.getSenha().equals(alunoDTO.getSenha())){
+                return "Aluno logado com sucesso!";
+            }
         }
 
         return "Erro ao realizar o login";

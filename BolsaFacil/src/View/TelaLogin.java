@@ -3,6 +3,10 @@ package View;
 import Controllers.LoginController;
 import DTOs.AlunoDTO;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author pedro
@@ -49,18 +53,25 @@ public class TelaLogin extends javax.swing.JFrame {
         BTcadastro.setBorder(null);
         jPanel1.add(BTcadastro);
         BTcadastro.setBounds(730, 620, 330, 60);
+        BTcadastro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaCadastroalunos telaCadastroalunos = new TelaCadastroalunos();
+                telaCadastroalunos.pack();
+                dispose();
+                telaCadastroalunos.setVisible(true);
+            }
+        });
 
         PSWsenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         PSWsenha.setText("");
         jPanel1.add(PSWsenha);
         PSWsenha.setBounds(720, 400, 340, 70);
-        String senha = PSWsenha.getText();
 
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTFemail.setText("E-mail");
         jPanel1.add(TXTFemail);
         TXTFemail.setBounds(720, 300, 340, 60);
-        String email = TXTFemail.getText();
 
         BTlogin.setBackground(new java.awt.Color(123, 150, 212));
         BTlogin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -69,11 +80,22 @@ public class TelaLogin extends javax.swing.JFrame {
         BTlogin.setBorder(null);
         jPanel1.add(BTlogin);
         BTlogin.setBounds(730, 550, 330, 60);
-        AlunoDTO alunoDTO = new AlunoDTO();
-        LoginController loginController = new LoginController();
-        alunoDTO.setEmail(email);
-        alunoDTO.setSenha(senha);
-        loginController.login(alunoDTO);
+        BTlogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AlunoDTO alunoDTO = new AlunoDTO();
+                LoginController loginController = new LoginController();
+
+                String email = TXTFemail.getText();
+                String senha = PSWsenha.getText();
+
+                alunoDTO.setEmail(email);
+                alunoDTO.setSenha(senha);
+                String result = loginController.login(alunoDTO);
+
+                JOptionPane.showMessageDialog(null, result);
+            }
+        });
 
         LBsenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBsenha.setForeground(new java.awt.Color(255, 255, 255));

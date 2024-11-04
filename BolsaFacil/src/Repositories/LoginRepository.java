@@ -32,7 +32,7 @@ public class LoginRepository {
                 return new Aluno(
                         resultSet.getString("email"),
                         resultSet.getString("nome"),
-                        resultSet.getString("data_nascimento"), // TO DO: Alterar o tipo do data_nascimento para Date ou LocalDate
+                        resultSet.getDate("dataDeNascimento").toLocalDate(), // TO DO: Alterar o tipo do data_nascimento para Date ou LocalDate
                         resultSet.getString("senha")
                 );
             }
