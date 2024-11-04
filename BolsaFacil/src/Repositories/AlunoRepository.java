@@ -16,15 +16,15 @@ public class AlunoRepository {
     }
 
     public Aluno save(Aluno aluno){
-        String sql = "INSERT INTO alunos(email, nome, senha, dataDeNascimento) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO alunos(nome, dataDeNascimento, email, senha) VALUES(?,?,?,?)";
 
         try {
 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, aluno.getEmail());
-            stmt.setString(2, aluno.getNomeAluno());
-            stmt.setString(3, aluno.getSenha());
-            stmt.setString(4, String.valueOf(aluno.getData_nascimento()));
+            stmt.setString(1, aluno.getNomeAluno());
+            stmt.setString(2, String.valueOf(aluno.getData_nascimento()));
+            stmt.setString(3, aluno.getEmail());
+            stmt.setString(4, aluno.getSenha());
             stmt.execute();
             connection.commit();
             return aluno;
@@ -34,5 +34,4 @@ public class AlunoRepository {
             return aluno;
         }
     }
-
 }

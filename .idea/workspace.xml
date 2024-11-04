@@ -4,18 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="facc0aea-6d05-4793-b41e-cde7588eadfc" name="Changes" comment="" />
+    <list default="true" id="144c5c37-99e2-41be-812c-11351f071f95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Validators/CadastroAlunoValidations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Controllers/AlunoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Controllers/AlunoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroalunos.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroalunos.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="entity-aluno" />
-      </map>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
     </option>
+  </component>
+  <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -31,42 +39,121 @@
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2oFzAXeFVUYDk3J11vwDrM1VDL2" />
+  <component name="ProjectId" id="2oG1aj7cxJwkDg4bp6as5YNXD5Q" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.TelaCadastroalunos (1).executor": "Run",
+    "Application.TelaCadastroalunos (2).executor": "Run",
+    "Application.TelaCadastroalunos (3).executor": "Run",
+    "Application.TelaCadastroalunos (4).executor": "Run",
+    "Application.TelaCadastroalunos.executor": "Run",
+    "Application.TelaLogin (1).executor": "Run",
+    "Application.TelaLogin (2).executor": "Run",
+    "Application.TelaLogin (3).executor": "Run",
+    "Application.TelaLogin (4).executor": "Run",
+    "Application.TelaLogin (5).executor": "Run",
+    "Application.TelaLogin.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "validators",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Pedro/Documents/GitHub/projetoA3-bolsaFacil"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pedro\Documents\GitHub\projetoA3-bolsaFacil\BolsaFacil\src\View" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TelaCadastroalunos (4)">
+    <configuration name="TelaCadastroalunos (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
+      <module name="BolsaFacil" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
+    <configuration name="TelaCadastroalunos (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
+      <module name="BolsaFacil" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TelaCadastroalunos (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
+      <module name="BolsaFacil" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelaCadastroalunos (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
+      <module name="BolsaFacil" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelaLogin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaLogin" />
+      <module name="BolsaFacil" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TelaCadastroalunos (4)" />
+        <item itemvalue="Application.TelaCadastroalunos (3)" />
+        <item itemvalue="Application.TelaCadastroalunos (2)" />
+        <item itemvalue="Application.TelaCadastroalunos (1)" />
+        <item itemvalue="Application.TelaLogin" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="facc0aea-6d05-4793-b41e-cde7588eadfc" name="Changes" comment="" />
-      <created>1730479971404</created>
+      <changelist id="144c5c37-99e2-41be-812c-11351f071f95" name="Changes" comment="" />
+      <created>1730481167921</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730479971404</updated>
+      <updated>1730481167921</updated>
     </task>
     <servers />
   </component>
