@@ -3,11 +3,13 @@ package DTOs;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class AlunoDTO {
     public String email;
     public String senha;
     public String nome;
-    public String data_nascimento;
+    public LocalDate data_nascimento;
 }
