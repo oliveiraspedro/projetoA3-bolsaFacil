@@ -2,6 +2,7 @@ package View;
 
 import Controllers.AlunoController;
 import DTOs.AlunoDTO;
+import Validators.CadastroAlunoValidations;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -116,29 +117,23 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 AlunoDTO alunoDTO = new AlunoDTO();
                 AlunoController alunoController = new AlunoController();
+                CadastroAlunoValidations validations = new CadastroAlunoValidations();
 
                 String nome = TXTFnomecompleto.getText();
                 String dataDeNascimentoText = TXTFdata.getText();
+                LocalDate dataDeNascimento = validations.dataNascimentoValidation(dataDeNascimentoText);
                 String email = TXTFemail.getText();
                 String senha = TXTFsenha.getText();
-                LocalDate dataNascimento;
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-                try {
+                if (dataDeNascimento != null && validations.validateEmail(email)){
+                    alunoDTO.setNome(nome);
+                    alunoDTO.setData_nascimento(dataDeNascimento);
+                    alunoDTO.setEmail(email);
+                    alunoDTO.setSenha(senha);
+                    String result = alunoController.cadastrarAluno(alunoDTO);
 
-                    dataNascimento = LocalDate.parse(dataDeNascimentoText, formatter);
-                    alunoDTO.setData_nascimento(dataNascimento);
-
-                } catch (DateTimeParseException dateE) {
-                    JOptionPane.showMessageDialog(null, "Data de nascimento inválida. Use o formato dd/MM/yyyy.");
+                    JOptionPane.showMessageDialog(null, result);
                 }
-
-                alunoDTO.setNome(nome);
-                alunoDTO.setEmail(email);
-                alunoDTO.setSenha(senha);
-                String result = alunoController.cadastrarAluno(alunoDTO);
-
-                JOptionPane.showMessageDialog(null, result);
             }
         });
         jPanel1.add(BTcadastrar);

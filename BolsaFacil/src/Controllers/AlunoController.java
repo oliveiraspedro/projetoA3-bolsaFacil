@@ -12,8 +12,7 @@ public class AlunoController {
 
         try {
             Aluno aluno = alunoService.cadastrarAluno(alunoDTO);
-            return "AlunoId: " + aluno.getId() + "\n" +
-                    "AlunoEmail: " + aluno.getEmail() + "\n" +
+            return "AlunoEmail: " + aluno.getEmail() + "\n" +
                     "AlunoNome: " + aluno.getNomeAluno() + "\n" +
                     "AlunoSenha: " + aluno.getSenha();
         }catch (Exception e){
