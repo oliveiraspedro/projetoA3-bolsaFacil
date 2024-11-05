@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 
 public class TelaCadastroalunos extends javax.swing.JFrame {
 
@@ -33,7 +34,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         BTcadastrar = new javax.swing.JButton();
         BTvoltarLogin = new javax.swing.JButton();
-        TXTFsenha = new javax.swing.JTextField();
+        TXTFsenha = new javax.swing.JPasswordField();
         TXTFemail = new javax.swing.JTextField();
         TXTFnomecompleto = new javax.swing.JTextField();
         TXTFdata = new javax.swing.JTextField();
@@ -52,28 +53,28 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
 
         TXTFsenha.setBackground(new java.awt.Color(193, 204, 229));
         TXTFsenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        TXTFsenha.setText("Senha");
+        //TXTFsenha.setText("Senha");
         TXTFsenha.setPreferredSize(new java.awt.Dimension(492, 56));
         jPanel1.add(TXTFsenha);
         TXTFsenha.setBounds(630, 450, 450, 50);
 
         TXTFemail.setBackground(new java.awt.Color(193, 204, 229));
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        TXTFemail.setText("E-mail");
+        //TXTFemail.setText("E-mail");
         TXTFemail.setPreferredSize(new java.awt.Dimension(492, 56));
         jPanel1.add(TXTFemail);
         TXTFemail.setBounds(630, 350, 450, 50);
 
         TXTFnomecompleto.setBackground(new java.awt.Color(193, 204, 229));
         TXTFnomecompleto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        TXTFnomecompleto.setText("Nome Completo");
+        //TXTFnomecompleto.setText("Nome Completo");
         TXTFnomecompleto.setPreferredSize(new java.awt.Dimension(492, 56));
         jPanel1.add(TXTFnomecompleto);
         TXTFnomecompleto.setBounds(630, 152, 450, 50);
 
         TXTFdata.setBackground(new java.awt.Color(193, 204, 229));
         TXTFdata.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        TXTFdata.setText("Data de Nascimento");
+        //TXTFdata.setText("Data de Nascimento");
         TXTFdata.setPreferredSize(new java.awt.Dimension(492, 56));
         jPanel1.add(TXTFdata);
         TXTFdata.setBounds(630, 250, 450, 50);
@@ -117,22 +118,19 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 AlunoDTO alunoDTO = new AlunoDTO();
                 AlunoController alunoController = new AlunoController();
-                CadastroAlunoValidations validations = new CadastroAlunoValidations();
 
                 String nome = TXTFnomecompleto.getText();
                 String dataDeNascimentoText = TXTFdata.getText();
-                LocalDate dataDeNascimento = validations.dataNascimentoValidation(dataDeNascimentoText);
                 String email = TXTFemail.getText();
                 String senha = TXTFsenha.getText();
 
-                if (dataDeNascimento != null && validations.validateEmail(email)){
-                    alunoDTO.setNome(nome);
-                    alunoDTO.setData_nascimento(dataDeNascimento);
-                    alunoDTO.setEmail(email);
-                    alunoDTO.setSenha(senha);
-                    String result = alunoController.cadastrarAluno(alunoDTO);
+                alunoDTO.setNome(nome);
+                alunoDTO.setData_nascimento(dataDeNascimentoText);
+                alunoDTO.setEmail(email);
+                alunoDTO.setSenha(senha);
 
-                    JOptionPane.showMessageDialog(null, result);
+                if (alunoController.cadastrarAluno(alunoDTO) != null){
+                    JOptionPane.showMessageDialog(null, "Aluno cadastrado!");
                 }
             }
         });
@@ -240,7 +238,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
     private javax.swing.JTextField TXTFdata;
     private javax.swing.JTextField TXTFemail;
     private javax.swing.JTextField TXTFnomecompleto;
-    private javax.swing.JTextField TXTFsenha;
+    private javax.swing.JPasswordField TXTFsenha;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

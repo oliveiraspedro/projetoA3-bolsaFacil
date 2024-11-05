@@ -1,28 +1,30 @@
 package Validators;
 
 import javax.swing.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 public class CadastroAlunoValidations {
 
+    private static final String DATE_FORMAT = "dd/MM/yyyy";
+    private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat(DATE_FORMAT);
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
     private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
-    public LocalDate dataNascimentoValidation(String dataDeNascimentoText){
-        LocalDate dataNascimento;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public Date dataNascimentoValidation(String dataDeNascimentoText){
 
+        DATE_FORMATTER.setLenient(false); // Desabilita conversão leniente para validar a data estritamente
         try {
-
-            dataNascimento = LocalDate.parse(dataDeNascimentoText, formatter);
-            return dataNascimento;
-
-        } catch (DateTimeParseException dateE) {
-            JOptionPane.showMessageDialog(null, "Data de nascimento inválida. Use o formato dd/MM/yyyy.");
-            return null;
+            // Tenta converter o texto para Date
+            return DATE_FORMATTER.parse(dataDeNascimentoText);
+        } catch (ParseException e) {
+            System.out.println("Data de nascimento inválida. Use o formato dd/MM/yyyy.");
+            return null; // Retorna null caso a data seja inválida
         }
     }
 

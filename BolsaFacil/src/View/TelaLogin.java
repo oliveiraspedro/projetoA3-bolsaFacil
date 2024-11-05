@@ -64,12 +64,12 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         PSWsenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        PSWsenha.setText("");
+        //PSWsenha.setText("");
         jPanel1.add(PSWsenha);
         PSWsenha.setBounds(720, 400, 340, 70);
 
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        TXTFemail.setText("E-mail");
+        //TXTFemail.setText("E-mail");
         jPanel1.add(TXTFemail);
         TXTFemail.setBounds(720, 300, 340, 60);
 

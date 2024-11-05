@@ -4,19 +4,20 @@ import DTOs.AlunoDTO;
 import Entities.Aluno;
 import Services.AlunoService;
 
+import javax.swing.*;
+
 public class AlunoController {
 
     AlunoService alunoService = new AlunoService();
 
-    public String cadastrarAluno(AlunoDTO alunoDTO){
+    public Aluno cadastrarAluno(AlunoDTO alunoDTO){
 
         try {
             Aluno aluno = alunoService.cadastrarAluno(alunoDTO);
-            return "AlunoEmail: " + aluno.getEmail() + "\n" +
-                    "AlunoNome: " + aluno.getNomeAluno() + "\n" +
-                    "AlunoSenha: " + aluno.getSenha();
+            return aluno;
         }catch (Exception e){
-            return "Erro ao cadastrar o aluno";
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o aluno");
+            return null;
         }
 
     }

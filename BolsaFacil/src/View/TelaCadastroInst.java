@@ -1,4 +1,4 @@
-/*
+package View;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -68,7 +68,7 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         jPanel1.add(LBcadastro);
         LBcadastro.setBounds(720, 0, 150, 70);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Untitled (1).png"))); // NOI18N
+        //jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Untitled (1).png"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 1160, 720);
 

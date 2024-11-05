@@ -5,11 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="144c5c37-99e2-41be-812c-11351f071f95" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Validators/CadastroAlunoValidations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Entities/Bolsas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Entities/Instituicao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Entities/UserInstituicao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/ModelMapper/ModelMapperConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Controllers/AlunoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Controllers/AlunoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/DTOs/AlunoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/DTOs/AlunoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Entities/Aluno.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Entities/Aluno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Enums/UserTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Enums/UserTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Repositories/LoginRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Repositories/LoginRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Services/AlunoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Services/AlunoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Validators/CadastroAlunoValidations.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Validators/CadastroAlunoValidations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroInst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroalunos.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroalunos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/View/TelaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/View/TelaLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/Controllers/AlunoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/Controllers/AlunoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/DTOs/AlunoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/DTOs/AlunoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/Entities/Aluno.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/Entities/Aluno.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/Repositories/AlunoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/Repositories/AlunoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/Repositories/LoginRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/Repositories/LoginRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/Services/AlunoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/Services/AlunoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/TelaCadastroInst$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/TelaCadastroInst.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/Validators/CadastroAlunoValidations.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/Validators/CadastroAlunoValidations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaCadastroalunos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/target/classes/View/TelaLogin.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +49,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="validators" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -48,6 +78,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.TelaCadastroInst.executor": "Run",
     "Application.TelaCadastroalunos (1).executor": "Run",
     "Application.TelaCadastroalunos (2).executor": "Run",
     "Application.TelaCadastroalunos (3).executor": "Run",
@@ -59,8 +90,9 @@
     "Application.TelaLogin (4).executor": "Run",
     "Application.TelaLogin (5).executor": "Run",
     "Application.TelaLogin.executor": "Run",
+    "Application.View.TelaCadastroInst.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "validators",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Pedro/Documents/GitHub/projetoA3-bolsaFacil"
   }
@@ -70,47 +102,28 @@
       <recent name="C:\Users\Pedro\Documents\GitHub\projetoA3-bolsaFacil\BolsaFacil\src\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TelaCadastroalunos (4)">
-    <configuration name="TelaCadastroalunos (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
+  <component name="RunManager" selected="Application.View.TelaCadastroInst">
+    <configuration name="TelaCadastroInst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TelaCadastroInst" />
       <module name="BolsaFacil" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TelaCadastroalunos (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
-      <module name="BolsaFacil" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TelaCadastroalunos (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
-      <module name="BolsaFacil" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="TelaCadastroalunos (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
+      <module name="BolsaFacil" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelaCadastroalunos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
       <module name="BolsaFacil" />
       <extension name="coverage">
@@ -136,13 +149,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="View.TelaCadastroInst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroInst" />
+      <module name="BolsaFacil" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TelaCadastroalunos (4)" />
-        <item itemvalue="Application.TelaCadastroalunos (3)" />
-        <item itemvalue="Application.TelaCadastroalunos (2)" />
-        <item itemvalue="Application.TelaCadastroalunos (1)" />
+        <item itemvalue="Application.View.TelaCadastroInst" />
+        <item itemvalue="Application.TelaCadastroInst" />
+        <item itemvalue="Application.TelaCadastroalunos" />
         <item itemvalue="Application.TelaLogin" />
+        <item itemvalue="Application.TelaCadastroalunos (4)" />
       </list>
     </recent_temporary>
   </component>
