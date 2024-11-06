@@ -16,7 +16,7 @@ public class AlunoRepository {
     }
 
     public Aluno save(Aluno aluno){
-        String sql = "INSERT INTO alunos(nome, dataDeNascimento, email, senha) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO alunos(nome, data_nascimento, email, senha, tipo_usuario) VALUES(?,?,?,?,?)";
 
         try {
 
@@ -25,6 +25,7 @@ public class AlunoRepository {
             stmt.setDate(2, (Date) aluno.getData_nascimento());
             stmt.setString(3, aluno.getEmail());
             stmt.setString(4, aluno.getSenha());
+            stmt.setString(5, String.valueOf(aluno.getType()));
             stmt.execute();
             connection.commit();
             return aluno;
