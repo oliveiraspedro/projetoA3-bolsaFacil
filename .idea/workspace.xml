@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="144c5c37-99e2-41be-812c-11351f071f95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Controllers/InstituicaoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/DTOs/InstituicaoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/DTOs/UserInstituicaoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Repositories/InstituicaoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BolsaFacil/src/Services/InstituicaoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Entities/UserInstituicao.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Entities/UserInstituicao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Services/AlunoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Services/AlunoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Validators/CadastroAlunoValidations.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Validators/CadastroValidators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroalunos.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/View/TelaCadastroalunos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,27 +57,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.TelaCadastroInst.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaCadastroalunos (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaCadastroalunos (2).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaCadastroalunos (3).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaCadastroalunos (4).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaCadastroalunos.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaLogin (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaLogin (2).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaLogin (3).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaLogin (4).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaLogin (5).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TelaLogin.executor&quot;: &quot;Run&quot;,
-    &quot;Application.View.TelaCadastroInst.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pedro/Documents/GitHub/projetoA3-bolsaFacil&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TelaCadastroInst.executor": "Run",
+    "Application.TelaCadastroalunos (1).executor": "Run",
+    "Application.TelaCadastroalunos (2).executor": "Run",
+    "Application.TelaCadastroalunos (3).executor": "Run",
+    "Application.TelaCadastroalunos (4).executor": "Run",
+    "Application.TelaCadastroalunos.executor": "Run",
+    "Application.TelaLogin (1).executor": "Run",
+    "Application.TelaLogin (2).executor": "Run",
+    "Application.TelaLogin (3).executor": "Run",
+    "Application.TelaLogin (4).executor": "Run",
+    "Application.TelaLogin (5).executor": "Run",
+    "Application.TelaLogin.executor": "Run",
+    "Application.View.TelaCadastroInst.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "instituicao",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Pedro/Documents/GitHub/projetoA3-bolsaFacil"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Pedro\Documents\GitHub\projetoA3-bolsaFacil\BolsaFacil\src\View" />

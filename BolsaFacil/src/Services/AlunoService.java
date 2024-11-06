@@ -3,7 +3,7 @@ package Services;
 import DTOs.AlunoDTO;
 import Entities.Aluno;
 import Repositories.AlunoRepository;
-import Validators.CadastroAlunoValidations;
+import Validators.CadastroValidators;
 import org.modelmapper.ModelMapper;
 import ModelMapper.ModelMapperConfig;
 
@@ -20,7 +20,7 @@ public class AlunoService {
         // TO DO: Validações e regras de negócio
         // TO DO: Validar Email, Senha
 
-        CadastroAlunoValidations validations = new CadastroAlunoValidations();
+        CadastroValidators validations = new CadastroValidators();
         Date dataDeNascimento = validations.dataNascimentoValidation(alunoDTO.getData_nascimento());
 
         try {

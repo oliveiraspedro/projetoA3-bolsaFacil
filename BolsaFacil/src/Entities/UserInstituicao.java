@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserInstituicao {
+public class UserInstituicao extends Instituicao{
 
     private String nomeInstitucional;
     private String emailInstitucional;

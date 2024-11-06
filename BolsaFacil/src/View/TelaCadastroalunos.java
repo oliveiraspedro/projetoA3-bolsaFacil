@@ -2,16 +2,10 @@ package View;
 
 import Controllers.AlunoController;
 import DTOs.AlunoDTO;
-import Validators.CadastroAlunoValidations;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
 
 public class TelaCadastroalunos extends javax.swing.JFrame {
 
