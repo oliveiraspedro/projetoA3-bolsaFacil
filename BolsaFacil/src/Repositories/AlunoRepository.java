@@ -22,7 +22,7 @@ public class AlunoRepository {
 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, aluno.getNomeAluno());
-            stmt.setDate(2, (Date) aluno.getData_nascimento());
+            stmt.setString(2, aluno.getData_nascimento());
             stmt.setString(3, aluno.getEmail());
             stmt.setString(4, aluno.getSenha());
             stmt.setString(5, String.valueOf(aluno.getType()));
