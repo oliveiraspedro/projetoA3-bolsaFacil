@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="144c5c37-99e2-41be-812c-11351f071f95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/BolsaFacil/src/Repositories/AlunoRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +40,6 @@
     &quot;accountId&quot;: &quot;3ee7666b-506a-4afe-99ff-17581314b011&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -50,34 +48,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TelaCadastroInst.executor": "Run",
-    "Application.TelaCadastroalunos (1).executor": "Run",
-    "Application.TelaCadastroalunos (2).executor": "Run",
-    "Application.TelaCadastroalunos (3).executor": "Run",
-    "Application.TelaCadastroalunos (4).executor": "Run",
-    "Application.TelaCadastroalunos.executor": "Run",
-    "Application.TelaGerenciamentoInst.executor": "Run",
-    "Application.TelaLogin (1).executor": "Run",
-    "Application.TelaLogin (2).executor": "Run",
-    "Application.TelaLogin (3).executor": "Run",
-    "Application.TelaLogin (4).executor": "Run",
-    "Application.TelaLogin (5).executor": "Run",
-    "Application.TelaLogin.executor": "Run",
-    "Application.View.TelaCadastroInst.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Pedro/Documents/GitHub/projetoA3-bolsaFacil"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.TelaCadastroInst.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaCadastroalunos (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaCadastroalunos (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaCadastroalunos (3).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaCadastroalunos (4).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaCadastroalunos.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaLogin (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaLogin (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaLogin (3).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaLogin (4).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaLogin (5).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TelaLogin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.View.TelaCadastroInst.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pedro/Documents/GitHub/projetoA3-bolsaFacil&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Pedro\Documents\GitHub\projetoA3-bolsaFacil\BolsaFacil\src\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TelaGerenciamentoInst">
+  <component name="RunManager" selected="Application.View.TelaCadastroInst">
     <configuration name="TelaCadastroInst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TelaCadastroInst" />
       <module name="BolsaFacil" />
@@ -85,7 +82,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TelaCadastroalunos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TelaCadastroalunos (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
       <module name="BolsaFacil" />
       <extension name="coverage">
@@ -98,8 +95,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TelaGerenciamentoInst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.TelaGerenciamentoInst" />
+    <configuration name="TelaCadastroalunos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TelaCadastroalunos" />
       <module name="BolsaFacil" />
       <extension name="coverage">
         <pattern>
@@ -139,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TelaGerenciamentoInst" />
         <item itemvalue="Application.View.TelaCadastroInst" />
         <item itemvalue="Application.TelaCadastroInst" />
         <item itemvalue="Application.TelaCadastroalunos" />
         <item itemvalue="Application.TelaLogin" />
+        <item itemvalue="Application.TelaCadastroalunos (4)" />
       </list>
     </recent_temporary>
   </component>
