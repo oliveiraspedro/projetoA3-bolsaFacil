@@ -2,6 +2,7 @@ package Entities;
 import Enums.UserTypes;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
