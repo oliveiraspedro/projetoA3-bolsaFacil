@@ -48,14 +48,14 @@ public class AdminRepository {
         }
     }
 
-    public void getAllInstituicoes(JTable jTable){
+    public void getAllInstituicoes(JTable tblInst){
         String sql = "SELECT * FROM UsuarioInstituicao";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
-            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) tblInst.getModel();
 
             int cols = rsmd.getColumnCount();
             String[] colName = new String[cols];
@@ -63,16 +63,16 @@ public class AdminRepository {
                 colName[i] = rsmd.getColumnName(i+1);
                 model.setColumnIdentifiers(colName);
 
-                String idUsurioInstituicao, nome_func, email, senha, tipo_func, instituicao;
+                String id, nome, email, sigla, cnpj, cep;
                 while (rs.next()){
-                    idUsurioInstituicao = rs.getString(1);
-                    nome_func = rs.getString(2);
+                    id = rs.getString(1);
+                    nome = rs.getString(2);
                     email = rs.getString(3);
-                    senha = rs.getString(4);
-                    tipo_func = rs.getString(5);
-                    instituicao = rs.getString(6);
+                    sigla = rs.getString(4);
+                    cnpj = rs.getString(5);
+                    cep = rs.getString(6);
 
-                    String[] row = {idUsurioInstituicao, nome_func, email, senha, tipo_func, instituicao};
+                    String[] row = {id, nome, email, sigla, cnpj, cep};
                     model.addRow(row);
                 }
             }
@@ -80,6 +80,10 @@ public class AdminRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void limparInstituicao(DefaultTableModel model){
+        model.setRowCount(0);
     }
 
 }

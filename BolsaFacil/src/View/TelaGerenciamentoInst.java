@@ -4,6 +4,13 @@
  */
 package View;
 
+import Repositories.AdminRepository;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Blackmage
@@ -35,6 +42,8 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         btnShow = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
 
+        AdminRepository adminRepository = new AdminRepository();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
         setSize(new java.awt.Dimension(1160, 720));
@@ -65,38 +74,15 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         txtPesquisa.setBounds(80, 110, 230, 40);
 
         tblInst.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblInst.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "NOME", "E-MAIL", "SIGLA", "CNPJ", "CEP"
-            }
-        ));
+        // Definição do modelo da tabela
+        DefaultTableModel model = new DefaultTableModel(
+                new Object[][] {},
+                new String[] { "ID", "NOME", "E-MAIL", "SIGLA", "CNPJ", "CEP" }
+        );
+
+        // Criação da tabela com o modelo
+        tblInst = new JTable(model);
+
         jScrollPane1.setViewportView(tblInst);
 
         jPanel1.add(jScrollPane1);
@@ -114,7 +100,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         btnShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowActionPerformed(evt);
+                adminRepository.getAllInstituicoes(tblInst);
             }
         });
         jPanel1.add(btnShow);
@@ -124,6 +110,13 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnClear);
         btnClear.setBounds(920, 110, 160, 40);
+
+        btnClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                adminRepository.limparInstituicao(model);
+            }
+        });
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1160, 720);
