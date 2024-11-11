@@ -82,7 +82,7 @@ public class AdminRepository {
         }
     }
 
-    public void limparInstituicao(DefaultTableModel model){
+    public void clear(DefaultTableModel model){
         model.setRowCount(0);
     }
 

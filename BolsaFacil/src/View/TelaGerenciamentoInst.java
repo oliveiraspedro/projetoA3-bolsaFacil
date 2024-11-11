@@ -114,7 +114,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         btnClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adminRepository.limparInstituicao(model);
+                adminRepository.clear(model);
             }
         });
 
