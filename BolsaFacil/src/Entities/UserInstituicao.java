@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class UserInstituicao {
 
+    private String id;
     private String nomeInstitucional;
     private String emailInstitucional;
     private String senha;

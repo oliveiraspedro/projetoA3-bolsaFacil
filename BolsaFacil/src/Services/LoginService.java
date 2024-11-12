@@ -17,7 +17,7 @@ public class LoginService {
 
         Aluno aluno = loginRepository.findByEmail(alunoDTO.getEmail());
 
-        if (Objects.equals(aluno.getEmail(), "admin@gmail.com") && aluno.getSenha().equals(alunoDTO.getSenha())){
+        if (Objects.equals(aluno.getEmail(), "bolsafacil@gmail.com") && aluno.getSenha().equals(alunoDTO.getSenha())){
             return "Admin logado com sucesso";
         } else {
             if (aluno != null && aluno.getSenha().equals(alunoDTO.getSenha())){
