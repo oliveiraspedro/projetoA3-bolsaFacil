@@ -1,7 +1,9 @@
 package Services;
 
 import DTOs.AlunoDTO;
+import DTOs.BolsaDTO;
 import Entities.Aluno;
+import Entities.Bolsas;
 import ModelMapper.ModelMapperConfig;
 import Repositories.AlunoRepository;
 import Validators.CadastroAlunoValidations;
@@ -9,6 +11,7 @@ import org.modelmapper.ModelMapper;
 
 import javax.swing.*;
 import java.util.Date;
+import java.util.List;
 
 public class AlunoService {
 
@@ -34,5 +37,18 @@ public class AlunoService {
         }
 
         return null;
+    }
+    
+    public List<Bolsas> findBolsas(BolsaDTO bolsaDTO){
+        
+        List<Bolsas> bolsas = alunoRepository.findBolsas(bolsaDTO);
+        
+        if (bolsas != null) {
+            return bolsas;
+        }
+        
+        JOptionPane.showMessageDialog(null, "Não existe bolsas com esses requisitos :(");
+        return null;
+        
     }
 }

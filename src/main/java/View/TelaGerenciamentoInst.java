@@ -40,6 +40,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
+        setResizable(false);
         setSize(new java.awt.Dimension(1160, 720));
         getContentPane().setLayout(null);
 

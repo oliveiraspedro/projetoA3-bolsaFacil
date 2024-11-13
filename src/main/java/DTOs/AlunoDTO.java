@@ -1,13 +1,13 @@
 package DTOs;
 
-//import Enums.UserTypes;
+import Enums.UserTypes;
 
 public class AlunoDTO {
     private String email;
     private String senha;
     private String nome;
     private String data_nascimento;
-    //public UserTypes type;
+    public UserTypes type;
 
     /**
      * @return the email
