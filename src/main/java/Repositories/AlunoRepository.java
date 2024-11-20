@@ -3,6 +3,7 @@ package Repositories;
 import DTOs.BolsaDTO;
 import Entities.Aluno;
 import Entities.Bolsas;
+import Utils.PasswordUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,23 +23,49 @@ public class AlunoRepository {
 
     }
 
-    public Aluno save(Aluno aluno){
-        String sql = "INSERT INTO alunos(nome, data_nascimento, email, senha, tipo_usuario) VALUES(?,?,?,?,?)";
+    public Aluno save(Aluno aluno) throws SQLException{
+        PreparedStatement stmtUsuario = null;
+        PreparedStatement stmtAluno = null;
 
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, aluno.getNomeAluno());
-            stmt.setDate(2, (Date) aluno.getData_nascimento());
-            stmt.setString(3, aluno.getEmail());
-            stmt.setString(4, aluno.getSenha());
-            stmt.setString(5, String.valueOf(aluno.getType()));
-            stmt.execute();
+            connection.setAutoCommit(false); // Iniciar transação
+
+            // Inserir na tabela Usuario
+            String sqlUsuario = "INSERT INTO Usuario (email, senha) VALUES (?, ?)";
+            stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
+            stmtUsuario.setString(1, aluno.getEmail());
+            String hashedPassword = PasswordUtils.hashPassword(aluno.getSenha());
+            stmtUsuario.setString(3, hashedPassword);
+            stmtUsuario.executeUpdate();
+
+            // Obter o ID gerado para o Usuario
+            ResultSet rsUsuario = stmtUsuario.getGeneratedKeys();
+            int idUsuario = 0;
+            if (rsUsuario.next()) {
+                idUsuario = rsUsuario.getInt(1);
+            }
+
+            // Inserir na tabela Aluno
+            String sqlAluno = "INSERT INTO Aluno (id_usuario, nome, data_nascimento, tipo_usuario) VALUES (?, ?, ?, ?)";
+            stmtAluno = connection.prepareStatement(sqlAluno);
+            stmtAluno.setInt(1, idUsuario);
+            stmtAluno.setString(2, aluno.getNomeAluno());
+            stmtAluno.setDate(3, (Date) aluno.getData_nascimento());
+            stmtAluno.setString(4, String.valueOf(aluno.getType()));
+            stmtAluno.executeUpdate();
+
+            // Confirmar transação
             connection.commit();
             return aluno;
-
-        } catch (SQLException e){
-            System.out.println(e);
-            return aluno;
+        } catch (SQLException e) {
+            if (connection != null) {
+                connection.rollback(); // Reverter transação em caso de erro
+            }
+            throw e;
+        } finally {
+            if (stmtAluno != null) stmtAluno.close();
+            if (stmtUsuario != null) stmtUsuario.close();
+            if (connection != null) connection.close();
         }
     }
     

@@ -2,6 +2,7 @@ package View;
 
 import Controllers.LoginController;
 import DTOs.AlunoDTO;
+import Enums.UserTypes;
 import javax.swing.JOptionPane;
 
 /*
@@ -162,9 +163,19 @@ public class TelaLogin extends javax.swing.JFrame {
 
         alunoDTO.setEmail(email);
         alunoDTO.setSenha(senha);
-        String result = loginController.login(alunoDTO);
-
-        JOptionPane.showMessageDialog(null, result);
+        UserTypes userType = loginController.login(alunoDTO);
+        
+        switch(userType){
+            case UserTypes.TYPE_ADMIN:
+                // Levar o admin para a tela de dashboard
+                break;
+            case UserTypes.TYPE_ALUNO:
+                // Levar o usário para o menu principal
+                break;
+            case UserTypes.TYPE_INST:
+                // Levar o usuário para a tela de gerenciamento de bolsas
+                break;
+        }
     }//GEN-LAST:event_BTloginActionPerformed
 
     private void BTcadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTcadastroActionPerformed
