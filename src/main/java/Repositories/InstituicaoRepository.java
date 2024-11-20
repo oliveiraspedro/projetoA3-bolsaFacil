@@ -6,6 +6,7 @@ package Repositories;
 
 import Entities.Instituicao;
 import Entities.UserInstituicao;
+import Utils.PasswordUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +39,8 @@ public class InstituicaoRepository {
             stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
             stmtUsuario.setString(1, userInstituicao.getEmailInstitucional());
             stmtUsuario.setString(2, userInstituicao.getNomeInstitucional());
-            stmtUsuario.setString(3, userInstituicao.getSenha());
+            String hashedPassword = PasswordUtils.hashPassword(userInstituicao.getSenha());
+            stmtUsuario.setString(3, hashedPassword);
             stmtUsuario.executeUpdate();
 
             // Obter o ID gerado

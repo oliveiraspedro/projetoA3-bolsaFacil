@@ -3,6 +3,7 @@ package Repositories;
 import DTOs.BolsaDTO;
 import Entities.Aluno;
 import Entities.Bolsas;
+import Utils.PasswordUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -33,7 +34,8 @@ public class AlunoRepository {
             String sqlUsuario = "INSERT INTO Usuario (email, senha) VALUES (?, ?)";
             stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
             stmtUsuario.setString(1, aluno.getEmail());
-            stmtUsuario.setString(2, aluno.getSenha());
+            String hashedPassword = PasswordUtils.hashPassword(aluno.getSenha());
+            stmtUsuario.setString(3, hashedPassword);
             stmtUsuario.executeUpdate();
 
             // Obter o ID gerado para o Usuario
@@ -49,7 +51,7 @@ public class AlunoRepository {
             stmtAluno.setInt(1, idUsuario);
             stmtAluno.setString(2, aluno.getNomeAluno());
             stmtAluno.setDate(3, (Date) aluno.getData_nascimento());
-            stmtAluno.setString(4, String.valueOf(aluno.getType())); // Converter LocalDate para java.sql.Date
+            stmtAluno.setString(4, String.valueOf(aluno.getType()));
             stmtAluno.executeUpdate();
 
             // Confirmar transação

@@ -2,6 +2,7 @@ package Repositories;
 
 import Entities.Aluno;
 import Enums.UserTypes;
+import Utils.PasswordUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,12 +28,17 @@ public class LoginRepository {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, email);
-            statement.setString(2, senha);
+            
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
+                String senhaArmazenada = resultSet.getString("senha");
+
+                // Verificar se a senha inserida corresponde ao hash
                 String userTypeString = resultSet.getString("tipo_usurio");
-                return UserTypes.fromString(userTypeString);
+                if (PasswordUtils.checkPassword(senha, senhaArmazenada)) {
+                    return UserTypes.fromString(userTypeString);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

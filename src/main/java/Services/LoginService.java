@@ -22,7 +22,7 @@ public class LoginService {
             return userType;
         }
         
-        JOptionPane.showMessageDialog(null, "O usuário não está cadastrado!");
+        JOptionPane.showMessageDialog(null, "O usuário não cadastrado ou senha incorreta!");
         return null;
         
     }
