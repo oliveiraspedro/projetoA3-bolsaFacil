@@ -30,6 +30,7 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Panelazul = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        LBimagem = new javax.swing.JLabel();
         BTSalvar = new javax.swing.JButton();
         LBcofirmenovasenha = new javax.swing.JLabel();
         LBnovasenha = new javax.swing.JLabel();
@@ -53,21 +54,29 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Blue Flat Color Ui Login Page Desktop Prototype (2).png"))); // NOI18N
 
+        LBimagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\pedro\\Downloads\\Blue Flat Color Ui Login Page Desktop Prototype (5).png")); // NOI18N
+
         javax.swing.GroupLayout PanelazulLayout = new javax.swing.GroupLayout(Panelazul);
         Panelazul.setLayout(PanelazulLayout);
         PanelazulLayout.setHorizontalGroup(
             PanelazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelazulLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(68, 68, 68)
+                .addComponent(LBimagem, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PanelazulLayout.setVerticalGroup(
             PanelazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelazulLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelazulLayout.createSequentialGroup()
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(PanelazulLayout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(LBimagem, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(Panelazul);
@@ -201,6 +210,7 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
     private javax.swing.JLabel LBcofirmenovasenha;
     private javax.swing.JLabel LBemail;
     private javax.swing.JLabel LBesqueceusenha;
+    private javax.swing.JLabel LBimagem;
     private javax.swing.JLabel LBnovasenha;
     private javax.swing.JLabel LBredefinasuasenha;
     private javax.swing.JPanel Panelazul;
