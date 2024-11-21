@@ -1,22 +1,20 @@
-package Entities;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package DTOs;
 
-public class Bolsas {
-    private long id;
+/**
+ *
+ * @author Pedro
+ */
+public class BolsaDTO {
     private String nome;
     private String descricaoBolsa;
     private String tipoBolsa;
     private String cidade;
     private double precoBolsa;
     private String instituicao;
-    
-    public Bolsas(){}
-    
-    public Bolsas(String nome, String instituicao, String cidade, Double precoBolsa){
-        this.nome = nome;
-        this.instituicao = instituicao;
-        this.cidade = cidade;
-        this.precoBolsa = precoBolsa;
-    }
 
     /**
      * @return the nome
@@ -59,7 +57,7 @@ public class Bolsas {
     public void setTipoBolsa(String tipoBolsa) {
         this.tipoBolsa = tipoBolsa;
     }
-    
+
     /**
      * @return the cidade
      */
@@ -101,7 +99,6 @@ public class Bolsas {
     public void setInstituicao(String instituicao) {
         this.instituicao = instituicao;
     }
-    
     
     
 }

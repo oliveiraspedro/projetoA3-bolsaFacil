@@ -1,20 +1,23 @@
 package Controllers;
 
 import DTOs.AlunoDTO;
+import Enums.UserTypes;
 import Services.LoginService;
+import javax.swing.JOptionPane;
 
 public class LoginController {
 
     LoginService loginService = new LoginService();
 
-    public String login(AlunoDTO alunoDTO){
+    public UserTypes login(AlunoDTO alunoDTO){
 
         try {
 
             return loginService.login(alunoDTO);
 
         } catch (Exception e){
-            return e + "Erro ao realizar o login";
+            JOptionPane.showMessageDialog(null, "Erro " + e + " no service ao realizar o login");
+            return null;
         }
 
     }

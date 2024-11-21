@@ -7,10 +7,7 @@ public class Instituicao {
     private String nomeInstituicao;
     private String sigla;
     private String cnpj;
-    private String cep;
-    private int numeroEndereco;
-    private int numeroTelefone;
-    private String nomeContato;
+    private String numeroTelefone;
     private String nomeUnidade;
     private ArrayList<Bolsas> bolsas = new ArrayList<>();
 
@@ -57,59 +54,17 @@ public class Instituicao {
     }
 
     /**
-     * @return the cep
-     */
-    public String getCep() {
-        return cep;
-    }
-
-    /**
-     * @param cep the cep to set
-     */
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    /**
-     * @return the numeroEndereco
-     */
-    public int getNumeroEndereco() {
-        return numeroEndereco;
-    }
-
-    /**
-     * @param numeroEndereco the numeroEndereco to set
-     */
-    public void setNumeroEndereco(int numeroEndereco) {
-        this.numeroEndereco = numeroEndereco;
-    }
-
-    /**
      * @return the numeroTelefone
      */
-    public int getNumeroTelefone() {
+    public String getNumeroTelefone() {
         return numeroTelefone;
     }
 
     /**
      * @param numeroTelefone the numeroTelefone to set
      */
-    public void setNumeroTelefone(int numeroTelefone) {
+    public void setNumeroTelefone(String numeroTelefone) {
         this.numeroTelefone = numeroTelefone;
-    }
-
-    /**
-     * @return the nomeContato
-     */
-    public String getNomeContato() {
-        return nomeContato;
-    }
-
-    /**
-     * @param nomeContato the nomeContato to set
-     */
-    public void setNomeContato(String nomeContato) {
-        this.nomeContato = nomeContato;
     }
 
     /**
