@@ -16,7 +16,7 @@ public class LoginController {
             return loginService.login(alunoDTO);
 
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro " + e + " no service ao realizar o login");
+            JOptionPane.showMessageDialog(null, "Erro " + e + " no controller ao realizar o login");
             return null;
         }
 

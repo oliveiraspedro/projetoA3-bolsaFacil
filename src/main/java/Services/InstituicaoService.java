@@ -6,7 +6,6 @@ package Services;
 
 import DTOs.InstituicaoDTO;
 import DTOs.UserInstituicaoDTO;
-import Entities.Aluno;
 import Entities.Instituicao;
 import Entities.UserInstituicao;
 import Repositories.InstituicaoRepository;

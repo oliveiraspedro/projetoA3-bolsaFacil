@@ -35,12 +35,11 @@ public class InstituicaoRepository {
             connection.setAutoCommit(false); // Iniciar transação
 
             // Inserir na tabela UsuarioInstituicao
-            String sqlUsuario = "INSERT INTO UsuarioInstituicao (email_contato, nome_contato, senha) VALUES (?, ?, ?)";
+            String sqlUsuario = "INSERT INTO usuario (email, senha) VALUES (?, ?)";
             stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
             stmtUsuario.setString(1, userInstituicao.getEmailInstitucional());
-            stmtUsuario.setString(2, userInstituicao.getNomeInstitucional());
             String hashedPassword = PasswordUtils.hashPassword(userInstituicao.getSenha());
-            stmtUsuario.setString(3, hashedPassword);
+            stmtUsuario.setString(2, hashedPassword);
             stmtUsuario.executeUpdate();
 
             // Obter o ID gerado
@@ -51,15 +50,15 @@ public class InstituicaoRepository {
             }
 
             // Inserir na tabela Instituicao
-            String sqlInstituicao = "INSERT INTO Instituicao (nome_instituicao, unidade, telefone_instituicao, sigla, cnpj, id_usuario_instituicao) " +
-                                    "VALUES (?, ?, ?, ?, ?, ?)";
+            String sqlInstituicao = "INSERT INTO instituicao (idInstituicao, nome_instituicao, sigla, cnpj, unidade, telefone, tipo_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
             stmtInstituicao = connection.prepareStatement(sqlInstituicao);
-            stmtInstituicao.setString(1, instituicao.getNomeInstituicao());
-            stmtInstituicao.setString(2, instituicao.getNomeUnidade());
-            stmtInstituicao.setString(3, instituicao.getNumeroTelefone());
-            stmtInstituicao.setString(4, instituicao.getSigla());
-            stmtInstituicao.setString(5, instituicao.getCnpj());
-            stmtInstituicao.setInt(6, idUsuarioInstituicao);
+            stmtInstituicao.setInt(1, idUsuarioInstituicao);
+            stmtInstituicao.setString(2, instituicao.getNomeInstituicao());
+            stmtInstituicao.setString(3, instituicao.getSigla());
+            stmtInstituicao.setString(4, instituicao.getCnpj());
+            stmtInstituicao.setString(5, instituicao.getNomeUnidade());
+            stmtInstituicao.setString(6, instituicao.getNumeroTelefone());
+            stmtInstituicao.setString(7, String.valueOf(instituicao.getType().getValue()));
             stmtInstituicao.executeUpdate();
 
             connection.commit(); // Confirmar transação

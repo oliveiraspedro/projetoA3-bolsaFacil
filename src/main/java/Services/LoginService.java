@@ -1,18 +1,16 @@
 package Services;
 
 import DTOs.AlunoDTO;
-import Entities.Aluno;
 import Enums.UserTypes;
 import Repositories.LoginRepository;
-
-import java.util.Objects;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class LoginService {
 
     LoginRepository loginRepository = new LoginRepository();
 
-    public UserTypes login(AlunoDTO alunoDTO){
+    public UserTypes login(AlunoDTO alunoDTO) throws SQLException{
 
         // TO DO: Validações e regras de negócio
 
@@ -20,10 +18,10 @@ public class LoginService {
         
         if (userType != null) {
             return userType;
+        } else {
+            JOptionPane.showMessageDialog(null, "O usuário não cadastrado ou senha incorreta!");
+            return null;
         }
-        
-        JOptionPane.showMessageDialog(null, "O usuário não cadastrado ou senha incorreta!");
-        return null;
         
     }
 

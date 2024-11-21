@@ -1,14 +1,18 @@
 package Entities;
 
+import Enums.UserTypes;
 import java.util.ArrayList;
 
-public class Instituicao {
+public class Instituicao implements User{
 
+    private String email;
+    private String senha;
     private String nomeInstituicao;
     private String sigla;
     private String cnpj;
     private String numeroTelefone;
     private String nomeUnidade;
+    private UserTypes type = UserTypes.TYPE_INST;
     private ArrayList<Bolsas> bolsas = new ArrayList<>();
 
     /**
@@ -94,7 +98,32 @@ public class Instituicao {
     public void setBolsas(ArrayList<Bolsas> bolsas) {
         this.bolsas = bolsas;
     }
-    
-    
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String getSenha() {
+        return senha;
+    }
+
+    @Override
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    /**
+     * @return the type
+     */
+    public UserTypes getType() {
+        return type;
+    }
 
 }

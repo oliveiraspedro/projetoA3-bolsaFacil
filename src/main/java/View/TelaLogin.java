@@ -190,15 +190,11 @@ public class TelaLogin extends javax.swing.JFrame {
         UserTypes userType = loginController.login(alunoDTO);
         
         switch(userType){
-            case UserTypes.TYPE_ADMIN:
-                // Levar o admin para a tela de dashboard
-                break;
-            case UserTypes.TYPE_ALUNO:
-                // Levar o usário para o menu principal
-                break;
-            case UserTypes.TYPE_INST:
-                // Levar o usuário para a tela de gerenciamento de bolsas
-                break;
+            case UserTypes.TYPE_ADMIN -> JOptionPane.showMessageDialog(null, "Admin logado com sucesso!");
+            case UserTypes.TYPE_ALUNO -> // Levar o usário para o menu principal
+                JOptionPane.showMessageDialog(null, "Aluno logado com sucesso!");
+            case UserTypes.TYPE_INST -> // Levar o usuário para a tela de gerenciamento de bolsas
+                JOptionPane.showMessageDialog(null, "Instituição logado com sucesso!");
         }
     }//GEN-LAST:event_BTloginActionPerformed
 
