@@ -10,8 +10,11 @@ import Utils.PasswordUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -72,6 +75,39 @@ public class InstituicaoRepository {
             if (stmtInstituicao != null) stmtInstituicao.close();
             if (stmtUsuario != null) stmtUsuario.close();
             if (connection != null) connection.close();
+        }
+    }
+    
+    public void getAllBolsas(JTable tblBolsas){
+        String sql = "SELECT * FROM bolsa";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
+
+            int cols = rsmd.getColumnCount();
+            String[] colName = new String[cols];
+            for (int i = 0; i < cols; i++){
+                colName[i] = rsmd.getColumnName(i+1);
+                model.setColumnIdentifiers(colName);
+
+                String idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa;
+                while (rs.next()){
+                    idbolsa = rs.getString(1);
+                    nome = rs.getString(2);
+                    desc_bolsa = rs.getString(3);
+                    tipo_bolsa = rs.getString(4);
+                    preco_bolsa = rs.getString(5);
+
+                    String[] row = {idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa};
+                    model.addRow(row);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
     
