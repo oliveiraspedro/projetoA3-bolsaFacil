@@ -107,16 +107,22 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="19">
+                  <Table columnCount="6" rowCount="19">
                     <Column editable="true" title="ID" type="java.lang.Object"/>
-                    <Column editable="true" title="NOME DO CURSO" type="java.lang.Object"/>
-                    <Column editable="true" title="NOME DA INSTITUI&#xc7;&#xc3;O" type="java.lang.Object"/>
-                    <Column editable="true" title="PRE&#xc7;O" type="java.lang.Object"/>
-                    <Column editable="true" title="CIDADE" type="java.lang.Object"/>
+                    <Column editable="true" title="Nome do Curso" type="java.lang.Object"/>
+                    <Column editable="true" title="Descri&#xe7;&#xe3;o da Bolsa" type="java.lang.Object"/>
+                    <Column editable="true" title="Tipo de Bolsa" type="java.lang.Object"/>
+                    <Column editable="true" title="Pre&#xe7;o" type="java.lang.Object"/>
+                    <Column editable="true" title="Excluir" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -173,7 +179,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnShow">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mostrar Bolsas"/>
+            <Property name="text" type="java.lang.String" value="Atualizar Bolsas"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -189,7 +195,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnClear">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Limpar Bolsas"/>
+            <Property name="text" type="java.lang.String" value="Limpar Lista"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

@@ -4,6 +4,22 @@
  */
 package View;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author Blackmage
@@ -15,7 +31,19 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
      */
     public TelaGerenciamentoBolsas() {
         initComponents();
+        configurarTabela();
     }
+    
+    private void configurarTabela() {
+        DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
+
+        // Pega a última coluna da tabela (a "Excluir")
+        TableColumn column = tblBolsas.getColumnModel().getColumn(tblBolsas.getColumnCount() - 1);
+    
+        // Configura a coluna "Excluir" para exibir botões
+        column.setCellRenderer(new ButtonRenderer());
+        column.setCellEditor(new ButtonEditor(new JCheckBox()));
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,28 +110,28 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         tblBolsas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblBolsas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME DO CURSO", "NOME DA INSTITUIÇÃO", "PREÇO", "CIDADE"
+                "ID", "Nome do Curso", "Descrição da Bolsa", "Tipo de Bolsa", "Preço", "Excluir"
             }
         ));
         jScrollPane1.setViewportView(tblBolsas);
@@ -119,7 +147,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jPanel1.add(labelInst);
         labelInst.setBounds(80, 60, 240, 40);
 
-        btnShow.setText("Mostrar Bolsas");
+        btnShow.setText("Atualizar Bolsas");
         btnShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +157,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jPanel1.add(btnShow);
         btnShow.setBounds(720, 110, 170, 40);
 
-        btnClear.setText("Limpar Bolsas");
+        btnClear.setText("Limpar Lista");
         btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,6 +311,55 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     private void txtPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusLost
         txtPesquisa.setText("Clique para pesquisar");
     }//GEN-LAST:event_txtPesquisaFocusLost
+    
+    // Classe para renderizar o botão na célula
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+        public ButtonRenderer() {
+            setText("Excluir");
+            setBackground(Color.WHITE);
+            setForeground(Color.BLACK);
+            setFont(new Font("Arial", Font.BOLD, 12));
+            setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            setFocusPainted(false);
+            setPreferredSize(new Dimension(80, 30));
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            return this;
+        }
+    }
+
+    // Classe para editar a célula (definir o que acontece quando o botão é clicado)
+    class ButtonEditor extends DefaultCellEditor {
+        private JButton button;
+        private int row;  // A linha do botão clicado
+
+        public ButtonEditor(JCheckBox checkBox) {
+            super(checkBox);
+            button = new JButton();
+            button.setOpaque(true);
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    fireEditingStopped();  // Para parar a edição da célula
+                    DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
+                    model.removeRow(row);  // Remove a linha da tabela
+                }
+            });
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            this.row = row;
+            button.setText("Excluir");
+            return button;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            return null;
+        }
+    }
 
     /**
      * @param args the command line arguments
