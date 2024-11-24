@@ -4,6 +4,7 @@
  */
 package View;
 
+import Repositories.InstituicaoRepository;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -256,7 +257,8 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisaActionPerformed
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
-        // TODO add your handling code here:
+        InstituicaoRepository instituicaoRepository = new InstituicaoRepository();
+        instituicaoRepository.getAllBolsas(tblBolsas);
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -312,7 +314,9 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         txtPesquisa.setText("Clique para pesquisar");
     }//GEN-LAST:event_txtPesquisaFocusLost
     
-    // Classe para renderizar o botão na célula
+    
+    
+    // Classe para renderizar o botão na célula 
     class ButtonRenderer extends JButton implements TableCellRenderer {
         public ButtonRenderer() {
             setText("Excluir");
