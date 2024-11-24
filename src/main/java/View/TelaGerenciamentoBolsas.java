@@ -9,13 +9,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.LayoutManager;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -33,6 +38,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     public TelaGerenciamentoBolsas() {
         initComponents();
         configurarTabela();
+        fundoPopup.setVisible(false);
     }
     
     private void configurarTabela() {
@@ -44,7 +50,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         // Configura a coluna "Excluir" para exibir botões
         column.setCellRenderer(new ButtonRenderer());
         column.setCellEditor(new ButtonEditor(new JCheckBox()));
-}
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,6 +61,19 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fundoPopup = new javax.swing.JPanel();
+        panelPopup = new RoundedPanel(100, Color.WHITE);
+        btnFecharPopup = new javax.swing.JButton();
+        txtTipoBolsa = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtNomeCurso = new javax.swing.JTextField();
+        txtPrecoBolsa = new javax.swing.JTextField();
+        txtDescricaoBolsa = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnSalvarBolsa = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnPesquisa = new javax.swing.JButton();
         txtPesquisa = new javax.swing.JTextField();
@@ -62,18 +81,124 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         tblBolsas = new javax.swing.JTable();
         labelInst = new javax.swing.JLabel();
         btnShow = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        txtID = new javax.swing.JTextField();
-        txtNomeCurso = new javax.swing.JTextField();
-        txtNomeInst = new javax.swing.JTextField();
-        txtNomePreco = new javax.swing.JTextField();
-        txtNomeCidade = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnPerfil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
         setPreferredSize(new java.awt.Dimension(1160, 720));
         getContentPane().setLayout(null);
+
+        fundoPopup.setBackground(new java.awt.Color(80, 80, 80, 130));
+        fundoPopup.setLayout(new java.awt.GridBagLayout());
+
+        panelPopup.setBackground(new java.awt.Color(80, 80, 80, 0));
+        panelPopup.setPreferredSize(new java.awt.Dimension(800, 400));
+        panelPopup.setLayout(null);
+
+        btnFecharPopup.setText("Concluir");
+        btnFecharPopup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFecharPopup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharPopupActionPerformed(evt);
+            }
+        });
+        panelPopup.add(btnFecharPopup);
+        btnFecharPopup.setBounds(590, 320, 150, 40);
+
+        txtTipoBolsa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTipoBolsa.setForeground(java.awt.Color.gray);
+        txtTipoBolsa.setText("Digite o tipo de bolsa...");
+        txtTipoBolsa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTipoBolsaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTipoBolsaFocusLost(evt);
+            }
+        });
+        panelPopup.add(txtTipoBolsa);
+        txtTipoBolsa.setBounds(470, 210, 250, 40);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(75, 109, 190));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Adicionar Bolsa");
+        panelPopup.add(jLabel1);
+        jLabel1.setBounds(250, 30, 310, 50);
+
+        txtNomeCurso.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNomeCurso.setForeground(java.awt.Color.gray);
+        txtNomeCurso.setText("Digite o nome do curso...");
+        txtNomeCurso.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNomeCursoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNomeCursoFocusLost(evt);
+            }
+        });
+        panelPopup.add(txtNomeCurso);
+        txtNomeCurso.setBounds(100, 130, 250, 40);
+
+        txtPrecoBolsa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPrecoBolsa.setForeground(java.awt.Color.gray);
+        txtPrecoBolsa.setText("Digite o preço da bolsa...");
+        txtPrecoBolsa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPrecoBolsaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecoBolsaFocusLost(evt);
+            }
+        });
+        panelPopup.add(txtPrecoBolsa);
+        txtPrecoBolsa.setBounds(100, 210, 250, 40);
+
+        txtDescricaoBolsa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDescricaoBolsa.setForeground(java.awt.Color.gray);
+        txtDescricaoBolsa.setText("Dê uma descrição para a bolsa...");
+        txtDescricaoBolsa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDescricaoBolsaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescricaoBolsaFocusLost(evt);
+            }
+        });
+        panelPopup.add(txtDescricaoBolsa);
+        txtDescricaoBolsa.setBounds(470, 130, 250, 40);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("Descrição da bolsa");
+        panelPopup.add(jLabel2);
+        jLabel2.setBounds(470, 110, 130, 20);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Nome do curso");
+        panelPopup.add(jLabel3);
+        jLabel3.setBounds(100, 110, 130, 20);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setText("Preço da bolsa");
+        panelPopup.add(jLabel4);
+        jLabel4.setBounds(100, 190, 130, 20);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setText("Tipo de bolsa");
+        panelPopup.add(jLabel5);
+        jLabel5.setBounds(470, 190, 130, 20);
+
+        btnSalvarBolsa.setText("Salvar");
+        btnSalvarBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelPopup.add(btnSalvarBolsa);
+        btnSalvarBolsa.setBounds(340, 280, 150, 40);
+
+        fundoPopup.add(panelPopup, new java.awt.GridBagConstraints());
+
+        getContentPane().add(fundoPopup);
+        fundoPopup.setBounds(0, 0, 1160, 720);
 
         jPanel1.setBackground(new java.awt.Color(75, 109, 190));
         jPanel1.setLayout(null);
@@ -111,25 +236,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         tblBolsas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblBolsas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome do Curso", "Descrição da Bolsa", "Tipo de Bolsa", "Preço", "Excluir"
@@ -158,89 +265,26 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jPanel1.add(btnShow);
         btnShow.setBounds(720, 110, 170, 40);
 
-        btnClear.setText("Limpar Lista");
-        btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setText("Adicionar Bolsa");
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
-        jPanel1.add(btnClear);
-        btnClear.setBounds(910, 110, 170, 40);
+        jPanel1.add(btnAdd);
+        btnAdd.setBounds(910, 110, 170, 40);
 
-        txtID.setEditable(false);
-        txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtID.setText("ID automático");
-        jPanel1.add(txtID);
-        txtID.setBounds(80, 540, 100, 40);
-
-        txtNomeCurso.setForeground(java.awt.Color.gray);
-        txtNomeCurso.setText("Digite o nome do curso...");
-        txtNomeCurso.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomeCursoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNomeCursoFocusLost(evt);
-            }
-        });
-        txtNomeCurso.addActionListener(new java.awt.event.ActionListener() {
+        btnPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnPerfil.setText("Página de Perfil");
+        btnPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeCursoActionPerformed(evt);
+                btnPerfilActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNomeCurso);
-        txtNomeCurso.setBounds(190, 540, 220, 40);
-
-        txtNomeInst.setForeground(java.awt.Color.gray);
-        txtNomeInst.setText("Digite o nome da instituição...");
-        txtNomeInst.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomeInstFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNomeInstFocusLost(evt);
-            }
-        });
-        txtNomeInst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeInstActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNomeInst);
-        txtNomeInst.setBounds(420, 540, 220, 40);
-
-        txtNomePreco.setForeground(java.awt.Color.gray);
-        txtNomePreco.setText("Digite o preço...");
-        txtNomePreco.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomePrecoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNomePrecoFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtNomePreco);
-        txtNomePreco.setBounds(650, 540, 210, 40);
-
-        txtNomeCidade.setForeground(java.awt.Color.gray);
-        txtNomeCidade.setText("Digite a cidade...");
-        txtNomeCidade.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomeCidadeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNomeCidadeFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtNomeCidade);
-        txtNomeCidade.setBounds(870, 540, 210, 40);
-
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Adicionar bolsa");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton1);
-        jButton1.setBounds(480, 600, 240, 50);
+        jPanel1.add(btnPerfil);
+        btnPerfil.setBounds(840, 580, 240, 50);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1160, 720);
@@ -261,42 +305,28 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         instituicaoRepository.getAllBolsas(tblBolsas);
     }//GEN-LAST:event_btnShowActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearActionPerformed
+        fundoPopup.setVisible(true);
+        fundoPopup.addMouseListener(new MouseAdapter() {});
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
+    private void txtPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusGained
+        txtPesquisa.setText("");
+    }//GEN-LAST:event_txtPesquisaFocusGained
+
+    private void txtPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusLost
+        txtPesquisa.setText("Clique para pesquisar");
+    }//GEN-LAST:event_txtPesquisaFocusLost
+
+    private void btnFecharPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharPopupActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeCursoActionPerformed
+        fundoPopup.setVisible(false);
+    }//GEN-LAST:event_btnFecharPopupActionPerformed
 
-    private void txtNomeInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeInstActionPerformed
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeInstActionPerformed
-
-    private void txtNomeInstFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeInstFocusGained
-        txtNomeInst.setText("");
-    }//GEN-LAST:event_txtNomeInstFocusGained
-
-    private void txtNomeInstFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeInstFocusLost
-        txtNomeInst.setText("Digite o nome da instituição...");
-
-    }//GEN-LAST:event_txtNomeInstFocusLost
-
-    private void txtNomePrecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomePrecoFocusGained
-        txtNomePreco.setText("");
-    }//GEN-LAST:event_txtNomePrecoFocusGained
-
-    private void txtNomePrecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomePrecoFocusLost
-        txtNomePreco.setText("Digite o preço...");
-    }//GEN-LAST:event_txtNomePrecoFocusLost
-
-    private void txtNomeCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCidadeFocusGained
-        txtNomeCidade.setText("");
-    }//GEN-LAST:event_txtNomeCidadeFocusGained
-
-    private void txtNomeCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCidadeFocusLost
-        txtNomeCidade.setText("Digite a cidade...");
-    }//GEN-LAST:event_txtNomeCidadeFocusLost
+    }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void txtNomeCursoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCursoFocusGained
         txtNomeCurso.setText("");
@@ -306,13 +336,29 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         txtNomeCurso.setText("Digite o nome do curso...");
     }//GEN-LAST:event_txtNomeCursoFocusLost
 
-    private void txtPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusGained
-        txtPesquisa.setText("");
-    }//GEN-LAST:event_txtPesquisaFocusGained
+    private void txtPrecoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoBolsaFocusGained
+        txtPrecoBolsa.setText("");
+    }//GEN-LAST:event_txtPrecoBolsaFocusGained
 
-    private void txtPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusLost
-        txtPesquisa.setText("Clique para pesquisar");
-    }//GEN-LAST:event_txtPesquisaFocusLost
+    private void txtPrecoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoBolsaFocusLost
+        txtPrecoBolsa.setText("Digite o preço da bolsa...");
+    }//GEN-LAST:event_txtPrecoBolsaFocusLost
+
+    private void txtDescricaoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoBolsaFocusGained
+        txtDescricaoBolsa.setText("");
+    }//GEN-LAST:event_txtDescricaoBolsaFocusGained
+
+    private void txtDescricaoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoBolsaFocusLost
+        txtDescricaoBolsa.setText("Dê uma descrição para a bolsa...");
+    }//GEN-LAST:event_txtDescricaoBolsaFocusLost
+
+    private void txtTipoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoBolsaFocusGained
+        txtTipoBolsa.setText("");
+    }//GEN-LAST:event_txtTipoBolsaFocusGained
+
+    private void txtTipoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoBolsaFocusLost
+        txtTipoBolsa.setText("Digite o tipo de bolsa...");
+    }//GEN-LAST:event_txtTipoBolsaFocusLost
     
     
     
@@ -401,19 +447,72 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnFecharPopup;
+    private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnPesquisa;
+    private javax.swing.JButton btnSalvarBolsa;
     private javax.swing.JButton btnShow;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel fundoPopup;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelInst;
+    private javax.swing.JPanel panelPopup;
     private javax.swing.JTable tblBolsas;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtNomeCidade;
+    private javax.swing.JTextField txtDescricaoBolsa;
     private javax.swing.JTextField txtNomeCurso;
-    private javax.swing.JTextField txtNomeInst;
-    private javax.swing.JTextField txtNomePreco;
     private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtPrecoBolsa;
+    private javax.swing.JTextField txtTipoBolsa;
     // End of variables declaration//GEN-END:variables
+
+    class RoundedPanel extends JPanel
+    {
+        private Color backgroundColor;
+        private int cornerRadius = 15;
+        public RoundedPanel(LayoutManager layout, int radius) {
+            super(layout);
+            cornerRadius = radius;
+        }
+        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
+            super(layout);
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        public RoundedPanel(int radius) {
+            super();
+            cornerRadius = radius;
+            
+        }
+        public RoundedPanel(int radius, Color bgColor) {
+            super();
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
+            int width = getWidth();
+            int height = getHeight();
+            Graphics2D graphics = (Graphics2D) g;
+            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            //Draws the rounded panel with borders.
+            if (backgroundColor != null) {
+                graphics.setColor(backgroundColor);
+            } else {
+                graphics.setColor(getBackground());
+            }
+            graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
+            graphics.setColor(getForeground());
+//            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
+//             
+        }
+    }
+
 }
