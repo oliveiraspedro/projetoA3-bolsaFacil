@@ -1,6 +1,9 @@
 package Repositories;
 
+import Entities.Admin;
 import Entities.Aluno;
+import Entities.Instituicao;
+import Entities.User;
 import Enums.UserTypes;
 import Utils.PasswordUtils;
 
@@ -20,10 +23,11 @@ public class LoginRepository {
 
     }
 
-    public UserTypes findByEmail(String email, String senha) throws SQLException{
+    public User findByEmail(String email, String senha) throws SQLException{
 
         // TO DO: Verificar se o email existe
-        String sql = "SELECT COALESCE(al.tipo_user, ui.tipo_user) AS tipo_user, u.senha, u.email FROM usuario u LEFT JOIN aluno al ON u.idusuario = al.idaluno LEFT JOIN instituicao ui ON u.idusuario = ui.idInstituicao WHERE u.email = ?";
+        String sql = "SELECT COALESCE(al.tipo_user, ui.tipo_user) AS tipo_user, u.senha, u.email, ui.idInstituicao AS idInstituicao, ui.nome_instituicao AS nome_instituicao, ui.sigla AS sigla, ui.cnpj AS cnpj, ui.telefone AS telefone, ui.unidade AS unidade FROM usuario u LEFT JOIN aluno al ON u.idusuario = al.idaluno LEFT JOIN instituicao ui ON u.idusuario = ui.idInstituicao WHERE u.email = ?";
+        //String sql = "SELECT * FROM usuario u LEFT JOIN aluno al ON u.idusuario = al.idaluno LEFT JOIN instituicao ui ON u.idusuario = ui.idInstituicao WHERE u.email = ?";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -52,7 +56,14 @@ public class LoginRepository {
                     System.out.println("userType " + userType);
                     
                     if (userType != null) {
-                        return userType;
+                        switch(userType){
+                            case UserTypes.TYPE_ADMIN:
+                                return new Admin(resultSet.getString("email"), resultSet.getString("senha"), resultSet.getString("tipo_user"));
+                            case UserTypes.TYPE_ALUNO:
+                                return new Aluno(resultSet.getString("email"), resultSet.getString("nome"), resultSet.getDate("data_nascimento"), resultSet.getString("senha"), resultSet.getString("tipo_user"));
+                            case UserTypes.TYPE_INST:
+                                return new Instituicao(resultSet.getInt("idInstituicao"), resultSet.getString("email"), resultSet.getString("senha"), resultSet.getString("nome_instituicao"), resultSet.getString("sigla"), resultSet.getString("cnpj"), resultSet.getString("telefone"), resultSet.getString("unidade"), resultSet.getString("tipo_user"));
+                        }
                     } else {
                         System.out.println("Tipo de usuário desconhecido: " + userTypeString);
                 }

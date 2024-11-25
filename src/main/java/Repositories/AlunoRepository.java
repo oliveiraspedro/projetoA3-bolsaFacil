@@ -52,7 +52,7 @@ public class AlunoRepository {
             stmtAluno.setInt(1, idUsuario);
             stmtAluno.setString(2, aluno.getNomeAluno());
             stmtAluno.setDate(3, (Date) aluno.getData_nascimento());
-            stmtAluno.setString(4, String.valueOf(aluno.getType().getValue()));
+            stmtAluno.setString(4, aluno.getType());
             stmtAluno.executeUpdate();
             
 

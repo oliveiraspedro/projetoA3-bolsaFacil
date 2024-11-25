@@ -1,7 +1,7 @@
 package Controllers;
 
 import DTOs.AlunoDTO;
-import Enums.UserTypes;
+import Entities.User;
 import Services.LoginService;
 import javax.swing.JOptionPane;
 
@@ -9,7 +9,7 @@ public class LoginController {
 
     LoginService loginService = new LoginService();
 
-    public UserTypes login(AlunoDTO alunoDTO){
+    public User login(AlunoDTO alunoDTO){
 
         try {
 

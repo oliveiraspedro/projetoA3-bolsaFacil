@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Instituicao implements User{
 
+    private int idIntituicao;
     private String email;
     private String senha;
     private String nomeInstituicao;
@@ -12,8 +13,33 @@ public class Instituicao implements User{
     private String cnpj;
     private String numeroTelefone;
     private String nomeUnidade;
-    private UserTypes type = UserTypes.TYPE_INST;
+    private String type = UserTypes.TYPE_INST.getValue();
     private ArrayList<Bolsas> bolsas = new ArrayList<>();
+    
+    public Instituicao(int idInstituicao, String email, String senha, String nomeInstituicao, String sigla, String cnpj, String numeroTelefone, String nomeUnidade, String type){
+        this.idIntituicao = idInstituicao;
+        this.email = email;
+        this.senha = senha;
+        this.nomeInstituicao = nomeInstituicao;
+        this.sigla = sigla;
+        this.cnpj = cnpj;
+        this.numeroTelefone = numeroTelefone;
+        this.nomeUnidade = nomeUnidade;
+    }
+    
+    /**
+    * @return the idIntituicao
+    */
+    public int getIdIntituicao() {
+        return idIntituicao;
+    }
+
+    /**
+    * @param idIntituicao the idIntituicao to set
+    */
+    public void setIdIntituicao(int idIntituicao) {
+        this.idIntituicao = idIntituicao;
+    }
 
     /**
      * @return the nomeInstituicao
@@ -122,7 +148,7 @@ public class Instituicao implements User{
     /**
      * @return the type
      */
-    public UserTypes getType() {
+    public String getType() {
         return type;
     }
 

@@ -4,6 +4,7 @@
  */
 package Repositories;
 
+import Entities.Bolsas;
 import Entities.Instituicao;
 import Entities.UserInstituicao;
 import Utils.PasswordUtils;
@@ -61,7 +62,7 @@ public class InstituicaoRepository {
             stmtInstituicao.setString(4, instituicao.getCnpj());
             stmtInstituicao.setString(5, instituicao.getNomeUnidade());
             stmtInstituicao.setString(6, instituicao.getNumeroTelefone());
-            stmtInstituicao.setString(7, String.valueOf(instituicao.getType().getValue()));
+            stmtInstituicao.setString(7, instituicao.getType());
             stmtInstituicao.executeUpdate();
 
             connection.commit(); // Confirmar transação
@@ -89,6 +90,7 @@ public class InstituicaoRepository {
 
             int cols = rsmd.getColumnCount();
             String[] colName = new String[cols];
+            model.setRowCount(0);
             for (int i = 0; i < cols; i++){
                 colName[i] = rsmd.getColumnName(i+1);
                 model.setColumnIdentifiers(colName);
@@ -111,4 +113,28 @@ public class InstituicaoRepository {
         }
     }
     
+    public boolean addBolsas(Bolsas bolsa){
+        String sql = "INSERT INTO bolsa (nome, desc_bolsa, tipo_bolsa, preco_bolsa, idInstituicao) VALUES (?, ?, ?, ?, ?)";
+        
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Configurando os valores do PreparedStatement
+            preparedStatement.setString(1, bolsa.getNome());
+            preparedStatement.setString(2, bolsa.getDescricaoBolsa());
+            preparedStatement.setString(3, bolsa.getTipoBolsa());
+            preparedStatement.setDouble(4, bolsa.getPrecoBolsa());
+            preparedStatement.setInt(5, bolsa.getIdInstituicao());
+
+            // Executando a instrução SQL
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Retorna true se uma linha foi inserida
+            return rowsAffected > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

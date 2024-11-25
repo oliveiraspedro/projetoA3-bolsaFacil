@@ -4,6 +4,9 @@
  */
 package View;
 
+import Controllers.InstituicaoController;
+import DTOs.BolsaDTO;
+import Entities.Instituicao;
 import Repositories.InstituicaoRepository;
 import java.awt.Color;
 import java.awt.Component;
@@ -31,14 +34,18 @@ import javax.swing.table.TableColumn;
  * @author Blackmage
  */
 public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
+    
+    private static Instituicao instituicao;
 
     /**
      * Creates new form TelaGerenciamentoBolsas
+     * @param instituicao
      */
-    public TelaGerenciamentoBolsas() {
+    public TelaGerenciamentoBolsas(Instituicao instituicao) {
         initComponents();
         configurarTabela();
         fundoPopup.setVisible(false);
+        this.instituicao = instituicao;
     }
     
     private void configurarTabela() {
@@ -139,6 +146,11 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
                 txtNomeCursoFocusLost(evt);
             }
         });
+        txtNomeCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeCursoActionPerformed(evt);
+            }
+        });
         panelPopup.add(txtNomeCurso);
         txtNomeCurso.setBounds(100, 130, 250, 40);
 
@@ -192,6 +204,11 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
 
         btnSalvarBolsa.setText("Salvar");
         btnSalvarBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarBolsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarBolsaActionPerformed(evt);
+            }
+        });
         panelPopup.add(btnSalvarBolsa);
         btnSalvarBolsa.setBounds(340, 280, 150, 40);
 
@@ -359,6 +376,22 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     private void txtTipoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoBolsaFocusLost
         txtTipoBolsa.setText("Digite o tipo de bolsa...");
     }//GEN-LAST:event_txtTipoBolsaFocusLost
+
+    private void btnSalvarBolsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarBolsaActionPerformed
+        BolsaDTO bolsaDTO = new BolsaDTO();
+        InstituicaoController instituicaoController = new InstituicaoController();
+        
+        bolsaDTO.setNome(txtNomeCurso.getText());
+        bolsaDTO.setDescricaoBolsa(txtDescricaoBolsa.getText());
+        bolsaDTO.setPrecoBolsa(Double.parseDouble(txtPrecoBolsa.getText()));
+        bolsaDTO.setTipoBolsa(txtTipoBolsa.getText());
+        bolsaDTO.setIdInstituicao(instituicao.getIdIntituicao());
+        instituicaoController.addBolsas(bolsaDTO);
+    }//GEN-LAST:event_btnSalvarBolsaActionPerformed
+
+    private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeCursoActionPerformed
     
     
     
@@ -441,7 +474,8 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaGerenciamentoBolsas().setVisible(true);
+                TelaGerenciamentoBolsas telaGerenciamentoBolsas = new TelaGerenciamentoBolsas(instituicao);
+                telaGerenciamentoBolsas.setVisible(true);
             }
         });
     }

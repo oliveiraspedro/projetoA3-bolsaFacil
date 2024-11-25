@@ -6,7 +6,13 @@ public class Admin implements User{
     
     private String email;
     private String senha;
-    private UserTypes type = UserTypes.TYPE_ADMIN;
+    private String type = UserTypes.TYPE_ADMIN.getValue();
+    
+    public Admin(String email, String senha, String type){
+        this.email = email;
+        this.senha = senha;
+        this.type = type;
+    }
 
     @Override
     public String getEmail() {
