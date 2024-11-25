@@ -11,24 +11,9 @@ import Enums.UserTypes;
  * @author Pedro
  */
 public class UserInstituicaoDTO {
-    private String nomeInstitucional;
     private String emailInstitucional;
     private String senha;
     private UserTypes type;
-
-    /**
-     * @return the nomeInstitucional
-     */
-    public String getNomeInstitucional() {
-        return nomeInstitucional;
-    }
-
-    /**
-     * @param nomeInstitucional the nomeInstitucional to set
-     */
-    public void setNomeInstitucional(String nomeInstitucional) {
-        this.nomeInstitucional = nomeInstitucional;
-    }
 
     /**
      * @return the emailInstitucional

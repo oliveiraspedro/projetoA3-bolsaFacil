@@ -15,6 +15,7 @@ public class BolsaDTO {
     private String cidade;
     private double precoBolsa;
     private String instituicao;
+    private int idInstituicao;
 
     /**
      * @return the nome
@@ -99,6 +100,19 @@ public class BolsaDTO {
     public void setInstituicao(String instituicao) {
         this.instituicao = instituicao;
     }
-    
+
+    /**
+     * @return the idInstituicao
+     */
+    public int getIdInstituicao() {
+        return idInstituicao;
+    }
+
+    /**
+     * @param idInstituicao the idInstituicao to set
+     */
+    public void setIdInstituicao(int idInstituicao) {
+        this.idInstituicao = idInstituicao;
+    }
     
 }

@@ -30,6 +30,7 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Panelazul = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        LBimagem = new javax.swing.JLabel();
         BTSalvar = new javax.swing.JButton();
         LBcofirmenovasenha = new javax.swing.JLabel();
         LBnovasenha = new javax.swing.JLabel();
@@ -58,16 +59,22 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
         PanelazulLayout.setHorizontalGroup(
             PanelazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelazulLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(68, 68, 68)
+                .addComponent(LBimagem, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PanelazulLayout.setVerticalGroup(
             PanelazulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelazulLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelazulLayout.createSequentialGroup()
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(PanelazulLayout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(LBimagem, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(Panelazul);
@@ -155,6 +162,7 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTSalvarActionPerformed
@@ -201,6 +209,7 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
     private javax.swing.JLabel LBcofirmenovasenha;
     private javax.swing.JLabel LBemail;
     private javax.swing.JLabel LBesqueceusenha;
+    private javax.swing.JLabel LBimagem;
     private javax.swing.JLabel LBnovasenha;
     private javax.swing.JLabel LBredefinasuasenha;
     private javax.swing.JPanel Panelazul;

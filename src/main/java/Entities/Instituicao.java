@@ -1,15 +1,45 @@
 package Entities;
 
+import Enums.UserTypes;
 import java.util.ArrayList;
 
-public class Instituicao {
+public class Instituicao implements User{
 
+    private int idIntituicao;
+    private String email;
+    private String senha;
     private String nomeInstituicao;
     private String sigla;
     private String cnpj;
     private String numeroTelefone;
     private String nomeUnidade;
+    private String type = UserTypes.TYPE_INST.getValue();
     private ArrayList<Bolsas> bolsas = new ArrayList<>();
+    
+    public Instituicao(int idInstituicao, String email, String senha, String nomeInstituicao, String sigla, String cnpj, String numeroTelefone, String nomeUnidade, String type){
+        this.idIntituicao = idInstituicao;
+        this.email = email;
+        this.senha = senha;
+        this.nomeInstituicao = nomeInstituicao;
+        this.sigla = sigla;
+        this.cnpj = cnpj;
+        this.numeroTelefone = numeroTelefone;
+        this.nomeUnidade = nomeUnidade;
+    }
+    
+    /**
+    * @return the idIntituicao
+    */
+    public int getIdIntituicao() {
+        return idIntituicao;
+    }
+
+    /**
+    * @param idIntituicao the idIntituicao to set
+    */
+    public void setIdIntituicao(int idIntituicao) {
+        this.idIntituicao = idIntituicao;
+    }
 
     /**
      * @return the nomeInstituicao
@@ -94,7 +124,32 @@ public class Instituicao {
     public void setBolsas(ArrayList<Bolsas> bolsas) {
         this.bolsas = bolsas;
     }
-    
-    
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String getSenha() {
+        return senha;
+    }
+
+    @Override
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
 
 }

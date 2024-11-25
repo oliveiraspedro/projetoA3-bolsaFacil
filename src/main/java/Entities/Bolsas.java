@@ -8,6 +8,7 @@ public class Bolsas {
     private String cidade;
     private double precoBolsa;
     private String instituicao;
+    private int idInstituicao;
     
     public Bolsas(){}
     
@@ -101,7 +102,19 @@ public class Bolsas {
     public void setInstituicao(String instituicao) {
         this.instituicao = instituicao;
     }
-    
-    
+
+    /**
+     * @return the idInstituicao
+     */
+    public int getIdInstituicao() {
+        return idInstituicao;
+    }
+
+    /**
+     * @param idInstituicao the idInstituicao to set
+     */
+    public void setIdInstituicao(int idInstituicao) {
+        this.idInstituicao = idInstituicao;
+    }
     
 }

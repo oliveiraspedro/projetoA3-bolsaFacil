@@ -2,8 +2,17 @@ package View;
 
 import Controllers.LoginController;
 import DTOs.AlunoDTO;
+import Entities.Admin;
+import Entities.Aluno;
+import Entities.Instituicao;
+import Entities.User;
 import Enums.UserTypes;
 import javax.swing.JOptionPane;
+import java.awt.*; 
+import java.awt.event.ActionEvent; 
+import java.awt.event.ActionListener; 
+import java.awt.event.MouseAdapter; 
+import java.awt.event.MouseEvent; 
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -41,6 +50,7 @@ public class TelaLogin extends javax.swing.JFrame {
         LBEmail = new javax.swing.JLabel();
         LBBemvindo1 = new javax.swing.JLabel();
         LBBemvindo = new javax.swing.JLabel();
+        LBimagem = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -83,6 +93,19 @@ public class TelaLogin extends javax.swing.JFrame {
 
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTFemail.setText("E-mail");
+        TXTFemail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXTFemailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TXTFemailFocusLost(evt);
+            }
+        });
+        TXTFemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTFemailActionPerformed(evt);
+            }
+        });
         jPanel1.add(TXTFemail);
         TXTFemail.setBounds(720, 300, 340, 60);
 
@@ -109,6 +132,8 @@ public class TelaLogin extends javax.swing.JFrame {
         LBBemvindo.setText("Bem - vindo!!");
         jPanel1.add(LBBemvindo);
         LBBemvindo.setBounds(750, 100, 320, 56);
+        jPanel1.add(LBimagem);
+        LBimagem.setBounds(40, 110, 620, 500);
 
         jPanel2.setBackground(new java.awt.Color(76, 111, 191));
 
@@ -152,6 +177,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTloginActionPerformed
@@ -163,19 +189,31 @@ public class TelaLogin extends javax.swing.JFrame {
 
         alunoDTO.setEmail(email);
         alunoDTO.setSenha(senha);
-        UserTypes userType = loginController.login(alunoDTO);
+      
+        User user = loginController.login(alunoDTO);
         
-        switch(userType){
-            case UserTypes.TYPE_ADMIN:
-                // Levar o admin para a tela de dashboard
-                break;
-            case UserTypes.TYPE_ALUNO:
-                // Levar o usário para o menu principal
-                break;
-            case UserTypes.TYPE_INST:
-                // Levar o usuário para a tela de gerenciamento de bolsas
-                break;
+        if (user instanceof Admin admin) {
+                TelaDashboard telaDashboard = new TelaDashboard(admin);
+                telaDashboard.pack();
+                dispose();
+                telaDashboard.setVisible(true);
+                return;
         }
+        
+        if (user instanceof Aluno aluno) {
+            TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
+            telaConsultaBolsas.pack();
+            dispose();
+            telaConsultaBolsas.setVisible(true);
+            return;
+        }
+        if (user instanceof Instituicao instituicao) {
+            TelaGerenciamentoBolsas telaGerenciamentoBolsas = new TelaGerenciamentoBolsas(instituicao);
+            telaGerenciamentoBolsas.pack();
+            dispose();
+            telaGerenciamentoBolsas.setVisible(true);
+        }
+        
     }//GEN-LAST:event_BTloginActionPerformed
 
     private void BTcadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTcadastroActionPerformed
@@ -184,6 +222,25 @@ public class TelaLogin extends javax.swing.JFrame {
         dispose();
         telaCadastroalunos.setVisible(true);
     }//GEN-LAST:event_BTcadastroActionPerformed
+
+    private void TXTFemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTFemailActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_TXTFemailActionPerformed
+
+    private void TXTFemailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFemailFocusGained
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_TXTFemailFocusGained
+
+    private void TXTFemailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFemailFocusLost
+        // TODO add your handling code here:
+        if(TXTFemail.getText().isEmpty()){
+            TXTFemail.setForeground(Color.GRAY);
+            
+            TXTFemail.setText("E-MAIL");
+        }
+    }//GEN-LAST:event_TXTFemailFocusLost
 
     /**
      * @param args the command line arguments
@@ -226,6 +283,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel LBBemvindo;
     private javax.swing.JLabel LBBemvindo1;
     private javax.swing.JLabel LBEmail;
+    private javax.swing.JLabel LBimagem;
     private javax.swing.JLabel LBsenha;
     private javax.swing.JPasswordField PSWsenha;
     private javax.swing.JTextField TXTFemail;

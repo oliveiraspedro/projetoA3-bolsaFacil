@@ -48,7 +48,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         btnPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btnPesquisa.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pedro\\Documents\\NetBeansProjects\\ProjetoBolsaFacil\\src\\main\\java\\resources\\tool_16205471.png")); // NOI18N
+        btnPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tool_16205471.png"))); // NOI18N
         btnPesquisa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +98,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnShow);
-        btnShow.setBounds(710, 110, 160, 40);
+        btnShow.setBounds(730, 110, 160, 40);
 
         btnClear.setText("Limpar Instituições");
         btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -114,6 +114,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed

@@ -35,6 +35,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         LBemail1 = new javax.swing.JLabel();
         CBMostrarsenha = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
+        LBimagem = new javax.swing.JLabel();
         BTcadastrar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,11 +120,17 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LBimagem, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(152, Short.MAX_VALUE)
+                .addComponent(LBimagem, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
         );
 
         jPanel1.add(jPanel2);
@@ -157,6 +164,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTvoltarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTvoltarLoginActionPerformed
@@ -228,6 +236,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
     private javax.swing.JLabel LBdata;
     private javax.swing.JLabel LBemail;
     private javax.swing.JLabel LBemail1;
+    private javax.swing.JLabel LBimagem;
     private javax.swing.JLabel LBnomecompleto;
     private javax.swing.JTextField TXTFdata;
     private javax.swing.JTextField TXTFemail;

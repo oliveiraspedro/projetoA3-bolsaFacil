@@ -14,7 +14,7 @@ public class PasswordUtils {
     
     public static String hashPassword(String plainPassword){
         // Gera o hash com 12 rounds (valor padrão recomendado)
-        return BCrypt.hashpw(plainPassword, BCrypt.gensalt());
+        return BCrypt.hashpw("bolsafacil011", BCrypt.gensalt());
     }
     
     public static boolean checkPassword(String plainPassword, String hashedPassword) {

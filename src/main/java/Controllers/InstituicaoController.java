@@ -4,6 +4,7 @@
  */
 package Controllers;
 
+import DTOs.BolsaDTO;
 import DTOs.InstituicaoDTO;
 import DTOs.UserInstituicaoDTO;
 import Entities.UserInstituicao;
@@ -22,8 +23,17 @@ public class InstituicaoController {
             UserInstituicao userInstituicao = instituicaoService.cadastrarInstituicao(userInstituicaoDTO, instituicaoDTO);
             return userInstituicao;
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar ao cadastrar a instituição");
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar ao cadastrar a instituição!");
             return null;
+        }
+    }
+    
+    public boolean addBolsas(BolsaDTO bolsaDTO){
+        try {
+            return instituicaoService.addBolsas(bolsaDTO);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar ao cadastrar a bolsa!");
+            return false;
         }
     }
 }
