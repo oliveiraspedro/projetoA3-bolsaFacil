@@ -53,6 +53,11 @@ public class TelaDashboard extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(75, 109, 190));
         jButton1.setText("Sign Out");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.setBounds(40, 580, 250, 50);
 
@@ -66,6 +71,11 @@ public class TelaDashboard extends javax.swing.JFrame {
         jButton2.setText("Gerenciar usuários");
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2);
         jButton2.setBounds(20, 300, 260, 60);
 
@@ -83,7 +93,7 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(390, 250, 210, 90);
+        jTextField1.setBounds(390, 250, 210, 60);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Quantidade de alunos cadastrados");
@@ -92,7 +102,7 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         jTextField2.setEditable(false);
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(630, 250, 210, 90);
+        jTextField2.setBounds(630, 250, 210, 60);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Quantidade de instituições cadastradas");
@@ -101,7 +111,7 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         jTextField3.setEditable(false);
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(870, 250, 220, 90);
+        jTextField3.setBounds(870, 250, 220, 60);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Quantidade de bolsas cadastradas");
@@ -113,6 +123,18 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        TelaGerenciamentoInst telaGerenciamentoInst = new TelaGerenciamentoInst();
+        telaGerenciamentoInst.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     

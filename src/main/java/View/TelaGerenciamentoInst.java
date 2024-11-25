@@ -37,6 +37,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         labelInst = new javax.swing.JLabel();
         btnShow = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnVoltarDash = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
@@ -80,7 +81,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblInst);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(80, 212, 1000, 430);
+        jScrollPane1.setBounds(80, 200, 1000, 360);
 
         labelInst.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         labelInst.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,7 +91,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         jPanel1.add(labelInst);
         labelInst.setBounds(80, 60, 240, 40);
 
-        btnShow.setText("Mostrar Instituições");
+        btnShow.setText("Listar Instituições");
         btnShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +101,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         jPanel1.add(btnShow);
         btnShow.setBounds(730, 110, 160, 40);
 
-        btnClear.setText("Limpar Instituições");
+        btnClear.setText("Limpar lista");
         btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +110,18 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         });
         jPanel1.add(btnClear);
         btnClear.setBounds(920, 110, 160, 40);
+
+        btnVoltarDash.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnVoltarDash.setForeground(new java.awt.Color(75, 109, 190));
+        btnVoltarDash.setText("Voltar");
+        btnVoltarDash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVoltarDash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarDashActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVoltarDash);
+        btnVoltarDash.setBounds(80, 580, 230, 50);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1160, 720);
@@ -133,6 +146,13 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         AdminRepository adminRepository = new AdminRepository();
         adminRepository.clear((DefaultTableModel) tblInst.getModel());
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnVoltarDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDashActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        TelaDashboard telaDashboard = new TelaDashboard();
+        telaDashboard.setVisible(true);
+    }//GEN-LAST:event_btnVoltarDashActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +212,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnShow;
+    private javax.swing.JButton btnVoltarDash;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelInst;

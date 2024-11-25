@@ -31,13 +31,13 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jSlider1 = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -48,9 +48,12 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
+        setPreferredSize(new java.awt.Dimension(1160, 720));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -72,7 +75,7 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(500, 219, 200, 50);
+        jButton2.setBounds(500, 190, 200, 50);
 
         jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -80,8 +83,6 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jTextField1.setBounds(910, 100, 120, 40);
         jPanel2.add(jTextField2);
         jTextField2.setBounds(320, 100, 170, 40);
-        jPanel2.add(jTextField3);
-        jTextField3.setBounds(510, 100, 170, 40);
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,8 +118,12 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jPanel2.add(jLabel4);
         jLabel4.setBounds(710, 80, 90, 17);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "São Paulo" }));
+        jPanel2.add(jComboBox1);
+        jComboBox1.setBounds(510, 100, 170, 40);
+
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 1160, 300);
+        jPanel2.setBounds(0, 0, 1160, 270);
 
         jPanel3.setBackground(new java.awt.Color(255, 203, 105));
         jPanel3.setLayout(null);
@@ -178,7 +183,7 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jLabel11.setBounds(40, 230, 130, 17);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(920, 300, 220, 310);
+        jPanel3.setBounds(920, 270, 220, 310);
 
         jButton1.setBackground(new java.awt.Color(75, 109, 190));
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -191,10 +196,31 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(920, 620, 220, 50);
+        jButton1.setBounds(920, 590, 220, 50);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome do curso", "Descrição da bolsa", "Tipo de bolsa", "Preço", "Faculdade", "Contato"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(60, 310, 810, 330);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1160, 680);
+        jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -254,6 +280,7 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -268,10 +295,11 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
