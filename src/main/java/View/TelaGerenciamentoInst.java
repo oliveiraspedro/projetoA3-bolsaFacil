@@ -127,6 +127,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed

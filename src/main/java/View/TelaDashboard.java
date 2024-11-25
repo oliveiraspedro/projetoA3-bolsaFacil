@@ -4,17 +4,22 @@
  */
 package View;
 
+import Entities.Admin;
+
 /**
  *
  * @author Blackmage
  */
 public class TelaDashboard extends javax.swing.JFrame {
 
+    private static Admin admin;
+    
     /**
      * Creates new form TelaDashboard
      */
-    public TelaDashboard() {
+    public TelaDashboard(Admin admin) {
         initComponents();
+        this.admin = admin;
     }
 
     /**
@@ -122,19 +127,15 @@ public class TelaDashboard extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        TelaGerenciamentoInst telaGerenciamentoInst = new TelaGerenciamentoInst();
-        telaGerenciamentoInst.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+        setLocationRelativeTo(null);
+    }
+  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.pack();
+        dispose();
+        telaLogin.setVisible(true);
+    }
 
     
     
@@ -168,7 +169,8 @@ public class TelaDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaDashboard().setVisible(true);
+                TelaDashboard telaDashboard = new TelaDashboard(admin);
+                telaDashboard.setVisible(true);
             }
         });
     }

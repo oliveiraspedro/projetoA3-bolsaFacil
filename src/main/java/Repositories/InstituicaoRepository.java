@@ -4,6 +4,7 @@
  */
 package Repositories;
 
+import Entities.Bolsas;
 import Entities.Instituicao;
 import Entities.UserInstituicao;
 import Utils.PasswordUtils;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,12 +40,11 @@ public class InstituicaoRepository {
             connection.setAutoCommit(false); // Iniciar transação
 
             // Inserir na tabela UsuarioInstituicao
-            String sqlUsuario = "INSERT INTO UsuarioInstituicao (email_contato, nome_contato, senha) VALUES (?, ?, ?)";
+            String sqlUsuario = "INSERT INTO usuario (email, senha) VALUES (?, ?)";
             stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
             stmtUsuario.setString(1, userInstituicao.getEmailInstitucional());
-            stmtUsuario.setString(2, userInstituicao.getNomeInstitucional());
             String hashedPassword = PasswordUtils.hashPassword(userInstituicao.getSenha());
-            stmtUsuario.setString(3, hashedPassword);
+            stmtUsuario.setString(2, hashedPassword);
             stmtUsuario.executeUpdate();
 
             // Obter o ID gerado
@@ -54,15 +55,15 @@ public class InstituicaoRepository {
             }
 
             // Inserir na tabela Instituicao
-            String sqlInstituicao = "INSERT INTO Instituicao (nome_instituicao, unidade, telefone_instituicao, sigla, cnpj, id_usuario_instituicao) " +
-                                    "VALUES (?, ?, ?, ?, ?, ?)";
+            String sqlInstituicao = "INSERT INTO instituicao (idInstituicao, nome_instituicao, sigla, cnpj, unidade, telefone, tipo_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
             stmtInstituicao = connection.prepareStatement(sqlInstituicao);
-            stmtInstituicao.setString(1, instituicao.getNomeInstituicao());
-            stmtInstituicao.setString(2, instituicao.getNomeUnidade());
-            stmtInstituicao.setString(3, instituicao.getNumeroTelefone());
-            stmtInstituicao.setString(4, instituicao.getSigla());
-            stmtInstituicao.setString(5, instituicao.getCnpj());
-            stmtInstituicao.setInt(6, idUsuarioInstituicao);
+            stmtInstituicao.setInt(1, idUsuarioInstituicao);
+            stmtInstituicao.setString(2, instituicao.getNomeInstituicao());
+            stmtInstituicao.setString(3, instituicao.getSigla());
+            stmtInstituicao.setString(4, instituicao.getCnpj());
+            stmtInstituicao.setString(5, instituicao.getNomeUnidade());
+            stmtInstituicao.setString(6, instituicao.getNumeroTelefone());
+            stmtInstituicao.setString(7, instituicao.getType());
             stmtInstituicao.executeUpdate();
 
             connection.commit(); // Confirmar transação
@@ -79,31 +80,37 @@ public class InstituicaoRepository {
         }
     }
     
-    public void getAllBolsas(JTable tblBolsas){
-        String sql = "SELECT * FROM bolsa";
+    public void getAllBolsas(JTable tblBolsas, Instituicao instituicao){
+        String sql = "SELECT * FROM bolsa WHERE idInstituicao = ?";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery(sql);
+            stmt.setInt(1, instituicao.getIdIntituicao());
+            ResultSet rs = stmt.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
             DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
 
             int cols = rsmd.getColumnCount();
             String[] colName = new String[cols];
-            for (int i = 0; i < cols; i++){
-                colName[i] = rsmd.getColumnName(i+1);
-                model.setColumnIdentifiers(colName);
+            model.setRowCount(0);
+            if (rsmd == null) {
+                JOptionPane.showMessageDialog(null, "Nenhuma bolsa cadastrada!");
+            } else {
+                for (int i = 0; i < cols; i++){
+                    colName[i] = rsmd.getColumnName(i+1);
+                    model.setColumnIdentifiers(colName);
 
-                String idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa;
-                while (rs.next()){
-                    idbolsa = rs.getString(1);
-                    nome = rs.getString(2);
-                    desc_bolsa = rs.getString(3);
-                    tipo_bolsa = rs.getString(4);
-                    preco_bolsa = rs.getString(5);
+                    String idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa;
+                    while (rs.next()){
+                        idbolsa = rs.getString(1);
+                        nome = rs.getString(2);
+                        desc_bolsa = rs.getString(3);
+                        tipo_bolsa = rs.getString(4);
+                        preco_bolsa = rs.getString(5);
 
-                    String[] row = {idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa};
-                    model.addRow(row);
+                        String[] row = {idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa};
+                        model.addRow(row);
+                    }
                 }
             }
 
@@ -112,4 +119,28 @@ public class InstituicaoRepository {
         }
     }
     
+    public boolean addBolsas(Bolsas bolsa){
+        String sql = "INSERT INTO bolsa (nome, desc_bolsa, tipo_bolsa, preco_bolsa, idInstituicao) VALUES (?, ?, ?, ?, ?)";
+        
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Configurando os valores do PreparedStatement
+            preparedStatement.setString(1, bolsa.getNome());
+            preparedStatement.setString(2, bolsa.getDescricaoBolsa());
+            preparedStatement.setString(3, bolsa.getTipoBolsa());
+            preparedStatement.setDouble(4, bolsa.getPrecoBolsa());
+            preparedStatement.setInt(5, bolsa.getIdInstituicao());
+
+            // Executando a instrução SQL
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Retorna true se uma linha foi inserida
+            return rowsAffected > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

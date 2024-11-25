@@ -3,6 +3,7 @@ package Repositories;
 import DTOs.BolsaDTO;
 import Entities.Aluno;
 import Entities.Bolsas;
+import Enums.UserTypes;
 import Utils.PasswordUtils;
 
 import java.sql.*;
@@ -35,7 +36,7 @@ public class AlunoRepository {
             stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
             stmtUsuario.setString(1, aluno.getEmail());
             String hashedPassword = PasswordUtils.hashPassword(aluno.getSenha());
-            stmtUsuario.setString(3, hashedPassword);
+            stmtUsuario.setString(2, hashedPassword);
             stmtUsuario.executeUpdate();
 
             // Obter o ID gerado para o Usuario
@@ -46,13 +47,14 @@ public class AlunoRepository {
             }
 
             // Inserir na tabela Aluno
-            String sqlAluno = "INSERT INTO Aluno (id_usuario, nome, data_nascimento, tipo_usuario) VALUES (?, ?, ?, ?)";
+            String sqlAluno = "INSERT INTO Aluno (idaluno, nome, data_nascimento, tipo_user) VALUES (?, ?, ?, ?)";
             stmtAluno = connection.prepareStatement(sqlAluno);
             stmtAluno.setInt(1, idUsuario);
             stmtAluno.setString(2, aluno.getNomeAluno());
             stmtAluno.setDate(3, (Date) aluno.getData_nascimento());
-            stmtAluno.setString(4, String.valueOf(aluno.getType()));
+            stmtAluno.setString(4, aluno.getType());
             stmtAluno.executeUpdate();
+            
 
             // Confirmar transação
             connection.commit();
@@ -71,7 +73,8 @@ public class AlunoRepository {
     
     public List<Bolsas> findBolsas(BolsaDTO bolsaDTO){
         
-        StringBuilder sql = new StringBuilder("SELECT * FROM Bolsas as end WHERE 1=1");
+        StringBuilder sql = new StringBuilder("SELECT b.nome, i.nome AS nome_instituicao, b.cidade, b.preco_bolsa "
+                + "FROM Bolsa b LEFT JOIN Instituicao i ON b.instituicao = i.idInsituicao = i.idInstituicao WHERE 1=1");
         
         try {
             
@@ -111,7 +114,7 @@ public class AlunoRepository {
             while(resultSet.next()){
                 Bolsas bolsa = new Bolsas();
                 bolsa.setNome(resultSet.getString("nome"));
-                bolsa.setInstituicao(resultSet.getString("instituicao"));
+                bolsa.setInstituicao(resultSet.getString("nome_instituicao"));
                 bolsa.setCidade(resultSet.getString("cidade"));
                 bolsa.setPrecoBolsa(resultSet.getDouble("preco_bolsa"));
                 bolsas.add(bolsa);

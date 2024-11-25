@@ -4,6 +4,9 @@
  */
 package View;
 
+import Controllers.InstituicaoController;
+import DTOs.BolsaDTO;
+import Entities.Instituicao;
 import Repositories.InstituicaoRepository;
 import java.awt.Color;
 import java.awt.Component;
@@ -21,6 +24,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -32,14 +36,18 @@ import javax.swing.table.TableColumn;
  * @author Blackmage
  */
 public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
+    
+    private static Instituicao instituicao;
 
     /**
      * Creates new form TelaGerenciamentoBolsas
+     * @param instituicao
      */
-    public TelaGerenciamentoBolsas() {
+    public TelaGerenciamentoBolsas(Instituicao instituicao) {
         initComponents();
         configurarTabela();
         fundoPopup.setVisible(false);
+        this.instituicao = instituicao;
     }
     
     private void configurarTabela() {
@@ -283,6 +291,11 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
 
         btnSalvarBolsa.setText("Salvar");
         btnSalvarBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalvarBolsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarBolsaActionPerformed(evt);
+            }
+        });
         panelPopup.add(btnSalvarBolsa);
         btnSalvarBolsa.setBounds(330, 290, 160, 40);
 
@@ -292,6 +305,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         fundoPopup.setBounds(0, 0, 1160, 720);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
@@ -304,7 +318,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
         InstituicaoRepository instituicaoRepository = new InstituicaoRepository();
-        instituicaoRepository.getAllBolsas(tblBolsas);
+        instituicaoRepository.getAllBolsas(tblBolsas, instituicao);
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -329,7 +343,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         // TODO add your handling code here:
         fundoPopup.setVisible(false);
     }//GEN-LAST:event_btnFecharPopupActionPerformed
-
+  
     private void txtNomeCursoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCursoFocusGained
         txtNomeCurso.setText("");
         txtNomeCurso.setForeground(Color.BLACK);
@@ -382,9 +396,26 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         this.dispose();
         TelaPerfilInstituicao telaPerfilInstituicao = new TelaPerfilInstituicao();
         telaPerfilInstituicao.setVisible(true);
-    }//GEN-LAST:event_btnPerfil1ActionPerformed
-    
-    
+    }
+  
+    private void btnSalvarBolsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarBolsaActionPerformed
+        BolsaDTO bolsaDTO = new BolsaDTO();
+        InstituicaoController instituicaoController = new InstituicaoController();
+        
+        bolsaDTO.setNome(txtNomeCurso.getText());
+        bolsaDTO.setDescricaoBolsa(txtDescricaoBolsa.getText());
+        bolsaDTO.setPrecoBolsa(Double.parseDouble(txtPrecoBolsa.getText()));
+        bolsaDTO.setTipoBolsa(txtTipoBolsa.getText());
+        bolsaDTO.setIdInstituicao(instituicao.getIdIntituicao());
+        
+        if (instituicaoController.addBolsas(bolsaDTO)) {
+            JOptionPane.showMessageDialog(null, "Bolsa cadastrada com sucesso!!");
+        }
+    }
+
+    private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
+        // TODO add your handling code here:
+    }
     
     // Classe para renderizar o botão na célula 
     class ButtonRenderer extends JButton implements TableCellRenderer {
@@ -465,7 +496,8 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaGerenciamentoBolsas().setVisible(true);
+                TelaGerenciamentoBolsas telaGerenciamentoBolsas = new TelaGerenciamentoBolsas(instituicao);
+                telaGerenciamentoBolsas.setVisible(true);
             }
         });
     }

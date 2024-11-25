@@ -10,15 +10,16 @@ public class Aluno implements User{
     private String nomeAluno;
     private Date data_nascimento; // Pesquisar qual tipo de variável utilizar para formatação de datas
     private String senha;
-    private UserTypes type = UserTypes.TYPE_ALUNO;
+    private String type = UserTypes.TYPE_ALUNO.getValue();
 
     public Aluno(){}
 
-    public Aluno(String email, String nomeAluno, Date data_nascimento, String senha) {
+    public Aluno(String email, String nomeAluno, Date data_nascimento, String senha, String type) {
         this.email = email;
         this.nomeAluno = nomeAluno;
         this.data_nascimento = data_nascimento;
         this.senha = senha;
+        this.type = type;
     }
 
     @Override
@@ -72,7 +73,7 @@ public class Aluno implements User{
     /**
      * @return the type
      */
-    public UserTypes getType() {
+    public String getType() {
         return type;
     }
     

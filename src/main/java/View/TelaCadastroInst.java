@@ -1,5 +1,10 @@
 package View;
 
+import Controllers.InstituicaoController;
+import DTOs.InstituicaoDTO;
+import DTOs.UserInstituicaoDTO;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -58,8 +63,6 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         TxtPassaordSenha.setLayout(null);
 
         PanelAzul.setBackground(new java.awt.Color(75, 109, 190));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\pedro\\Downloads\\Blue Flat Color Ui Login Page Desktop Prototype (7).png")); // NOI18N
 
         javax.swing.GroupLayout PanelAzulLayout = new javax.swing.GroupLayout(PanelAzul);
         PanelAzul.setLayout(PanelAzulLayout);
@@ -126,6 +129,7 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         TXTTemailCtt.setBackground(new java.awt.Color(242, 242, 242));
         TXTTemailCtt.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTTemailCtt.setForeground(new java.awt.Color(75, 109, 190));
+        TXTTemailCtt.setText("representante@gmail.com");
         TXTTemailCtt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 109, 190)));
         TxtPassaordSenha.add(TXTTemailCtt);
         TXTTemailCtt.setBounds(470, 480, 280, 40);
@@ -152,6 +156,7 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         TXTTelefoneInst1.setBackground(new java.awt.Color(242, 242, 242));
         TXTTelefoneInst1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTTelefoneInst1.setForeground(new java.awt.Color(75, 109, 190));
+        TXTTelefoneInst1.setText("+551190002222");
         TXTTelefoneInst1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 109, 190)));
         TxtPassaordSenha.add(TXTTelefoneInst1);
         TXTTelefoneInst1.setBounds(470, 390, 280, 40);
@@ -166,6 +171,11 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         TXTNomInst1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTNomInst1.setForeground(new java.awt.Color(75, 109, 190));
         TXTNomInst1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 109, 190)));
+        TXTNomInst1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTNomInst1ActionPerformed(evt);
+            }
+        });
         TxtPassaordSenha.add(TXTNomInst1);
         TXTNomInst1.setBounds(470, 220, 280, 40);
 
@@ -191,7 +201,13 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         TXTCNPJ1.setBackground(new java.awt.Color(242, 242, 242));
         TXTCNPJ1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTCNPJ1.setForeground(new java.awt.Color(75, 109, 190));
+        TXTCNPJ1.setText(" XX. XXX. XXX/0001-ZZ");
         TXTCNPJ1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(75, 109, 190)));
+        TXTCNPJ1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTCNPJ1ActionPerformed(evt);
+            }
+        });
         TxtPassaordSenha.add(TXTCNPJ1);
         TXTCNPJ1.setBounds(830, 300, 280, 40);
 
@@ -233,11 +249,52 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTconfirmarActionPerformed
-        // TODO add your handling code here:
+        
+        InstituicaoDTO instituicaoDTO = new InstituicaoDTO();
+        UserInstituicaoDTO userInstituicaoDTO = new UserInstituicaoDTO();
+        InstituicaoController instituicaoController = new InstituicaoController();
+        
+        String nomeInst = TXTNomInst1.getText();
+        String sigla = TXTSigla1.getText();
+        String cnpj = TXTCNPJ1.getText();
+        String telefoneInst = TXTTelefoneInst1.getText();
+        String unidade = TXTUnidade.getText();
+        
+        String email = TXTTemailCtt.getText();
+        String password = jPasswordField2.getText();
+        String passwordConf = TXTpassowordConf.getText();
+        
+        if (password == null ? passwordConf != null : !password.equals(passwordConf)) {
+            JOptionPane.showMessageDialog(null, "As senhas não combinam!");
+        } else {
+            instituicaoDTO.setNomeInstituicao(nomeInst);
+            instituicaoDTO.setSigla(sigla);
+            instituicaoDTO.setCnpj(cnpj);
+            instituicaoDTO.setNumeroTelefone(telefoneInst);
+            instituicaoDTO.setNomeUnidade(unidade);
+            
+            userInstituicaoDTO.setEmailInstitucional(email);
+            userInstituicaoDTO.setSenha(password);
+            
+            if (instituicaoController.cadastrarInstituicao(userInstituicaoDTO, instituicaoDTO) != null) {
+                JOptionPane.showMessageDialog(null, "Instituição cadastrada");
+            }
+        }
+        
+        
     }//GEN-LAST:event_BTconfirmarActionPerformed
+
+    private void TXTNomInst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTNomInst1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXTNomInst1ActionPerformed
+
+    private void TXTCNPJ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTCNPJ1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXTCNPJ1ActionPerformed
 
     /**
      * @param args the command line arguments

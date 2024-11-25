@@ -4,9 +4,10 @@
  */
 package Services;
 
+import DTOs.BolsaDTO;
 import DTOs.InstituicaoDTO;
 import DTOs.UserInstituicaoDTO;
-import Entities.Aluno;
+import Entities.Bolsas;
 import Entities.Instituicao;
 import Entities.UserInstituicao;
 import Repositories.InstituicaoRepository;
@@ -44,6 +45,11 @@ public class InstituicaoService {
         }
 
         return null;
+    }
+    
+    public boolean addBolsas(BolsaDTO bolsaDTO){
+        Bolsas bolsa = modelMapper.map(bolsaDTO, Bolsas.class);
+        return instituicaoRepository.addBolsas(bolsa);
     }
     
 }

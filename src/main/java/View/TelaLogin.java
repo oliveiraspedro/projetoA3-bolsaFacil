@@ -2,6 +2,10 @@ package View;
 
 import Controllers.LoginController;
 import DTOs.AlunoDTO;
+import Entities.Admin;
+import Entities.Aluno;
+import Entities.Instituicao;
+import Entities.User;
 import Enums.UserTypes;
 import javax.swing.JOptionPane;
 import java.awt.*; 
@@ -128,8 +132,6 @@ public class TelaLogin extends javax.swing.JFrame {
         LBBemvindo.setText("Bem - vindo!!");
         jPanel1.add(LBBemvindo);
         LBBemvindo.setBounds(750, 100, 320, 56);
-
-        LBimagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\pedro\\Downloads\\Blue Flat Color Ui Login Page Desktop Prototype (4).png")); // NOI18N
         jPanel1.add(LBimagem);
         LBimagem.setBounds(40, 110, 620, 500);
 
@@ -175,6 +177,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTloginActionPerformed
@@ -187,19 +190,30 @@ public class TelaLogin extends javax.swing.JFrame {
         alunoDTO.setEmail(email);
         alunoDTO.setSenha(senha);
       
-        UserTypes userType = loginController.login(alunoDTO);
+        User user = loginController.login(alunoDTO);
         
-        switch(userType){
-            case UserTypes.TYPE_ADMIN:
-                // Levar o admin para a tela de dashboard
-                break;
-            case UserTypes.TYPE_ALUNO:
-                // Levar o usário para o menu principal
-                break;
-            case UserTypes.TYPE_INST:
-                // Levar o usuário para a tela de gerenciamento de bolsas
-                break;
+        if (user instanceof Admin admin) {
+                TelaDashboard telaDashboard = new TelaDashboard(admin);
+                telaDashboard.pack();
+                dispose();
+                telaDashboard.setVisible(true);
+                return;
         }
+        
+        if (user instanceof Aluno aluno) {
+            TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
+            telaConsultaBolsas.pack();
+            dispose();
+            telaConsultaBolsas.setVisible(true);
+            return;
+        }
+        if (user instanceof Instituicao instituicao) {
+            TelaGerenciamentoBolsas telaGerenciamentoBolsas = new TelaGerenciamentoBolsas(instituicao);
+            telaGerenciamentoBolsas.pack();
+            dispose();
+            telaGerenciamentoBolsas.setVisible(true);
+        }
+        
     }//GEN-LAST:event_BTloginActionPerformed
 
     private void BTcadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTcadastroActionPerformed

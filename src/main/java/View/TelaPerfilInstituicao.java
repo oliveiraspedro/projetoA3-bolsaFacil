@@ -206,10 +206,14 @@ public class TelaPerfilInstituicao extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.pack();
+        dispose();
+        telaLogin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
