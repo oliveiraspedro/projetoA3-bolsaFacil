@@ -4,7 +4,11 @@
  */
 package View;
 
+import DTOs.BolsaDTO;
 import Entities.Aluno;
+import Entities.Bolsas;
+import Services.AlunoService;
+import java.util.List;
 
 /**
  *
@@ -81,8 +85,19 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextField1);
         jTextField1.setBounds(910, 100, 120, 40);
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextField2);
         jTextField2.setBounds(320, 100, 170, 40);
         jPanel2.add(jTextField3);
@@ -95,6 +110,26 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         });
         jPanel2.add(jTextField4);
         jTextField4.setBounds(130, 100, 170, 40);
+
+        jSlider1.setMajorTickSpacing(20000);
+        jSlider1.setMaximum(1000000);
+        jSlider1.setMinimum(5000);
+        jSlider1.setMinorTickSpacing(5000);
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
+        jSlider1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jSlider1MouseDragged(evt);
+            }
+        });
+        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSlider1MouseClicked(evt);
+            }
+        });
         jPanel2.add(jSlider1);
         jSlider1.setBounds(700, 110, 200, 20);
 
@@ -202,10 +237,24 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1160, 680);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String nomeDoCurso = jTextField4.getText().toLowerCase();
+        String nomeDaInstituicao = jTextField2.getText().toLowerCase();
+        String cidade = jTextField3.getText().toLowerCase();
+        Double preco = Double.valueOf(jTextField1.getText().replace(',', '.'));
+        
+        BolsaDTO bolsaDTO = new BolsaDTO();
+        bolsaDTO.setNome(nomeDoCurso);
+        bolsaDTO.setInstituicao(nomeDaInstituicao);
+        bolsaDTO.setCidade(cidade);
+        bolsaDTO.setPrecoBolsa(preco);
+        
+
+        AlunoService alunoService = new AlunoService();
+        List<Bolsas> bolsas = alunoService.findBolsas(bolsaDTO);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -222,6 +271,35 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jSlider1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseClicked
+        int number3;
+        
+        number3 = jSlider1.getValue();
+        jTextField1.setText(Integer.toString(number3));
+    }//GEN-LAST:event_jSlider1MouseClicked
+
+    private void jSlider1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseDragged
+        int number2;
+        
+        number2 = jSlider1.getValue();
+        jTextField1.setText(Integer.toString(number2));
+    }//GEN-LAST:event_jSlider1MouseDragged
+
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+        int value = jSlider1.getValue();
+        
+        double price = value / 100.0;
+        jTextField1.setText(String.format("%.2f", price));
+    }//GEN-LAST:event_jSlider1StateChanged
 
     /**
      * @param args the command line arguments

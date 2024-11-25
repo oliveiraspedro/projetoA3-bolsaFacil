@@ -132,8 +132,6 @@ public class TelaLogin extends javax.swing.JFrame {
         LBBemvindo.setText("Bem - vindo!!");
         jPanel1.add(LBBemvindo);
         LBBemvindo.setBounds(750, 100, 320, 56);
-
-        LBimagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\pedro\\Downloads\\Blue Flat Color Ui Login Page Desktop Prototype (4).png")); // NOI18N
         jPanel1.add(LBimagem);
         LBimagem.setBounds(40, 110, 620, 500);
 
@@ -179,6 +177,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTloginActionPerformed

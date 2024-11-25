@@ -26,7 +26,8 @@ public class LoginRepository {
     public User findByEmail(String email, String senha) throws SQLException{
 
         // TO DO: Verificar se o email existe
-        String sql = "SELECT COALESCE(al.tipo_user, ui.tipo_user) AS tipo_user, u.senha, u.email, ui.idInstituicao AS idInstituicao, ui.nome_instituicao AS nome_instituicao, ui.sigla AS sigla, ui.cnpj AS cnpj, ui.telefone AS telefone, ui.unidade AS unidade FROM usuario u LEFT JOIN aluno al ON u.idusuario = al.idaluno LEFT JOIN instituicao ui ON u.idusuario = ui.idInstituicao WHERE u.email = ?";
+        String sql = "SELECT COALESCE(al.tipo_user, ui.tipo_user) AS tipo_user, u.senha, u.email, ui.idInstituicao AS idInstituicao, ui.nome_instituicao AS nome_instituicao, ui.sigla AS sigla, ui.cnpj AS cnpj, ui.telefone AS telefone, ui.unidade AS unidade, "
+                + "al.nome AS nome, al.data_nascimento AS data_nascimento FROM usuario u LEFT JOIN aluno al ON u.idusuario = al.idaluno LEFT JOIN instituicao ui ON u.idusuario = ui.idInstituicao WHERE u.email = ?";
         //String sql = "SELECT * FROM usuario u LEFT JOIN aluno al ON u.idusuario = al.idaluno LEFT JOIN instituicao ui ON u.idusuario = ui.idInstituicao WHERE u.email = ?";
 
         try {

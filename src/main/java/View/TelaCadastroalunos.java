@@ -116,8 +116,6 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(75, 109, 190));
 
-        LBimagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\pedro\\Downloads\\Blue Flat Color Ui Login Page Desktop Prototype (6).png")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -166,6 +164,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTvoltarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTvoltarLoginActionPerformed

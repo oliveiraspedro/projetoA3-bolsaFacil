@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -79,32 +80,37 @@ public class InstituicaoRepository {
         }
     }
     
-    public void getAllBolsas(JTable tblBolsas){
-        String sql = "SELECT * FROM bolsa";
+    public void getAllBolsas(JTable tblBolsas, Instituicao instituicao){
+        String sql = "SELECT * FROM bolsa WHERE idInstituicao = ?";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery(sql);
+            stmt.setInt(1, instituicao.getIdIntituicao());
+            ResultSet rs = stmt.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
             DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
 
             int cols = rsmd.getColumnCount();
             String[] colName = new String[cols];
             model.setRowCount(0);
-            for (int i = 0; i < cols; i++){
-                colName[i] = rsmd.getColumnName(i+1);
-                model.setColumnIdentifiers(colName);
+            if (rsmd == null) {
+                JOptionPane.showMessageDialog(null, "Nenhuma bolsa cadastrada!");
+            } else {
+                for (int i = 0; i < cols; i++){
+                    colName[i] = rsmd.getColumnName(i+1);
+                    model.setColumnIdentifiers(colName);
 
-                String idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa;
-                while (rs.next()){
-                    idbolsa = rs.getString(1);
-                    nome = rs.getString(2);
-                    desc_bolsa = rs.getString(3);
-                    tipo_bolsa = rs.getString(4);
-                    preco_bolsa = rs.getString(5);
+                    String idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa;
+                    while (rs.next()){
+                        idbolsa = rs.getString(1);
+                        nome = rs.getString(2);
+                        desc_bolsa = rs.getString(3);
+                        tipo_bolsa = rs.getString(4);
+                        preco_bolsa = rs.getString(5);
 
-                    String[] row = {idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa};
-                    model.addRow(row);
+                        String[] row = {idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa};
+                        model.addRow(row);
+                    }
                 }
             }
 

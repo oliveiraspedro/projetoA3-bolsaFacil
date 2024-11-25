@@ -23,6 +23,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -302,6 +303,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
@@ -314,7 +316,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
         InstituicaoRepository instituicaoRepository = new InstituicaoRepository();
-        instituicaoRepository.getAllBolsas(tblBolsas);
+        instituicaoRepository.getAllBolsas(tblBolsas, instituicao);
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -344,35 +346,35 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void txtNomeCursoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCursoFocusGained
-        txtNomeCurso.setText("");
+        //txtNomeCurso.setText("");
     }//GEN-LAST:event_txtNomeCursoFocusGained
 
     private void txtNomeCursoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCursoFocusLost
-        txtNomeCurso.setText("Digite o nome do curso...");
+        //txtNomeCurso.setText("Digite o nome do curso...");
     }//GEN-LAST:event_txtNomeCursoFocusLost
 
     private void txtPrecoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoBolsaFocusGained
-        txtPrecoBolsa.setText("");
+        //txtPrecoBolsa.setText("");
     }//GEN-LAST:event_txtPrecoBolsaFocusGained
 
     private void txtPrecoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoBolsaFocusLost
-        txtPrecoBolsa.setText("Digite o preço da bolsa...");
+        //txtPrecoBolsa.setText("Digite o preço da bolsa...");
     }//GEN-LAST:event_txtPrecoBolsaFocusLost
 
     private void txtDescricaoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoBolsaFocusGained
-        txtDescricaoBolsa.setText("");
+        //txtDescricaoBolsa.setText("");
     }//GEN-LAST:event_txtDescricaoBolsaFocusGained
 
     private void txtDescricaoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoBolsaFocusLost
-        txtDescricaoBolsa.setText("Dê uma descrição para a bolsa...");
+        //txtDescricaoBolsa.setText("Dê uma descrição para a bolsa...");
     }//GEN-LAST:event_txtDescricaoBolsaFocusLost
 
     private void txtTipoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoBolsaFocusGained
-        txtTipoBolsa.setText("");
+        //txtTipoBolsa.setText("");
     }//GEN-LAST:event_txtTipoBolsaFocusGained
 
     private void txtTipoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoBolsaFocusLost
-        txtTipoBolsa.setText("Digite o tipo de bolsa...");
+        //txtTipoBolsa.setText("Digite o tipo de bolsa...");
     }//GEN-LAST:event_txtTipoBolsaFocusLost
 
     private void btnSalvarBolsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarBolsaActionPerformed
@@ -384,7 +386,10 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         bolsaDTO.setPrecoBolsa(Double.parseDouble(txtPrecoBolsa.getText()));
         bolsaDTO.setTipoBolsa(txtTipoBolsa.getText());
         bolsaDTO.setIdInstituicao(instituicao.getIdIntituicao());
-        instituicaoController.addBolsas(bolsaDTO);
+        
+        if (instituicaoController.addBolsas(bolsaDTO)) {
+            JOptionPane.showMessageDialog(null, "Bolsa cadastrada com sucesso!!");
+        }
     }//GEN-LAST:event_btnSalvarBolsaActionPerformed
 
     private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
