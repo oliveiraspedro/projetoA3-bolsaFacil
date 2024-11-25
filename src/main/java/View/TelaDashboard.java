@@ -4,17 +4,22 @@
  */
 package View;
 
+import Entities.Admin;
+
 /**
  *
  * @author Blackmage
  */
 public class TelaDashboard extends javax.swing.JFrame {
 
+    private static Admin admin;
+    
     /**
      * Creates new form TelaDashboard
      */
-    public TelaDashboard() {
+    public TelaDashboard(Admin admin) {
         initComponents();
+        this.admin = admin;
     }
 
     /**
@@ -146,7 +151,8 @@ public class TelaDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaDashboard().setVisible(true);
+                TelaDashboard telaDashboard = new TelaDashboard(admin);
+                telaDashboard.setVisible(true);
             }
         });
     }

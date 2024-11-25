@@ -4,17 +4,22 @@
  */
 package View;
 
+import Entities.Aluno;
+
 /**
  *
  * @author Blackmage
  */
 public class TelaConsultaBolsas extends javax.swing.JFrame {
+    
+    private static Aluno aluno;
 
     /**
      * Creates new form TelaConsultaBolsas
      */
-    public TelaConsultaBolsas() {
+    public TelaConsultaBolsas(Aluno aluno) {
         initComponents();
+        this.aluno = aluno;
     }
 
     /**
@@ -208,7 +213,10 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        TelaPerfilAluno telaPerfilAluno = new TelaPerfilAluno();
+        telaPerfilAluno.pack();
+        dispose();
+        telaPerfilAluno.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -245,7 +253,8 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaConsultaBolsas().setVisible(true);
+                TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
+                telaConsultaBolsas.setVisible(true);
             }
         });
     }

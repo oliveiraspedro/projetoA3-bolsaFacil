@@ -146,11 +146,6 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
                 txtNomeCursoFocusLost(evt);
             }
         });
-        txtNomeCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeCursoActionPerformed(evt);
-            }
-        });
         panelPopup.add(txtNomeCurso);
         txtNomeCurso.setBounds(100, 130, 250, 40);
 
@@ -342,7 +337,10 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFecharPopupActionPerformed
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        // TODO add your handling code here:
+        TelaPerfilInstituicao telaPerfilInstituicao =  new TelaPerfilInstituicao();
+        telaPerfilInstituicao.pack();
+        dispose();
+        telaPerfilInstituicao.setVisible(true);
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void txtNomeCursoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCursoFocusGained

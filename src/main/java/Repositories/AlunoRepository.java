@@ -73,7 +73,8 @@ public class AlunoRepository {
     
     public List<Bolsas> findBolsas(BolsaDTO bolsaDTO){
         
-        StringBuilder sql = new StringBuilder("SELECT * FROM Bolsas as end WHERE 1=1");
+        StringBuilder sql = new StringBuilder("SELECT b.nome, i.nome AS nome_instituicao, b.cidade, b.preco_bolsa "
+                + "FROM Bolsa b LEFT JOIN Instituicao i ON b.instituicao = i.idInsituicao = i.idInstituicao WHERE 1=1");
         
         try {
             
@@ -113,7 +114,7 @@ public class AlunoRepository {
             while(resultSet.next()){
                 Bolsas bolsa = new Bolsas();
                 bolsa.setNome(resultSet.getString("nome"));
-                bolsa.setInstituicao(resultSet.getString("instituicao"));
+                bolsa.setInstituicao(resultSet.getString("nome_instituicao"));
                 bolsa.setCidade(resultSet.getString("cidade"));
                 bolsa.setPrecoBolsa(resultSet.getDouble("preco_bolsa"));
                 bolsas.add(bolsa);

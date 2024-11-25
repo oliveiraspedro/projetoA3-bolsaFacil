@@ -194,7 +194,7 @@ public class TelaLogin extends javax.swing.JFrame {
         User user = loginController.login(alunoDTO);
         
         if (user instanceof Admin admin) {
-                TelaDashboard telaDashboard = new TelaDashboard();
+                TelaDashboard telaDashboard = new TelaDashboard(admin);
                 telaDashboard.pack();
                 dispose();
                 telaDashboard.setVisible(true);
@@ -202,7 +202,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         
         if (user instanceof Aluno aluno) {
-            TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas();
+            TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
             telaConsultaBolsas.pack();
             dispose();
             telaConsultaBolsas.setVisible(true);
