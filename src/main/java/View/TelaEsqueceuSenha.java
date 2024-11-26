@@ -54,6 +54,8 @@ public class TelaEsqueceuSenha extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Blue Flat Color Ui Login Page Desktop Prototype (2).png"))); // NOI18N
 
+        LBimagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/esqueceusenha-img.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelazulLayout = new javax.swing.GroupLayout(Panelazul);
         Panelazul.setLayout(PanelazulLayout);
         PanelazulLayout.setHorizontalGroup(
