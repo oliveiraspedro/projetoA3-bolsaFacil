@@ -4,18 +4,26 @@
  */
 package View;
 
+import Entities.Aluno;
+
 /**
  *
  * @author Blackmage
  */
 public class TelaPerfilAluno extends javax.swing.JFrame {
 
+//    Aluno aluno;
     /**
      * Creates new form TelaPerfilAluno
      */
     public TelaPerfilAluno() {
         initComponents();
     }
+    
+//    public TelaPerfilAluno(Aluno aluno){
+//        initComponents();
+//        this.aluno = aluno;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +94,11 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(170, 190, 239));
         jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField4);
         jTextField4.setBounds(510, 140, 490, 40);
 
@@ -139,6 +152,7 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -153,6 +167,10 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
         telaConsultaBolsas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        ;
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments

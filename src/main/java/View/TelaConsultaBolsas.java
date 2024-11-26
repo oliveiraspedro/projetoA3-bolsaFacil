@@ -34,6 +34,7 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaConsultaBolsas
+     * @param aluno
      */
     public TelaConsultaBolsas(Aluno aluno) {
         initComponents();
@@ -309,14 +310,17 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         AlunoService alunoService = new AlunoService();
         List<Bolsas> bolsas = alunoService.findBolsas(bolsaDTO);
         
-//        for (Bolsas bolsa : bolsas) {
-//                modelo.addRow(new Object[]{
-//                bolsa.getNome(),           // Nome da bolsa
-//                bolsa.getInstituicao(),    // Nome da instituição
-//                bolsa.getCidade(),         // Cidade
-//                bolsa.getPrecoBolsa()      // Preço da bolsa
-//            });
-//        }
+        DefaultTableModel model = (DefaultTableModel) tblConsulta.getModel();
+        
+        model.setRowCount(0);
+        for (Bolsas bolsa : bolsas) {
+                model.addRow(new Object[]{
+                bolsa.getNome(),           // Nome da bolsa
+                bolsa.getInstituicao(),    // Nome da instituição
+                bolsa.getCidade(),         // Cidade
+                bolsa.getPrecoBolsa()      // Preço da bolsa
+            });
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -324,6 +328,7 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println("Aluno: " + aluno.getEmail() + " " + aluno.getNomeAluno() + " " + aluno.getType());
         TelaPerfilAluno telaPerfilAluno = new TelaPerfilAluno();
         telaPerfilAluno.pack();
         dispose();

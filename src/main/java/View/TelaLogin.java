@@ -87,7 +87,6 @@ public class TelaLogin extends javax.swing.JFrame {
         BTlogin.setBounds(730, 550, 330, 60);
 
         PSWsenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        PSWsenha.setText("jPasswordField1");
         PSWsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PSWsenhaActionPerformed(evt);
@@ -98,7 +97,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTFemail.setForeground(java.awt.Color.gray);
-        TXTFemail.setText("E-mail");
         TXTFemail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TXTFemailFocusGained(evt);
@@ -209,6 +207,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         
         if (user instanceof Aluno aluno) {
+            System.out.println("Aluno nome: " + aluno.getNomeAluno());
             TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
             telaConsultaBolsas.pack();
             dispose();
