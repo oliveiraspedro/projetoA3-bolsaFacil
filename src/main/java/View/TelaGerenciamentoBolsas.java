@@ -49,6 +49,12 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         this.instituicao = instituicao;
     }
     
+    public TelaGerenciamentoBolsas(){
+        initComponents();
+        configurarTabela();
+        fundoPopup.setVisible(false);
+    }
+    
     private void configurarTabela() {
         DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
 
@@ -69,6 +75,15 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnPesquisa = new javax.swing.JButton();
+        txtPesquisa = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblBolsas = new javax.swing.JTable();
+        labelInst = new javax.swing.JLabel();
+        btnShow = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnPerfil = new javax.swing.JButton();
         fundoPopup = new javax.swing.JPanel();
         panelPopup = new RoundedPanel(100, Color.WHITE);
         btnFecharPopup = new javax.swing.JButton();
@@ -82,20 +97,100 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnSalvarBolsa = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        btnPesquisa = new javax.swing.JButton();
-        txtPesquisa = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblBolsas = new javax.swing.JTable();
-        labelInst = new javax.swing.JLabel();
-        btnShow = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
-        btnPerfil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
         setPreferredSize(new java.awt.Dimension(1160, 720));
         getContentPane().setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(75, 109, 190));
+        jPanel1.setLayout(null);
+
+        btnPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tool_16205471.png"))); // NOI18N
+        btnPesquisa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPesquisa);
+        btnPesquisa.setBounds(320, 110, 40, 40);
+
+        txtPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPesquisa.setForeground(java.awt.Color.gray);
+        txtPesquisa.setText("Clique para pesquisar");
+        txtPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPesquisaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPesquisaFocusLost(evt);
+            }
+        });
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtPesquisa);
+        txtPesquisa.setBounds(80, 110, 230, 40);
+
+        tblBolsas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblBolsas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome do Curso", "Descrição da Bolsa", "Tipo de Bolsa", "Preço", "Excluir"
+            }
+        ));
+        jScrollPane1.setViewportView(tblBolsas);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(80, 190, 1000, 340);
+
+        labelInst.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        labelInst.setForeground(new java.awt.Color(255, 255, 255));
+        labelInst.setText("Bolsas");
+        labelInst.setToolTipText("");
+        labelInst.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(labelInst);
+        labelInst.setBounds(80, 60, 240, 40);
+
+        btnShow.setText("Atualizar Bolsas");
+        btnShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnShow);
+        btnShow.setBounds(720, 110, 170, 40);
+
+        btnAdd.setText("Adicionar Bolsa");
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAdd);
+        btnAdd.setBounds(910, 110, 170, 40);
+
+        btnPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnPerfil.setText("Página de Perfil");
+        btnPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPerfil);
+        btnPerfil.setBounds(840, 580, 240, 50);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1160, 720);
 
         fundoPopup.setBackground(new java.awt.Color(80, 80, 80, 130));
         fundoPopup.setLayout(new java.awt.GridBagLayout());
@@ -213,97 +308,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         getContentPane().add(fundoPopup);
         fundoPopup.setBounds(0, 0, 1160, 720);
 
-        jPanel1.setBackground(new java.awt.Color(75, 109, 190));
-        jPanel1.setLayout(null);
-
-        btnPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btnPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tool_16205471.png"))); // NOI18N
-        btnPesquisa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnPesquisa);
-        btnPesquisa.setBounds(320, 110, 40, 40);
-
-        txtPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtPesquisa.setForeground(java.awt.Color.gray);
-        txtPesquisa.setText("Clique para pesquisar");
-        txtPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtPesquisaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPesquisaFocusLost(evt);
-            }
-        });
-        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtPesquisa);
-        txtPesquisa.setBounds(80, 110, 230, 40);
-
-        tblBolsas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblBolsas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nome do Curso", "Descrição da Bolsa", "Tipo de Bolsa", "Preço", "Excluir"
-            }
-        ));
-        jScrollPane1.setViewportView(tblBolsas);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(80, 190, 1000, 340);
-
-        labelInst.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        labelInst.setForeground(new java.awt.Color(255, 255, 255));
-        labelInst.setText("Bolsas");
-        labelInst.setToolTipText("");
-        labelInst.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(labelInst);
-        labelInst.setBounds(80, 60, 240, 40);
-
-        btnShow.setText("Atualizar Bolsas");
-        btnShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnShow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnShow);
-        btnShow.setBounds(720, 110, 170, 40);
-
-        btnAdd.setText("Adicionar Bolsa");
-        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAdd);
-        btnAdd.setBounds(910, 110, 170, 40);
-
-        btnPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnPerfil.setText("Página de Perfil");
-        btnPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnPerfil);
-        btnPerfil.setBounds(840, 580, 240, 50);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1160, 720);
-
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed

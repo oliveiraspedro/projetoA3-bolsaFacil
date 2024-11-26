@@ -8,7 +8,21 @@ import DTOs.BolsaDTO;
 import Entities.Aluno;
 import Entities.Bolsas;
 import Services.AlunoService;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -24,6 +38,21 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     public TelaConsultaBolsas(Aluno aluno) {
         initComponents();
         this.aluno = aluno;
+    }
+    
+    public TelaConsultaBolsas(){
+        initComponents();
+    }
+    
+    private void configurarTabela() {
+        DefaultTableModel model = (DefaultTableModel) tblConsulta.getModel();
+
+        // Pega a última coluna da tabela (a "Excluir")
+        TableColumn column = tblConsulta.getColumnModel().getColumn(tblConsulta.getColumnCount() - 1);
+    
+        // Configura a coluna "Excluir" para exibir botões
+        column.setCellRenderer(new TelaConsultaBolsas.ButtonRenderer());
+        column.setCellEditor(new TelaConsultaBolsas.ButtonEditor(new JCheckBox()));
     }
 
     /**
@@ -58,7 +87,7 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblConsulta = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
@@ -236,26 +265,23 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(920, 590, 220, 50);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome do curso", "Faculdade", "Preço", "Tipo de bolsa"
+                "Nome do curso", "Faculdade", "Preço", "Tipo de bolsa", "Descrição"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblConsulta);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(50, 290, 830, 350);
@@ -328,6 +354,53 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jTextField1.setText(String.format("%.2f", price));
     }//GEN-LAST:event_jSlider1StateChanged
 
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+        public ButtonRenderer() {
+            setText("Descrição");
+            setBackground(Color.WHITE);
+            setForeground(Color.BLACK);
+            setFont(new Font("Arial", Font.BOLD, 12));
+            setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            setFocusPainted(false);
+            setPreferredSize(new Dimension(80, 30));
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            return this;
+        }
+    }
+
+    // Classe para editar a célula (definir o que acontece quando o botão é clicado)
+    class ButtonEditor extends DefaultCellEditor {
+        private JButton button;
+        private int row;  // A linha do botão clicado
+
+        public ButtonEditor(JCheckBox checkBox) {
+            super(checkBox);
+            button = new JButton();
+            button.setOpaque(true);
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    fireEditingStopped();  // Para parar a edição da célula
+                    DefaultTableModel model = (DefaultTableModel) tblConsulta.getModel();
+                    model.removeRow(row);  // Remove a linha da tabela
+                }
+            });
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            this.row = row;
+            button.setText("Descrição");
+            return button;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            return null;
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -384,10 +457,10 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tblConsulta;
     // End of variables declaration//GEN-END:variables
 }
