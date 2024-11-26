@@ -308,6 +308,15 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
 
         AlunoService alunoService = new AlunoService();
         List<Bolsas> bolsas = alunoService.findBolsas(bolsaDTO);
+        
+//        for (Bolsas bolsa : bolsas) {
+//                modelo.addRow(new Object[]{
+//                bolsa.getNome(),           // Nome da bolsa
+//                bolsa.getInstituicao(),    // Nome da instituição
+//                bolsa.getCidade(),         // Cidade
+//                bolsa.getPrecoBolsa()      // Preço da bolsa
+//            });
+//        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
