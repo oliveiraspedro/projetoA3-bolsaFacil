@@ -93,7 +93,7 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(390, 250, 210, 90);
+        jTextField1.setBounds(390, 250, 210, 70);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Quantidade de alunos cadastrados");
@@ -102,7 +102,7 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         jTextField2.setEditable(false);
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(630, 250, 210, 90);
+        jTextField2.setBounds(630, 250, 210, 70);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Quantidade de instituições cadastradas");
@@ -111,7 +111,7 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         jTextField3.setEditable(false);
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(870, 250, 220, 90);
+        jTextField3.setBounds(870, 250, 220, 70);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Quantidade de bolsas cadastradas");
