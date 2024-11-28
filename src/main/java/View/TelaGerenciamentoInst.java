@@ -249,6 +249,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         btnEditar.setBounds(770, 110, 150, 40);
 
         btnVoltar.setText("Concluir");
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
