@@ -38,6 +38,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         LBimagem = new javax.swing.JLabel();
         BTcadastrar1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -55,7 +56,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BTvoltarLogin);
-        BTvoltarLogin.setBounds(770, 640, 180, 50);
+        BTvoltarLogin.setBounds(770, 640, 200, 50);
 
         TXTFsenha.setBackground(new java.awt.Color(193, 204, 229));
         TXTFsenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -70,7 +71,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TXTFsenha);
-        TXTFsenha.setBounds(630, 450, 450, 50);
+        TXTFsenha.setBounds(630, 470, 450, 50);
 
         TXTFemail.setBackground(new java.awt.Color(193, 204, 229));
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -85,7 +86,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TXTFemail);
-        TXTFemail.setBounds(630, 350, 450, 50);
+        TXTFemail.setBounds(630, 370, 450, 50);
 
         TXTFnomecompleto.setBackground(new java.awt.Color(193, 204, 229));
         TXTFnomecompleto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -105,7 +106,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TXTFnomecompleto);
-        TXTFnomecompleto.setBounds(630, 152, 450, 50);
+        TXTFnomecompleto.setBounds(630, 170, 450, 50);
 
         TXTFdata.setBackground(new java.awt.Color(193, 204, 229));
         TXTFdata.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -120,32 +121,32 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TXTFdata);
-        TXTFdata.setBounds(630, 250, 450, 50);
+        TXTFdata.setBounds(630, 270, 450, 50);
 
         LBcadastro.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         LBcadastro.setText("Faça seu Cadastro");
         jPanel1.add(LBcadastro);
-        LBcadastro.setBounds(620, 50, 470, 60);
+        LBcadastro.setBounds(630, 30, 470, 60);
 
         LBnomecompleto.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBnomecompleto.setText("Nome Completo");
         jPanel1.add(LBnomecompleto);
-        LBnomecompleto.setBounds(630, 120, 140, 30);
+        LBnomecompleto.setBounds(630, 140, 140, 30);
 
         LBdata.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBdata.setText("Data de Nascimento");
         jPanel1.add(LBdata);
-        LBdata.setBounds(630, 220, 170, 22);
+        LBdata.setBounds(630, 240, 170, 22);
 
         LBemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBemail.setText("E-mail");
         jPanel1.add(LBemail);
-        LBemail.setBounds(630, 320, 60, 20);
+        LBemail.setBounds(630, 340, 60, 20);
 
         LBemail1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBemail1.setText("Senha");
         jPanel1.add(LBemail1);
-        LBemail1.setBounds(630, 420, 60, 20);
+        LBemail1.setBounds(630, 440, 60, 20);
 
         CBMostrarsenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         CBMostrarsenha.setText("Mostrar Senha");
@@ -186,7 +187,23 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BTcadastrar1);
-        BTcadastrar1.setBounds(770, 583, 180, 50);
+        BTcadastrar1.setBounds(770, 580, 200, 50);
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setText("Faz parte de uma Instituição? Faça seu cadastro clicando aqui!");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(600, 90, 497, 17);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -301,6 +318,12 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TXTFsenhaFocusLost
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaCadastroInst telaCadastroInst = new TelaCadastroInst();
+        this.dispose();
+        telaCadastroInst.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,6 +373,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
     private javax.swing.JTextField TXTFemail;
     private javax.swing.JTextField TXTFnomecompleto;
     private javax.swing.JTextField TXTFsenha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
