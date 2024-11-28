@@ -28,6 +28,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
     public TelaGerenciamentoInst() {
         initComponents();
         fundoPopup.setVisible(false);
+        jPanel1.setVisible(true);
     }
 
     /**
@@ -66,6 +67,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
+        setPreferredSize(new java.awt.Dimension(1160, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1160, 720));
         getContentPane().setLayout(null);
@@ -147,6 +149,8 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         fundoPopup.setBounds(0, 0, 1160, 720);
 
         jPanel1.setBackground(new java.awt.Color(75, 109, 190));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1160, 720));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1160, 720));
         jPanel1.setLayout(null);
 
         btnPesquisa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -177,12 +181,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         tblInst.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblInst.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "NOME", "E-MAIL", "SIGLA", "CNPJ", "CEP"
@@ -259,7 +258,7 @@ public class TelaGerenciamentoInst extends javax.swing.JFrame {
         btnVoltar.setBounds(830, 610, 250, 50);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 0, 0);
+        jPanel1.setBounds(0, 0, 1160, 720);
 
         pack();
         setLocationRelativeTo(null);
