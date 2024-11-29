@@ -7,6 +7,7 @@ package View;
 import Controllers.InstituicaoController;
 import DTOs.BolsaDTO;
 import Entities.Instituicao;
+import Repositories.AdminRepository;
 import Repositories.InstituicaoRepository;
 import java.awt.Color;
 import java.awt.Component;
@@ -375,6 +376,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        AdminRepository adminRepository = new AdminRepository();
         int linhaSelecionada = tblBolsas.getSelectedRow();
         int colunaSelecionada = tblBolsas.getSelectedColumn();
 
@@ -387,8 +389,10 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
 
             String novoValor = JOptionPane.showInputDialog(this,
                 "Digite o novo valor para a célula selecionada:", valorAtual);
+            
+            boolean isUPDATED = adminRepository.alterTableBolsa((int) tblBolsas.getValueAt(linhaSelecionada, 0), colunaSelecionada, linhaSelecionada, novoValor, tblBolsas);
 
-            if (novoValor != null && !novoValor.trim().isEmpty()) {
+            if (novoValor != null && !novoValor.trim().isEmpty() && isUPDATED) {
                 // Altera o valor na célula selecionada
                 tabelaBolsas.setValueAt(novoValor, linhaSelecionada, colunaSelecionada);
                 JOptionPane.showMessageDialog(this, "Valor alterado com sucesso.");

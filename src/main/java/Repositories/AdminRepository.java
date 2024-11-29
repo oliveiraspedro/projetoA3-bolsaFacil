@@ -3,6 +3,8 @@ package Repositories;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AdminRepository {
 
@@ -80,6 +82,40 @@ public class AdminRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public boolean alterTableBolsa(int idBolsa, int colunaSelecionadaValue, int linhaSelecionadada, String novoValor, JTable tblBolsas){
+        String columName = tblBolsas.getColumnName(colunaSelecionadaValue);
+        Map<String, String> mapeamentoColunas = new HashMap<>();
+        
+        mapeamentoColunas.put("Nome do curso", "nome");
+        mapeamentoColunas.put("Descrição da Bolsa", "desc_bolsa");
+        mapeamentoColunas.put("Tipo Bolsa", "tipo_bolsa");
+        mapeamentoColunas.put("Preço", "preco_bolsa");
+        
+        String colunaBanco = mapeamentoColunas.get(columName);
+        
+        try {
+            String sql = "UPDATE Bolsa SET " + colunaBanco + " = ? WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setObject(1, novoValor); // Define o novo valor
+            stmt.setInt(2, idBolsa); // Define o identificador
+            int linhasAfetadas = stmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                
+                return true;
+            } else {
+                
+                return false;
+            }
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar a coluna: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+        
+        return false;
     }
 
     public void clear(DefaultTableModel model){
