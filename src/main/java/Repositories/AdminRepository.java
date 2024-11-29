@@ -88,27 +88,23 @@ public class AdminRepository {
         String columName = tblBolsas.getColumnName(colunaSelecionadaValue);
         Map<String, String> mapeamentoColunas = new HashMap<>();
         
-        mapeamentoColunas.put("Nome do curso", "nome");
+        mapeamentoColunas.put("Nome do Curso", "nome");
         mapeamentoColunas.put("Descrição da Bolsa", "desc_bolsa");
         mapeamentoColunas.put("Tipo Bolsa", "tipo_bolsa");
         mapeamentoColunas.put("Preço", "preco_bolsa");
         
         String colunaBanco = mapeamentoColunas.get(columName);
+        System.out.println("ColumName: " + columName);
+        System.out.println("ColunaBanco: " + colunaBanco);
         
         try {
-            String sql = "UPDATE Bolsa SET " + colunaBanco + " = ? WHERE id = ?";
+            String sql = "UPDATE Bolsa SET " + colunaBanco + " = ? WHERE idbolsa = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setObject(1, novoValor); // Define o novo valor
             stmt.setInt(2, idBolsa); // Define o identificador
             int linhasAfetadas = stmt.executeUpdate();
 
-            if (linhasAfetadas > 0) {
-                
-                return true;
-            } else {
-                
-                return false;
-            }
+            return linhasAfetadas > 0;
             
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro ao alterar a coluna: " + ex.getMessage());
@@ -116,6 +112,23 @@ public class AdminRepository {
         }
         
         return false;
+    }
+    
+    public boolean deleteBolsa(int idBolsa){
+        String sql = "DELETE from bolsa WHERE idbolsa = ?";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            
+            stmt.setInt(1, idBolsa);
+            
+            int linhasAfetadas = stmt.executeUpdate();
+            
+            return linhasAfetadas > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clear(DefaultTableModel model){
