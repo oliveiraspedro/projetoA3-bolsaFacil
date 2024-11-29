@@ -379,6 +379,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         AdminRepository adminRepository = new AdminRepository();
         int linhaSelecionada = tblBolsas.getSelectedRow();
         int colunaSelecionada = tblBolsas.getSelectedColumn();
+        int idBolsa = (int) tblBolsas.getValueAt(linhaSelecionada, 0);
 
         if(linhaSelecionada == -1 || colunaSelecionada == -1){
             JOptionPane.showMessageDialog(rootPane, "Selecione a célula a ser editada.");
@@ -390,7 +391,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
             String novoValor = JOptionPane.showInputDialog(this,
                 "Digite o novo valor para a célula selecionada:", valorAtual);
             
-            boolean isUPDATED = adminRepository.alterTableBolsa((int) tblBolsas.getValueAt(linhaSelecionada, 0), colunaSelecionada, linhaSelecionada, novoValor, tblBolsas);
+            boolean isUPDATED = adminRepository.alterTableBolsa(idBolsa, colunaSelecionada, linhaSelecionada, novoValor, tblBolsas);
 
             if (novoValor != null && !novoValor.trim().isEmpty() && isUPDATED) {
                 // Altera o valor na célula selecionada
