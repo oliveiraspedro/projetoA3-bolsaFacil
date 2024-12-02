@@ -73,7 +73,7 @@ public class AlunoRepository {
     
     public List<Bolsas> findBolsas(BolsaDTO bolsaDTO){
         
-        StringBuilder sql = new StringBuilder("SELECT b.nome, i.nome_instituicao AS nome_instituicao, b.preco_bolsa "
+        StringBuilder sql = new StringBuilder("SELECT b.nome, i.nome_instituicao AS nome_instituicao, b.preco_bolsa, b.tipo_bolsa "
                 + "FROM Bolsa b LEFT JOIN Instituicao i ON b.idInstituicao = i.idInstituicao WHERE 1=1");
         
         try {
@@ -91,10 +91,10 @@ public class AlunoRepository {
                 parameters.put(pos++, "%" + bolsaDTO.getInstituicao()+ "%");
             }
             
-//            if (bolsaDTO.getCidade()!= null) {
-//                sql.append(" AND end.cidade LIKE ? ");
-//                parameters.put(pos++, "%" + bolsaDTO.getCidade() + "%");
-//            }
+            if (bolsaDTO.getTipoBolsa() != null) {
+                sql.append(" AND end.tipo_bolsa");
+                //parameters.put(pos++, "%" + bolsaDTO.getTipoBolsa() + "%");
+            }
             
             if (bolsaDTO.getPrecoBolsa() != 0) {
                 sql.append(" AND b.preco_bolsa <= ? ");
@@ -115,8 +115,8 @@ public class AlunoRepository {
                 Bolsas bolsa = new Bolsas();
                 bolsa.setNome(resultSet.getString("nome"));
                 bolsa.setInstituicao(resultSet.getString("nome_instituicao"));
-                //bolsa.setCidade(resultSet.getString("cidade"));
                 bolsa.setPrecoBolsa(resultSet.getDouble("preco_bolsa"));
+                bolsa.setTipoBolsa(resultSet.getString("tipo_bolsa"));
                 bolsas.add(bolsa);
             }
             
