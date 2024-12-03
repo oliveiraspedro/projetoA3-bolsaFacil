@@ -172,13 +172,15 @@ public class TelaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnGerenciarBolsasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarBolsasActionPerformed
-        TelaGerenciamentoBolsas telaGerenciamentoBolsas = new TelaGerenciamentoBolsas();
+        TelaGerenciamentoBolsasAdmin telaGerenciamentoBolsasAdmin = new TelaGerenciamentoBolsasAdmin();
         this.dispose();
-        telaGerenciamentoBolsas.setVisible(true);
+        telaGerenciamentoBolsasAdmin.setVisible(true);
     }//GEN-LAST:event_btnGerenciarBolsasActionPerformed
 
     private void btnGerenciarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarAlunosActionPerformed
-        // TODO add your handling code here:
+        TelaGerenciamentoAlunos telaGerenciamentoAlunos = new TelaGerenciamentoAlunos();
+        this.dispose();
+        telaGerenciamentoAlunos.setVisible(true);
     }//GEN-LAST:event_btnGerenciarAlunosActionPerformed
 
     private void btnGerenciarInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarInstActionPerformed

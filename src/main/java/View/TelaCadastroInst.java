@@ -120,6 +120,7 @@ public class TelaCadastroInst extends javax.swing.JFrame {
         BTconfirmar.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         BTconfirmar.setForeground(new java.awt.Color(255, 255, 255));
         BTconfirmar.setText("CONFIRMAR");
+        BTconfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTconfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTconfirmarActionPerformed(evt);
