@@ -317,8 +317,8 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
                 model.addRow(new Object[]{
                 bolsa.getNome(),           // Nome da bolsa
                 bolsa.getInstituicao(),    // Nome da instituição
-                bolsa.getCidade(),         // Cidade
-                bolsa.getPrecoBolsa()      // Preço da bolsa
+                bolsa.getPrecoBolsa(),      // Preço da bolsa
+                bolsa.getTipoBolsa()
             });
         }
     }//GEN-LAST:event_jButton2ActionPerformed
