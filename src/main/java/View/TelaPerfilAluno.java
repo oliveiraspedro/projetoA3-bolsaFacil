@@ -4,18 +4,26 @@
  */
 package View;
 
+import Entities.Aluno;
+
 /**
  *
  * @author Blackmage
  */
 public class TelaPerfilAluno extends javax.swing.JFrame {
 
+//    Aluno aluno;
     /**
      * Creates new form TelaPerfilAluno
      */
     public TelaPerfilAluno() {
         initComponents();
     }
+    
+//    public TelaPerfilAluno(Aluno aluno){
+//        initComponents();
+//        this.aluno = aluno;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,6 +38,7 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
@@ -67,12 +76,29 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(60, 40, 210, 250);
 
+        jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(75, 109, 190));
+        jButton3.setText("VOLTAR");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3);
+        jButton3.setBounds(40, 500, 250, 50);
+
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 330, 720);
 
         jTextField4.setBackground(new java.awt.Color(170, 190, 239));
         jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField4);
         jTextField4.setBounds(510, 140, 490, 40);
 
@@ -136,6 +162,16 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
         telaLogin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas();
+        telaConsultaBolsas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        ;
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -174,6 +210,7 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;

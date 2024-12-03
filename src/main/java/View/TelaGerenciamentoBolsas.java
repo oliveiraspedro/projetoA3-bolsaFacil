@@ -7,20 +7,18 @@ package View;
 import Controllers.InstituicaoController;
 import DTOs.BolsaDTO;
 import Entities.Instituicao;
+import Repositories.AdminRepository;
 import Repositories.InstituicaoRepository;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -29,6 +27,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -47,6 +48,12 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         configurarTabela();
         fundoPopup.setVisible(false);
         this.instituicao = instituicao;
+    }
+    
+    public TelaGerenciamentoBolsas(){
+        initComponents();
+        configurarTabela();
+        fundoPopup.setVisible(false);
     }
     
     private void configurarTabela() {
@@ -91,6 +98,17 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         btnShow = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnPerfil = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnPesquisa1 = new javax.swing.JButton();
+        txtPesquisa1 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblBolsas1 = new javax.swing.JTable();
+        labelInst1 = new javax.swing.JLabel();
+        btnShow1 = new javax.swing.JButton();
+        btnAdd1 = new javax.swing.JButton();
+        btnPerfil1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
@@ -112,19 +130,9 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
             }
         });
         panelPopup.add(btnFecharPopup);
-        btnFecharPopup.setBounds(590, 320, 150, 40);
+        btnFecharPopup.setBounds(600, 320, 120, 40);
 
         txtTipoBolsa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtTipoBolsa.setForeground(java.awt.Color.gray);
-        txtTipoBolsa.setText("Digite o tipo de bolsa...");
-        txtTipoBolsa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTipoBolsaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTipoBolsaFocusLost(evt);
-            }
-        });
         panelPopup.add(txtTipoBolsa);
         txtTipoBolsa.setBounds(470, 210, 250, 40);
 
@@ -137,44 +145,14 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jLabel1.setBounds(250, 30, 310, 50);
 
         txtNomeCurso.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtNomeCurso.setForeground(java.awt.Color.gray);
-        txtNomeCurso.setText("Digite o nome do curso...");
-        txtNomeCurso.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomeCursoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNomeCursoFocusLost(evt);
-            }
-        });
         panelPopup.add(txtNomeCurso);
         txtNomeCurso.setBounds(100, 130, 250, 40);
 
         txtPrecoBolsa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtPrecoBolsa.setForeground(java.awt.Color.gray);
-        txtPrecoBolsa.setText("Digite o preço da bolsa...");
-        txtPrecoBolsa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtPrecoBolsaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPrecoBolsaFocusLost(evt);
-            }
-        });
         panelPopup.add(txtPrecoBolsa);
         txtPrecoBolsa.setBounds(100, 210, 250, 40);
 
         txtDescricaoBolsa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDescricaoBolsa.setForeground(java.awt.Color.gray);
-        txtDescricaoBolsa.setText("Dê uma descrição para a bolsa...");
-        txtDescricaoBolsa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDescricaoBolsaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDescricaoBolsaFocusLost(evt);
-            }
-        });
         panelPopup.add(txtDescricaoBolsa);
         txtDescricaoBolsa.setBounds(470, 130, 250, 40);
 
@@ -206,7 +184,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
             }
         });
         panelPopup.add(btnSalvarBolsa);
-        btnSalvarBolsa.setBounds(340, 280, 150, 40);
+        btnSalvarBolsa.setBounds(330, 290, 170, 40);
 
         fundoPopup.add(panelPopup, new java.awt.GridBagConstraints());
 
@@ -238,27 +216,36 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
                 txtPesquisaFocusLost(evt);
             }
         });
-        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisaActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtPesquisa);
         txtPesquisa.setBounds(80, 110, 230, 40);
 
         tblBolsas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblBolsas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome do Curso", "Descrição da Bolsa", "Tipo de Bolsa", "Preço", "Excluir"
+                "ID", "Nome do Curso", "Descrição da Bolsa", "Tipo de Bolsa", "Preço", "Detalhes"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblBolsas.setRowHeight(25);
         jScrollPane1.setViewportView(tblBolsas);
+        if (tblBolsas.getColumnModel().getColumnCount() > 0) {
+            tblBolsas.getColumnModel().getColumn(5).setMinWidth(80);
+            tblBolsas.getColumnModel().getColumn(5).setMaxWidth(80);
+        }
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(80, 190, 1000, 340);
+        jScrollPane1.setBounds(80, 190, 1000, 370);
 
         labelInst.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         labelInst.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,7 +255,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jPanel1.add(labelInst);
         labelInst.setBounds(80, 60, 240, 40);
 
-        btnShow.setText("Atualizar Bolsas");
+        btnShow.setText("Atualizar Lista");
         btnShow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +263,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnShow);
-        btnShow.setBounds(720, 110, 170, 40);
+        btnShow.setBounds(450, 110, 150, 40);
 
         btnAdd.setText("Adicionar Bolsa");
         btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -286,7 +273,7 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAdd);
-        btnAdd.setBounds(910, 110, 170, 40);
+        btnAdd.setBounds(610, 110, 150, 40);
 
         btnPerfil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnPerfil.setText("Página de Perfil");
@@ -299,8 +286,117 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         jPanel1.add(btnPerfil);
         btnPerfil.setBounds(840, 580, 240, 50);
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnExcluir);
+        btnExcluir.setBounds(930, 110, 150, 40);
+
+        btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEditar);
+        btnEditar.setBounds(770, 110, 150, 40);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1160, 720);
+
+        jPanel2.setBackground(new java.awt.Color(75, 109, 190));
+        jPanel2.setLayout(null);
+
+        btnPesquisa1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnPesquisa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tool_16205471.png"))); // NOI18N
+        btnPesquisa1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnPesquisa1);
+        btnPesquisa1.setBounds(320, 110, 40, 40);
+
+        txtPesquisa1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPesquisa1.setForeground(java.awt.Color.gray);
+        txtPesquisa1.setText("Clique para pesquisar");
+        txtPesquisa1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPesquisaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPesquisaFocusLost(evt);
+            }
+        });
+        txtPesquisa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtPesquisa1);
+        txtPesquisa1.setBounds(80, 110, 230, 40);
+
+        tblBolsas1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblBolsas1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome do Curso", "Descrição da Bolsa", "Tipo de Bolsa", "Preço", "Excluir"
+            }
+        ));
+        jScrollPane2.setViewportView(tblBolsas1);
+
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(80, 190, 1000, 340);
+
+        labelInst1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        labelInst1.setForeground(new java.awt.Color(255, 255, 255));
+        labelInst1.setText("Bolsas");
+        labelInst1.setToolTipText("");
+        labelInst1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(labelInst1);
+        labelInst1.setBounds(80, 60, 240, 40);
+
+        btnShow1.setText("Atualizar Bolsas");
+        btnShow1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShow1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnShow1);
+        btnShow1.setBounds(720, 110, 170, 40);
+
+        btnAdd1.setText("Adicionar Bolsa");
+        btnAdd1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAdd1);
+        btnAdd1.setBounds(910, 110, 170, 40);
+
+        btnPerfil1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnPerfil1.setText("Página de Perfil");
+        btnPerfil1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPerfil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnPerfil1);
+        btnPerfil1.setBounds(840, 580, 240, 50);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 0, 1160, 720);
 
         pack();
         setLocationRelativeTo(null);
@@ -310,27 +406,28 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPesquisaActionPerformed
 
-    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPesquisaActionPerformed
-
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
         InstituicaoRepository instituicaoRepository = new InstituicaoRepository();
         instituicaoRepository.getAllBolsas(tblBolsas, instituicao);
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
         fundoPopup.setVisible(true);
         fundoPopup.addMouseListener(new MouseAdapter() {});
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusGained
-        txtPesquisa.setText("");
+        if(txtPesquisa.getText().equals("Clique para pesquisar")){
+            txtPesquisa.setText("");
+            txtPesquisa.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_txtPesquisaFocusGained
 
     private void txtPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPesquisaFocusLost
-        txtPesquisa.setText("Clique para pesquisar");
+        if(txtPesquisa.getText().isEmpty()){
+            txtPesquisa.setText("Clique para pesquisar");
+            txtPesquisa.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_txtPesquisaFocusLost
 
     private void btnFecharPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharPopupActionPerformed
@@ -344,38 +441,6 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
         dispose();
         telaPerfilInstituicao.setVisible(true);
     }//GEN-LAST:event_btnPerfilActionPerformed
-
-    private void txtNomeCursoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCursoFocusGained
-        //txtNomeCurso.setText("");
-    }//GEN-LAST:event_txtNomeCursoFocusGained
-
-    private void txtNomeCursoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeCursoFocusLost
-        //txtNomeCurso.setText("Digite o nome do curso...");
-    }//GEN-LAST:event_txtNomeCursoFocusLost
-
-    private void txtPrecoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoBolsaFocusGained
-        //txtPrecoBolsa.setText("");
-    }//GEN-LAST:event_txtPrecoBolsaFocusGained
-
-    private void txtPrecoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoBolsaFocusLost
-        //txtPrecoBolsa.setText("Digite o preço da bolsa...");
-    }//GEN-LAST:event_txtPrecoBolsaFocusLost
-
-    private void txtDescricaoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoBolsaFocusGained
-        //txtDescricaoBolsa.setText("");
-    }//GEN-LAST:event_txtDescricaoBolsaFocusGained
-
-    private void txtDescricaoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoBolsaFocusLost
-        //txtDescricaoBolsa.setText("Dê uma descrição para a bolsa...");
-    }//GEN-LAST:event_txtDescricaoBolsaFocusLost
-
-    private void txtTipoBolsaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoBolsaFocusGained
-        //txtTipoBolsa.setText("");
-    }//GEN-LAST:event_txtTipoBolsaFocusGained
-
-    private void txtTipoBolsaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoBolsaFocusLost
-        //txtTipoBolsa.setText("Digite o tipo de bolsa...");
-    }//GEN-LAST:event_txtTipoBolsaFocusLost
 
     private void btnSalvarBolsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarBolsaActionPerformed
         BolsaDTO bolsaDTO = new BolsaDTO();
@@ -395,58 +460,138 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeCursoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        AdminRepository adminRepository = new AdminRepository();
+        int linhaSelecionada = tblBolsas.getSelectedRow();
+        int idBolsa = Integer.parseInt((String) tblBolsas.getValueAt(linhaSelecionada, 0));
+        
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(rootPane, "Selecione a linha a ser excluída.");
+        } else {
+            DefaultTableModel tabelaBolsas = (DefaultTableModel) tblBolsas.getModel();
+            boolean isDeleted = adminRepository.deleteBolsa(idBolsa);
+            if (isDeleted) {
+                tabelaBolsas.removeRow(linhaSelecionada);
+                JOptionPane.showMessageDialog(this, "Bolsa excluída com sucesso.");
+            }
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        AdminRepository adminRepository = new AdminRepository();
+        int linhaSelecionada = tblBolsas.getSelectedRow();
+        int colunaSelecionada = tblBolsas.getSelectedColumn();
+        int idBolsa = Integer.parseInt((String) tblBolsas.getValueAt(linhaSelecionada, 0));
+
+        if(linhaSelecionada == -1 || colunaSelecionada == -1){
+            JOptionPane.showMessageDialog(rootPane, "Selecione a célula a ser editada.");
+        } else {
+            DefaultTableModel tabelaBolsas = (DefaultTableModel) tblBolsas.getModel();
+
+            Object valorAtual = tabelaBolsas.getValueAt(linhaSelecionada, colunaSelecionada);
+
+            String novoValor = JOptionPane.showInputDialog(this,
+                "Digite o novo valor para a célula selecionada:", valorAtual);
+            
+            boolean isUPDATED = adminRepository.alterTableBolsa(idBolsa, colunaSelecionada, linhaSelecionada, novoValor, tblBolsas);
+
+            if (novoValor != null && !novoValor.trim().isEmpty() && isUPDATED) {
+                // Altera o valor na célula selecionada
+                tabelaBolsas.setValueAt(novoValor, linhaSelecionada, colunaSelecionada);
+                JOptionPane.showMessageDialog(this, "Valor alterado com sucesso.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Valor inválido ou vazio.");
+            }
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaActionPerformed
     
-    
-    
-    // Classe para renderizar o botão na célula 
-    class ButtonRenderer extends JButton implements TableCellRenderer {
+    public class ButtonRenderer extends JButton implements TableCellRenderer {
+
         public ButtonRenderer() {
-            setText("Excluir");
-            setBackground(Color.WHITE);
-            setForeground(Color.BLACK);
-            setFont(new Font("Arial", Font.BOLD, 12));
-            setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-            setFocusPainted(false);
-            setPreferredSize(new Dimension(80, 30));
+            setOpaque(true);
         }
 
         @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                boolean hasFocus, int row, int column) {
+
+            // Carregando a imagem
+            ImageIcon icon = new ImageIcon(getClass().getResource("/detalhes-icon.png"));
+
+            // Redimensionando a imagem para 20x20
+            Image img = icon.getImage().getScaledInstance(10, 10, Image.SCALE_SMOOTH);
+            icon = new ImageIcon(img);
+
+            setIcon(icon);  // Definindo a imagem como ícone do botão
+
+            // Alterando o fundo do botão se a célula estiver selecionada
+            if (isSelected) {
+                setBackground(Color.LIGHT_GRAY);
+            } else {
+                setBackground(Color.WHITE);
+            }
+
             return this;
         }
     }
+    
+    public class ButtonEditor extends DefaultCellEditor {
 
-    // Classe para editar a célula (definir o que acontece quando o botão é clicado)
-    class ButtonEditor extends DefaultCellEditor {
         private JButton button;
-        private int row;  // A linha do botão clicado
+        private boolean isPushed;
 
         public ButtonEditor(JCheckBox checkBox) {
             super(checkBox);
             button = new JButton();
             button.setOpaque(true);
+
+            // Carregando a imagem
+            ImageIcon icon = new ImageIcon(getClass().getResource("/detalhes-icon.png"));
+
+            // Redimensionando a imagem para 20x20
+            Image img = icon.getImage().getScaledInstance(26, 26, Image.SCALE_SMOOTH);
+            icon = new ImageIcon(img);
+
+            button.setIcon(icon);  // Definindo o ícone no botão
+
             button.addActionListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
-                    fireEditingStopped();  // Para parar a edição da célula
-                    DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
-                    model.removeRow(row);  // Remove a linha da tabela
+                    fireEditingStopped(); // Para parar a edição e salvar a ação do botão
+                    isPushed = true;
+                    System.out.println("Botão clicado!"); // Ação ao clicar no botão
                 }
             });
         }
 
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            this.row = row;
-            button.setText("Excluir");
+            isPushed = false;
             return button;
         }
 
         @Override
         public Object getCellEditorValue() {
+            if (isPushed) {
+                // Aqui você pode adicionar a lógica que ocorre ao clicar no botão.
+                return null;
+            }
             return null;
         }
-    }
 
+        @Override
+        public boolean stopCellEditing() {
+            isPushed = false;
+            return super.stopCellEditing();
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -485,11 +630,17 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAdd1;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFecharPopup;
     private javax.swing.JButton btnPerfil;
+    private javax.swing.JButton btnPerfil1;
     private javax.swing.JButton btnPesquisa;
+    private javax.swing.JButton btnPesquisa1;
     private javax.swing.JButton btnSalvarBolsa;
     private javax.swing.JButton btnShow;
+    private javax.swing.JButton btnShow1;
     private javax.swing.JPanel fundoPopup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -497,13 +648,18 @@ public class TelaGerenciamentoBolsas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelInst;
+    private javax.swing.JLabel labelInst1;
     private javax.swing.JPanel panelPopup;
     private javax.swing.JTable tblBolsas;
+    private javax.swing.JTable tblBolsas1;
     private javax.swing.JTextField txtDescricaoBolsa;
     private javax.swing.JTextField txtNomeCurso;
     private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtPesquisa1;
     private javax.swing.JTextField txtPrecoBolsa;
     private javax.swing.JTextField txtTipoBolsa;
     // End of variables declaration//GEN-END:variables

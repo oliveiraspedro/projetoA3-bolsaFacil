@@ -2,6 +2,7 @@ package View;
 
 import Controllers.AlunoController;
 import DTOs.AlunoDTO;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class TelaCadastroalunos extends javax.swing.JFrame {
@@ -37,6 +38,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         LBimagem = new javax.swing.JLabel();
         BTcadastrar1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -54,60 +56,97 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BTvoltarLogin);
-        BTvoltarLogin.setBounds(770, 640, 180, 50);
+        BTvoltarLogin.setBounds(770, 640, 200, 50);
 
         TXTFsenha.setBackground(new java.awt.Color(193, 204, 229));
         TXTFsenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TXTFsenha.setText("Senha");
         TXTFsenha.setPreferredSize(new java.awt.Dimension(492, 56));
+        TXTFsenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXTFsenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TXTFsenhaFocusLost(evt);
+            }
+        });
         jPanel1.add(TXTFsenha);
-        TXTFsenha.setBounds(630, 450, 450, 50);
+        TXTFsenha.setBounds(630, 470, 450, 50);
 
         TXTFemail.setBackground(new java.awt.Color(193, 204, 229));
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TXTFemail.setText("E-mail");
         TXTFemail.setPreferredSize(new java.awt.Dimension(492, 56));
+        TXTFemail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXTFemailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TXTFemailFocusLost(evt);
+            }
+        });
         jPanel1.add(TXTFemail);
-        TXTFemail.setBounds(630, 350, 450, 50);
+        TXTFemail.setBounds(630, 370, 450, 50);
 
         TXTFnomecompleto.setBackground(new java.awt.Color(193, 204, 229));
         TXTFnomecompleto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TXTFnomecompleto.setText("Nome Completo");
         TXTFnomecompleto.setPreferredSize(new java.awt.Dimension(492, 56));
+        TXTFnomecompleto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXTFnomecompletoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TXTFnomecompletoFocusLost(evt);
+            }
+        });
+        TXTFnomecompleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTFnomecompletoActionPerformed(evt);
+            }
+        });
         jPanel1.add(TXTFnomecompleto);
-        TXTFnomecompleto.setBounds(630, 152, 450, 50);
+        TXTFnomecompleto.setBounds(630, 170, 450, 50);
 
         TXTFdata.setBackground(new java.awt.Color(193, 204, 229));
         TXTFdata.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         TXTFdata.setText("Data de Nascimento");
         TXTFdata.setPreferredSize(new java.awt.Dimension(492, 56));
+        TXTFdata.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TXTFdataFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TXTFdataFocusLost(evt);
+            }
+        });
         jPanel1.add(TXTFdata);
-        TXTFdata.setBounds(630, 250, 450, 50);
+        TXTFdata.setBounds(630, 270, 450, 50);
 
         LBcadastro.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         LBcadastro.setText("Faça seu Cadastro");
         jPanel1.add(LBcadastro);
-        LBcadastro.setBounds(620, 50, 470, 60);
+        LBcadastro.setBounds(630, 30, 470, 60);
 
         LBnomecompleto.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBnomecompleto.setText("Nome Completo");
         jPanel1.add(LBnomecompleto);
-        LBnomecompleto.setBounds(630, 120, 140, 30);
+        LBnomecompleto.setBounds(630, 140, 140, 30);
 
         LBdata.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBdata.setText("Data de Nascimento");
         jPanel1.add(LBdata);
-        LBdata.setBounds(630, 220, 170, 22);
+        LBdata.setBounds(630, 240, 170, 22);
 
         LBemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBemail.setText("E-mail");
         jPanel1.add(LBemail);
-        LBemail.setBounds(630, 320, 60, 20);
+        LBemail.setBounds(630, 340, 60, 20);
 
         LBemail1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         LBemail1.setText("Senha");
         jPanel1.add(LBemail1);
-        LBemail1.setBounds(630, 420, 60, 20);
+        LBemail1.setBounds(630, 440, 60, 20);
 
         CBMostrarsenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         CBMostrarsenha.setText("Mostrar Senha");
@@ -115,6 +154,8 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         CBMostrarsenha.setBounds(630, 530, 190, 26);
 
         jPanel2.setBackground(new java.awt.Color(75, 109, 190));
+
+        LBimagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadastro-aluno-img.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,7 +187,23 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BTcadastrar1);
-        BTcadastrar1.setBounds(770, 583, 180, 50);
+        BTcadastrar1.setBounds(770, 580, 200, 50);
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setText("Faz parte de uma Instituição? Faça seu cadastro clicando aqui!");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(600, 90, 497, 17);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,6 +249,80 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Aluno cadastrado!");
         }
     }//GEN-LAST:event_BTcadastrar1ActionPerformed
+
+    private void TXTFnomecompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTFnomecompletoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXTFnomecompletoActionPerformed
+
+    private void TXTFnomecompletoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFnomecompletoFocusGained
+        // TODO add your handling code here:
+        if (TXTFnomecompleto.getText().equals("Nome Completo")) {
+            TXTFnomecompleto.setText("");  // Limpa o texto
+            TXTFnomecompleto.setForeground(Color.BLACK);  // Define a cor do texto como preto
+        }
+    }//GEN-LAST:event_TXTFnomecompletoFocusGained
+
+    private void TXTFnomecompletoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFnomecompletoFocusLost
+        // TODO add your handling code here:
+        if (TXTFnomecompleto.getText().isEmpty()) {
+            TXTFnomecompleto.setForeground(Color.BLACK);
+            TXTFnomecompleto.setText("Nome Completo");
+        }
+    }//GEN-LAST:event_TXTFnomecompletoFocusLost
+
+    private void TXTFdataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFdataFocusGained
+        // TODO add your handling code here:
+        if (TXTFdata.getText().equals("Data de Nascimento")) {
+            TXTFdata.setText("");  // Limpa o texto
+            TXTFdata.setForeground(Color.BLACK);  // Define a cor do texto como preto
+        }
+    }//GEN-LAST:event_TXTFdataFocusGained
+
+    private void TXTFdataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFdataFocusLost
+        // TODO add your handling code here:
+        if (TXTFdata.getText().isEmpty()) {
+            TXTFdata.setForeground(Color.BLACK);
+            TXTFdata.setText("Data de Nascimento");
+        }
+    }//GEN-LAST:event_TXTFdataFocusLost
+
+    private void TXTFemailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFemailFocusGained
+        // TODO add your handling code here:
+        if (TXTFemail.getText().equals("E-mail")) {
+            TXTFemail.setText("");  // Limpa o texto
+            TXTFemail.setForeground(Color.BLACK);  // Define a cor do texto como preto
+        }
+    }//GEN-LAST:event_TXTFemailFocusGained
+
+    private void TXTFemailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFemailFocusLost
+        // TODO add your handling code here:
+        if (TXTFemail.getText().isEmpty()) {
+            TXTFemail.setForeground(Color.BLACK);
+            TXTFemail.setText("E-mail");
+        }
+    }//GEN-LAST:event_TXTFemailFocusLost
+
+    private void TXTFsenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFsenhaFocusGained
+        // TODO add your handling code here:
+        if (TXTFsenha.getText().equals("Senha")) {
+            TXTFsenha.setText("");  // Limpa o texto
+            TXTFsenha.setForeground(Color.BLACK);  // Define a cor do texto como preto
+        }
+    }//GEN-LAST:event_TXTFsenhaFocusGained
+
+    private void TXTFsenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFsenhaFocusLost
+        // TODO add your handling code here:
+        if (TXTFsenha.getText().isEmpty()) {
+            TXTFsenha.setForeground(Color.BLACK);
+            TXTFsenha.setText("Senha");
+        }
+    }//GEN-LAST:event_TXTFsenhaFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaCadastroInst telaCadastroInst = new TelaCadastroInst();
+        this.dispose();
+        telaCadastroInst.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +373,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
     private javax.swing.JTextField TXTFemail;
     private javax.swing.JTextField TXTFnomecompleto;
     private javax.swing.JTextField TXTFsenha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

@@ -64,6 +64,8 @@ public class TelaCadastroInst extends javax.swing.JFrame {
 
         PanelAzul.setBackground(new java.awt.Color(75, 109, 190));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadastro-instituicao-img.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelAzulLayout = new javax.swing.GroupLayout(PanelAzul);
         PanelAzul.setLayout(PanelAzulLayout);
         PanelAzulLayout.setHorizontalGroup(

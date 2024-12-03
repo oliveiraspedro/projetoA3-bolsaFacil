@@ -87,12 +87,16 @@ public class TelaLogin extends javax.swing.JFrame {
         BTlogin.setBounds(730, 550, 330, 60);
 
         PSWsenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        PSWsenha.setText("jPasswordField1");
+        PSWsenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PSWsenhaActionPerformed(evt);
+            }
+        });
         jPanel1.add(PSWsenha);
         PSWsenha.setBounds(720, 400, 340, 70);
 
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        TXTFemail.setText("E-mail");
+        TXTFemail.setForeground(java.awt.Color.gray);
         TXTFemail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TXTFemailFocusGained(evt);
@@ -132,6 +136,8 @@ public class TelaLogin extends javax.swing.JFrame {
         LBBemvindo.setText("Bem - vindo!!");
         jPanel1.add(LBBemvindo);
         LBBemvindo.setBounds(750, 100, 320, 56);
+
+        LBimagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login-img.png"))); // NOI18N
         jPanel1.add(LBimagem);
         LBimagem.setBounds(40, 110, 620, 500);
 
@@ -201,6 +207,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         
         if (user instanceof Aluno aluno) {
+            System.out.println("Aluno nome: " + aluno.getNomeAluno());
             TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
             telaConsultaBolsas.pack();
             dispose();
@@ -230,7 +237,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void TXTFemailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFemailFocusGained
         // TODO add your handling code here:
-       
+       if (TXTFemail.getText().equals("E-mail")) {
+            TXTFemail.setText("");  // Limpa o texto
+            TXTFemail.setForeground(Color.BLACK);  // Define a cor do texto como preto
+        }
     }//GEN-LAST:event_TXTFemailFocusGained
 
     private void TXTFemailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFemailFocusLost
@@ -238,9 +248,13 @@ public class TelaLogin extends javax.swing.JFrame {
         if(TXTFemail.getText().isEmpty()){
             TXTFemail.setForeground(Color.GRAY);
             
-            TXTFemail.setText("E-MAIL");
+            TXTFemail.setText("E-mail");
         }
     }//GEN-LAST:event_TXTFemailFocusLost
+
+    private void PSWsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PSWsenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PSWsenhaActionPerformed
 
     /**
      * @param args the command line arguments

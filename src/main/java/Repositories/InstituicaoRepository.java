@@ -91,14 +91,14 @@ public class InstituicaoRepository {
             DefaultTableModel model = (DefaultTableModel) tblBolsas.getModel();
 
             int cols = rsmd.getColumnCount();
-            String[] colName = new String[cols];
+            //String[] colName = new String[cols];
             model.setRowCount(0);
             if (rsmd == null) {
                 JOptionPane.showMessageDialog(null, "Nenhuma bolsa cadastrada!");
             } else {
                 for (int i = 0; i < cols; i++){
-                    colName[i] = rsmd.getColumnName(i+1);
-                    model.setColumnIdentifiers(colName);
+                    //colName[i] = rsmd.getColumnName(i+1);
+                    //model.setColumnIdentifiers(colName);
 
                     String idbolsa, nome, desc_bolsa, tipo_bolsa, preco_bolsa;
                     while (rs.next()){
