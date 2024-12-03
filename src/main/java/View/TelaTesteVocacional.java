@@ -23,6 +23,8 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
      */
     public TelaTesteVocacional() {
         initComponents();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -87,7 +89,6 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jRadioButton24 = new javax.swing.JRadioButton();
         btnProximo = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         card2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         card2Quizz = new javax.swing.JPanel();
@@ -106,9 +107,17 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
         jRadioButton47 = new javax.swing.JRadioButton();
         jLabel13 = new javax.swing.JLabel();
         jRadioButton48 = new javax.swing.JRadioButton();
-        jButton2 = new javax.swing.JButton();
+        btnResultado = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        telaResultadoHumanas = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
         tituloTeste = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         card.setBackground(new java.awt.Color(255, 255, 255));
         card.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -342,16 +351,10 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
         jRadioButton24.setText("d) Voluntariar-se em hospitais, clínicas ou em projetos sociais de saúde.");
 
         btnProximo.setText("Próximo");
+        btnProximo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProximoActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -360,7 +363,7 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
         card1QuizzLayout.setHorizontalGroup(
             card1QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card1QuizzLayout.createSequentialGroup()
-                .addGroup(card1QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(card1QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(card1QuizzLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jLabel5))
@@ -384,18 +387,17 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
                             .addComponent(jRadioButton24)))
                     .addGroup(card1QuizzLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(card1QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(card1QuizzLayout.createSequentialGroup()
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7))))
+                        .addComponent(jLabel7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card1QuizzLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         card1QuizzLayout.setVerticalGroup(
             card1QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card1QuizzLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jRadioButton13)
@@ -425,10 +427,8 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
                 .addComponent(jRadioButton21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(card1QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jScrollPane1.setViewportView(card1Quizz);
@@ -446,6 +446,7 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
 
         cards.add(card1, "card2");
 
+        jScrollPane2.setBorder(null);
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         card2Quizz.setBackground(new java.awt.Color(255, 255, 255));
@@ -518,9 +519,16 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
         jRadioButton48.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jRadioButton48.setText("d) Se dedica ao cuidado físico e psicológico de outras pessoas.");
 
-        jButton2.setText("Próximo");
+        btnResultado.setText("Resultado");
+        btnResultado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResultadoActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Voltar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -532,7 +540,7 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
         card2QuizzLayout.setHorizontalGroup(
             card2QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card2QuizzLayout.createSequentialGroup()
-                .addGroup(card2QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(card2QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(card2QuizzLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jLabel11))
@@ -556,13 +564,14 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
                             .addComponent(jRadioButton48)))
                     .addGroup(card2QuizzLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(card2QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(card2QuizzLayout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel13))))
+                        .addComponent(jLabel13)))
                 .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(card2QuizzLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
         card2QuizzLayout.setVerticalGroup(
             card2QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -599,7 +608,7 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
                 .addComponent(jRadioButton48)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(card2QuizzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -618,6 +627,67 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
 
         cards.add(card2, "card3");
 
+        telaResultadoHumanas.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Resultado");
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel8.setText("Área mais compatível:");
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setText("Humanas");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Psicólogo\nJornalista\nPublicitário\nHistoriador\nAntropólogo");
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jLabel10.setText("Principais Cursos Recomendados: ");
+
+        javax.swing.GroupLayout telaResultadoHumanasLayout = new javax.swing.GroupLayout(telaResultadoHumanas);
+        telaResultadoHumanas.setLayout(telaResultadoHumanasLayout);
+        telaResultadoHumanasLayout.setHorizontalGroup(
+            telaResultadoHumanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(telaResultadoHumanasLayout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addGroup(telaResultadoHumanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(telaResultadoHumanasLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(telaResultadoHumanasLayout.createSequentialGroup()
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
+        );
+        telaResultadoHumanasLayout.setVerticalGroup(
+            telaResultadoHumanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(telaResultadoHumanasLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(telaResultadoHumanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(telaResultadoHumanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(telaResultadoHumanasLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(telaResultadoHumanasLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel10)))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        cards.add(telaResultadoHumanas, "card4");
+
         jPanel2.add(cards);
         cards.setBounds(0, 50, 650, 300);
 
@@ -628,6 +698,18 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
         tituloTeste.setText("Teste Vocacional");
         jPanel2.add(tituloTeste);
         tituloTeste.setBounds(220, 10, 210, 30);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-icon.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(600, 10, 30, 30);
 
         jPanel1.add(jPanel2, new java.awt.GridBagConstraints());
 
@@ -670,18 +752,25 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton38ActionPerformed
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-        card1Quizz.setVisible(false);
-        card2Quizz.setVisible(true);
+        card2.setVisible(true);
+        card1.setVisible(false);
     }//GEN-LAST:event_btnProximoActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        card2Quizz.setVisible(false);
-        card1Quizz.setVisible(true);
+        card2.setVisible(false);
+        card1.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaConsultaBolsas telaConsultaAlunos = new TelaConsultaBolsas();
+        telaConsultaAlunos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
+        card2.setVisible(false);
+        telaResultadoHumanas.setVisible(true);
+    }//GEN-LAST:event_btnResultadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -719,7 +808,6 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.ButtonGroup btnGroupQ1;
     private javax.swing.ButtonGroup btnGroupQ10;
     private javax.swing.ButtonGroup btnGroupQ11;
@@ -736,14 +824,17 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGroupQ8;
     private javax.swing.ButtonGroup btnGroupQ9;
     private javax.swing.JButton btnProximo;
+    private javax.swing.JButton btnResultado;
     private javax.swing.JPanel card;
     private javax.swing.JPanel card1;
     private javax.swing.JPanel card1Quizz;
     private javax.swing.JPanel card2;
     private javax.swing.JPanel card2Quizz;
     private javax.swing.JPanel cards;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -753,6 +844,8 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
@@ -793,6 +886,9 @@ public class TelaTesteVocacional extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JPanel telaResultadoHumanas;
     private javax.swing.JLabel tituloTeste;
     // End of variables declaration//GEN-END:variables
 
