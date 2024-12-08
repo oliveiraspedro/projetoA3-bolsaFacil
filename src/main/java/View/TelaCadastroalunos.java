@@ -50,6 +50,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         BTvoltarLogin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         BTvoltarLogin.setForeground(new java.awt.Color(255, 255, 255));
         BTvoltarLogin.setText("LOGIN");
+        BTvoltarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTvoltarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTvoltarLoginActionPerformed(evt);
@@ -171,6 +172,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         BTcadastrar1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         BTcadastrar1.setForeground(new java.awt.Color(255, 255, 255));
         BTcadastrar1.setText("CADASTRAR");
+        BTcadastrar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTcadastrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTcadastrar1ActionPerformed(evt);
@@ -186,7 +188,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setOpaque(true);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
