@@ -11,14 +11,21 @@ import Services.AlunoService;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -38,22 +45,41 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
      */
     public TelaConsultaBolsas(Aluno aluno) {
         initComponents();
+        configurarTabela();
         this.aluno = aluno;
+        fundoPopup.setVisible(false);
     }
     
     public TelaConsultaBolsas(){
         initComponents();
+        configurarTabela();
+        fundoPopup.setVisible(false);
     }
     
     private void configurarTabela() {
         DefaultTableModel model = (DefaultTableModel) tblConsulta.getModel();
 
-        // Pega a última coluna da tabela (a "Excluir")
         TableColumn column = tblConsulta.getColumnModel().getColumn(tblConsulta.getColumnCount() - 1);
     
-        // Configura a coluna "Excluir" para exibir botões
-        column.setCellRenderer(new TelaConsultaBolsas.ButtonRenderer());
-        column.setCellEditor(new TelaConsultaBolsas.ButtonEditor(new JCheckBox()));
+        column.setCellRenderer(new ButtonRenderer());
+        column.setCellEditor(new ButtonEditor(new JCheckBox()));
+        
+        tblConsulta.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mousePressed(MouseEvent e) {
+            int row = tblConsulta.rowAtPoint(e.getPoint());
+            int column = tblConsulta.columnAtPoint(e.getPoint());
+            System.out.println("Célula pressionada: " + row + ", " + column);
+
+            if (column == tblConsulta.getColumnCount() - 1) {
+                //Aqui ocorre a ação q quiser do botão de detalhes
+                tblConsulta.editCellAt(row, column);
+                fundoPopup.setVisible(true);
+                fundoPopup.addMouseListener(new MouseAdapter() {});
+            }
+        }
+    });
+
     }
 
     /**
@@ -64,7 +90,22 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        fundoPopup = new javax.swing.JPanel();
+        panelPopup = new RoundedPanel(100, Color.WHITE);
+        btnFecharPopup = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        txtNomeCurso = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDescricaoBolsa = new javax.swing.JTextArea();
+        txtEmail = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtTelefone = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -93,7 +134,119 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1160, 720));
         setPreferredSize(new java.awt.Dimension(1160, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1160, 720));
         getContentPane().setLayout(null);
+
+        fundoPopup.setBackground(new java.awt.Color(80, 80, 80, 130));
+        fundoPopup.setMinimumSize(new java.awt.Dimension(1160, 720));
+        fundoPopup.setPreferredSize(new java.awt.Dimension(1160, 720));
+        fundoPopup.setLayout(new java.awt.GridBagLayout());
+
+        panelPopup.setBackground(new java.awt.Color(80, 80, 80, 0));
+        panelPopup.setMinimumSize(new java.awt.Dimension(800, 420));
+        panelPopup.setLayout(null);
+
+        btnFecharPopup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-icon.png"))); // NOI18N
+        btnFecharPopup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFecharPopup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharPopupActionPerformed(evt);
+            }
+        });
+        panelPopup.add(btnFecharPopup);
+        btnFecharPopup.setBounds(690, 20, 40, 40);
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(75, 109, 190));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Detalhes da Bolsa");
+        panelPopup.add(jLabel12);
+        jLabel12.setBounds(250, 20, 310, 50);
+
+        txtNomeCurso.setEditable(false);
+        txtNomeCurso.setBackground(java.awt.Color.white);
+        txtNomeCurso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNomeCurso.setBorder(null);
+        txtNomeCurso.setFocusable(false);
+        txtNomeCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeCursoActionPerformed(evt);
+            }
+        });
+        panelPopup.add(txtNomeCurso);
+        txtNomeCurso.setBounds(220, 90, 240, 40);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("Descrição da bolsa:");
+        panelPopup.add(jLabel13);
+        jLabel13.setBounds(50, 250, 160, 20);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("Email de contato:");
+        panelPopup.add(jLabel14);
+        jLabel14.setBounds(90, 200, 120, 20);
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        txtDescricaoBolsa.setEditable(false);
+        txtDescricaoBolsa.setBackground(new java.awt.Color(255, 255, 255));
+        txtDescricaoBolsa.setColumns(20);
+        txtDescricaoBolsa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDescricaoBolsa.setRows(5);
+        txtDescricaoBolsa.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
+        txtDescricaoBolsa.setFocusable(false);
+        jScrollPane2.setViewportView(txtDescricaoBolsa);
+
+        panelPopup.add(jScrollPane2);
+        jScrollPane2.setBounds(220, 250, 430, 130);
+
+        txtEmail.setEditable(false);
+        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtEmail.setBorder(null);
+        txtEmail.setFocusable(false);
+        panelPopup.add(txtEmail);
+        txtEmail.setBounds(220, 190, 240, 40);
+
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel15.setText("Nome do curso:");
+        panelPopup.add(jLabel15);
+        jLabel15.setBounds(90, 100, 120, 20);
+
+        txtTelefone.setEditable(false);
+        txtTelefone.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtTelefone.setBorder(null);
+        txtTelefone.setFocusable(false);
+        panelPopup.add(txtTelefone);
+        txtTelefone.setBounds(220, 140, 240, 40);
+
+        jLabel16.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel16.setText("Telefone de contato:");
+        panelPopup.add(jLabel16);
+        jLabel16.setBounds(60, 150, 150, 20);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/faculdade-icon.png"))); // NOI18N
+        panelPopup.add(jLabel17);
+        jLabel17.setBounds(490, 80, 140, 140);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 800;
+        gridBagConstraints.ipady = 420;
+        gridBagConstraints.weightx = 800.0;
+        gridBagConstraints.weighty = 420.0;
+        gridBagConstraints.insets = new java.awt.Insets(80, 0, 0, 0);
+        fundoPopup.add(panelPopup, gridBagConstraints);
+
+        getContentPane().add(fundoPopup);
+        fundoPopup.setBounds(0, 0, 1160, 720);
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -268,7 +421,8 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
 
         tblConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
                 "Nome do curso", "Faculdade", "Preço", "Tipo de bolsa", "Descrição"
@@ -282,7 +436,12 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblConsulta.setRowHeight(25);
         jScrollPane1.setViewportView(tblConsulta);
+        if (tblConsulta.getColumnModel().getColumnCount() > 0) {
+            tblConsulta.getColumnModel().getColumn(4).setMinWidth(80);
+            tblConsulta.getColumnModel().getColumn(4).setMaxWidth(80);
+        }
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(50, 290, 830, 350);
@@ -370,51 +529,92 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
         jTextField1.setText(String.format("%.2f", price));
     }//GEN-LAST:event_jSlider1StateChanged
 
-    class ButtonRenderer extends JButton implements TableCellRenderer {
+    private void btnFecharPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharPopupActionPerformed
+        // TODO add your handling code here:
+        fundoPopup.setVisible(false);
+    }//GEN-LAST:event_btnFecharPopupActionPerformed
+
+    private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeCursoActionPerformed
+
+    public class ButtonRenderer extends JButton implements TableCellRenderer {
+
         public ButtonRenderer() {
-            setText("Descrição");
-            setBackground(Color.WHITE);
-            setForeground(Color.BLACK);
-            setFont(new Font("Arial", Font.BOLD, 12));
-            setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-            setFocusPainted(false);
-            setPreferredSize(new Dimension(80, 30));
+            setOpaque(true);
         }
 
         @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                boolean hasFocus, int row, int column) {
+
+            // Carregando a imagem
+            ImageIcon icon = new ImageIcon(getClass().getResource("/detalhes-icon.png"));
+
+            // Redimensionando a imagem para 20x20
+            Image img = icon.getImage().getScaledInstance(10, 10, Image.SCALE_SMOOTH);
+            icon = new ImageIcon(img);
+
+            setIcon(icon);  // Definindo a imagem como ícone do botão
+
+            // Alterando o fundo do botão se a célula estiver selecionada
+            if (isSelected) {
+                setBackground(Color.LIGHT_GRAY);
+            } else {
+                setBackground(Color.WHITE);
+            }
+
             return this;
         }
     }
-
-    // Classe para editar a célula (definir o que acontece quando o botão é clicado)
-    class ButtonEditor extends DefaultCellEditor {
+    
+    public class ButtonEditor extends DefaultCellEditor {
         private JButton button;
-        private int row;  // A linha do botão clicado
+        private boolean isPushed;
 
         public ButtonEditor(JCheckBox checkBox) {
             super(checkBox);
             button = new JButton();
             button.setOpaque(true);
+
+            ImageIcon icon = new ImageIcon(getClass().getResource("/detalhes-icon.png"));
+            Image img = icon.getImage().getScaledInstance(26, 26, Image.SCALE_SMOOTH);
+            icon = new ImageIcon(img);
+            button.setIcon(icon);
+
             button.addActionListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
-                    fireEditingStopped();  // Para parar a edição da célula
-                    DefaultTableModel model = (DefaultTableModel) tblConsulta.getModel();
-                    model.removeRow(row);  // Remove a linha da tabela
+                    System.out.println("Botão clicado!");
+                    
+                    fundoPopup.setVisible(true);
+                    fundoPopup.addMouseListener(new MouseAdapter() {});
+                    isPushed = true;
+                    fireEditingStopped(); // Para parar a edição e salvar a ação do botão
                 }
             });
         }
 
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            this.row = row;
-            button.setText("Descrição");
+            System.out.println("Editor ativado para a célula.");
+            isPushed = false;
             return button;
         }
 
         @Override
         public Object getCellEditorValue() {
+            if (isPushed) {
+                // Aqui você pode adicionar a lógica que ocorre ao clicar no botão.
+                return null;
+            }
             return null;
+        }
+
+        @Override
+        public boolean stopCellEditing() {
+            isPushed = false;
+            return super.stopCellEditing();
         }
     }
     /**
@@ -454,12 +654,20 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFecharPopup;
+    private javax.swing.JPanel fundoPopup;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -472,11 +680,62 @@ public class TelaConsultaBolsas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel panelPopup;
     private javax.swing.JTable tblConsulta;
+    private javax.swing.JTextArea txtDescricaoBolsa;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNomeCurso;
+    private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
+
+    class RoundedPanel extends JPanel
+    {
+        private Color backgroundColor;
+        private int cornerRadius = 15;
+        public RoundedPanel(LayoutManager layout, int radius) {
+            super(layout);
+            cornerRadius = radius;
+        }
+        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
+            super(layout);
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        public RoundedPanel(int radius) {
+            super();
+            cornerRadius = radius;
+            
+        }
+        public RoundedPanel(int radius, Color bgColor) {
+            super();
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
+            int width = getWidth();
+            int height = getHeight();
+            Graphics2D graphics = (Graphics2D) g;
+            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            //Draws the rounded panel with borders.
+            if (backgroundColor != null) {
+                graphics.setColor(backgroundColor);
+            } else {
+                graphics.setColor(getBackground());
+            }
+            graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
+            graphics.setColor(getForeground());
+//            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
+//             
+        }
+    }
+
 }
