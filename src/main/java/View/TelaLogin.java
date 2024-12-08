@@ -87,6 +87,7 @@ public class TelaLogin extends javax.swing.JFrame {
         BTlogin.setBounds(730, 550, 330, 60);
 
         PSWsenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        PSWsenha.setToolTipText("");
         PSWsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PSWsenhaActionPerformed(evt);
