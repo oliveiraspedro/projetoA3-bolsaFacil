@@ -4,7 +4,9 @@
  */
 package View;
 
+import Controllers.AlunoSession;
 import Entities.Aluno;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +20,7 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
      */
     public TelaPerfilAluno() {
         initComponents();
+        carregarInformacoes();
     }
     
 //    public TelaPerfilAluno(Aluno aluno){
@@ -169,9 +172,21 @@ public class TelaPerfilAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        ;
+       
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    private void carregarInformacoes(){
+        Aluno aluno = AlunoSession.getalunoLogado();
+
+        if (aluno != null) {
+            jTextField4.setText(aluno.getNomeAluno());
+            jTextField5.setText(String.valueOf(aluno.getData_nascimento()));
+            jTextField6.setText(aluno.getEmail());
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum usuário logado!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

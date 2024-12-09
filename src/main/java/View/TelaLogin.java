@@ -1,5 +1,7 @@
 package View;
 
+import Controllers.AlunoSession;
+import Controllers.InstSession;
 import Controllers.LoginController;
 import DTOs.AlunoDTO;
 import Entities.Admin;
@@ -65,6 +67,7 @@ public class TelaLogin extends javax.swing.JFrame {
         BTcadastro.setForeground(new java.awt.Color(255, 255, 255));
         BTcadastro.setText("Cadastre-se");
         BTcadastro.setBorder(null);
+        BTcadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTcadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTcadastroActionPerformed(evt);
@@ -78,6 +81,7 @@ public class TelaLogin extends javax.swing.JFrame {
         BTlogin.setForeground(new java.awt.Color(255, 255, 255));
         BTlogin.setText("Login");
         BTlogin.setBorder(null);
+        BTlogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTloginActionPerformed(evt);
@@ -87,13 +91,14 @@ public class TelaLogin extends javax.swing.JFrame {
         BTlogin.setBounds(730, 550, 330, 60);
 
         PSWsenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        PSWsenha.setToolTipText("");
         PSWsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PSWsenhaActionPerformed(evt);
             }
         });
         jPanel1.add(PSWsenha);
-        PSWsenha.setBounds(720, 400, 340, 70);
+        PSWsenha.setBounds(720, 400, 340, 60);
 
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TXTFemail.setForeground(java.awt.Color.gray);
@@ -152,16 +157,16 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(322, Short.MAX_VALUE)
+                .addContainerGap(316, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(96, 96, 96))
+                .addGap(102, 102, 102))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(487, Short.MAX_VALUE)
+                .addContainerGap(468, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(211, 211, 211))
+                .addGap(230, 230, 230))
         );
 
         jPanel1.add(jPanel2);
@@ -207,7 +212,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         
         if (user instanceof Aluno aluno) {
-            System.out.println("Aluno nome: " + aluno.getNomeAluno());
+            AlunoSession.setalunoLogado(aluno);
             TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
             telaConsultaBolsas.pack();
             dispose();
@@ -215,6 +220,7 @@ public class TelaLogin extends javax.swing.JFrame {
             return;
         }
         if (user instanceof Instituicao instituicao) {
+            InstSession.setinstituicaoLogado(instituicao);
             TelaGerenciamentoBolsas telaGerenciamentoBolsas = new TelaGerenciamentoBolsas(instituicao);
             telaGerenciamentoBolsas.pack();
             dispose();

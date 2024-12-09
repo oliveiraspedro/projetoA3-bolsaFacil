@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DBConnection {
 
     private Connection connection;
-    private final String url = "jdbc:mysql://127.0.0.1:3306/BolsaFacilExample";
+    private final String url = "jdbc:mysql://127.0.0.1:3306/bolsafacilexample";
     private final String userName = "root";
     private final String pwd = "rootPwd";
 

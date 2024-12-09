@@ -25,7 +25,6 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         BTvoltarLogin = new javax.swing.JButton();
-        TXTFsenha = new javax.swing.JTextField();
         TXTFemail = new javax.swing.JTextField();
         TXTFnomecompleto = new javax.swing.JTextField();
         TXTFdata = new javax.swing.JTextField();
@@ -39,6 +38,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         LBimagem = new javax.swing.JLabel();
         BTcadastrar1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -50,6 +50,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         BTvoltarLogin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         BTvoltarLogin.setForeground(new java.awt.Color(255, 255, 255));
         BTvoltarLogin.setText("LOGIN");
+        BTvoltarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTvoltarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTvoltarLoginActionPerformed(evt);
@@ -57,21 +58,6 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         });
         jPanel1.add(BTvoltarLogin);
         BTvoltarLogin.setBounds(770, 640, 200, 50);
-
-        TXTFsenha.setBackground(new java.awt.Color(193, 204, 229));
-        TXTFsenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        TXTFsenha.setText("Senha");
-        TXTFsenha.setPreferredSize(new java.awt.Dimension(492, 56));
-        TXTFsenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TXTFsenhaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TXTFsenhaFocusLost(evt);
-            }
-        });
-        jPanel1.add(TXTFsenha);
-        TXTFsenha.setBounds(630, 470, 450, 50);
 
         TXTFemail.setBackground(new java.awt.Color(193, 204, 229));
         TXTFemail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -150,6 +136,11 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
 
         CBMostrarsenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         CBMostrarsenha.setText("Mostrar Senha");
+        CBMostrarsenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBMostrarsenhaActionPerformed(evt);
+            }
+        });
         jPanel1.add(CBMostrarsenha);
         CBMostrarsenha.setBounds(630, 530, 190, 26);
 
@@ -181,6 +172,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         BTcadastrar1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         BTcadastrar1.setForeground(new java.awt.Color(255, 255, 255));
         BTcadastrar1.setText("CADASTRAR");
+        BTcadastrar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTcadastrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTcadastrar1ActionPerformed(evt);
@@ -196,7 +188,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setOpaque(true);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -204,6 +196,12 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1);
         jButton1.setBounds(600, 90, 497, 17);
+
+        jPasswordField1.setBackground(new java.awt.Color(193, 204, 229));
+        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jPasswordField1.setText("Senha");
+        jPanel1.add(jPasswordField1);
+        jPasswordField1.setBounds(630, 470, 450, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,7 +236,7 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         String nome = TXTFnomecompleto.getText();
         String dataDeNascimentoText = TXTFdata.getText();
         String email = TXTFemail.getText();
-        String senha = TXTFsenha.getText();
+        String senha = jPasswordField1.getText();
 
         alunoDTO.setNome(nome);
         alunoDTO.setData_nascimento(dataDeNascimentoText);
@@ -302,27 +300,21 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TXTFemailFocusLost
 
-    private void TXTFsenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFsenhaFocusGained
-        // TODO add your handling code here:
-        if (TXTFsenha.getText().equals("Senha")) {
-            TXTFsenha.setText("");  // Limpa o texto
-            TXTFsenha.setForeground(Color.BLACK);  // Define a cor do texto como preto
-        }
-    }//GEN-LAST:event_TXTFsenhaFocusGained
-
-    private void TXTFsenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTFsenhaFocusLost
-        // TODO add your handling code here:
-        if (TXTFsenha.getText().isEmpty()) {
-            TXTFsenha.setForeground(Color.BLACK);
-            TXTFsenha.setText("Senha");
-        }
-    }//GEN-LAST:event_TXTFsenhaFocusLost
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         TelaCadastroInst telaCadastroInst = new TelaCadastroInst();
         this.dispose();
         telaCadastroInst.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CBMostrarsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBMostrarsenhaActionPerformed
+                if (CBMostrarsenha.isSelected()) {
+                    // Mostrar senha
+                    jPasswordField1.setEchoChar((char) 0);
+                } else {
+                    // Ocultar senha
+                    jPasswordField1.setEchoChar('*');
+                }
+    }//GEN-LAST:event_CBMostrarsenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,9 +364,9 @@ public class TelaCadastroalunos extends javax.swing.JFrame {
     private javax.swing.JTextField TXTFdata;
     private javax.swing.JTextField TXTFemail;
     private javax.swing.JTextField TXTFnomecompleto;
-    private javax.swing.JTextField TXTFsenha;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
