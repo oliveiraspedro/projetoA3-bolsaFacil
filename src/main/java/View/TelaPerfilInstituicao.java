@@ -4,6 +4,10 @@
  */
 package View;
 
+import Controllers.InstSession;
+import Entities.Instituicao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Blackmage
@@ -15,6 +19,7 @@ public class TelaPerfilInstituicao extends javax.swing.JFrame {
      */
     public TelaPerfilInstituicao() {
         initComponents();
+        carregarInformacoes();
     }
 
     /**
@@ -200,6 +205,21 @@ public class TelaPerfilInstituicao extends javax.swing.JFrame {
         telaGerenciamentoBolsas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+        private void carregarInformacoes() {
+        Instituicao instituicao = InstSession.getinstituicaoLogado();
+
+        if (instituicao != null) {
+            jTextField4.setText(instituicao.getNomeInstituicao());
+            jTextField11.setText(instituicao.getCnpj());
+            jTextField9.setText(instituicao.getSigla());
+            jTextField6.setText(instituicao.getEmail());
+            jTextField12.setText(instituicao.getNumeroTelefone());
+            //jTextField7.setText(instituicao.getSenha());
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum usuário logado!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

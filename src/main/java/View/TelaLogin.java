@@ -1,5 +1,7 @@
 package View;
 
+import Controllers.AlunoSession;
+import Controllers.InstSession;
 import Controllers.LoginController;
 import DTOs.AlunoDTO;
 import Entities.Admin;
@@ -210,7 +212,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         
         if (user instanceof Aluno aluno) {
-            System.out.println("Aluno nome: " + aluno.getNomeAluno());
+            AlunoSession.setalunoLogado(aluno);
             TelaConsultaBolsas telaConsultaBolsas = new TelaConsultaBolsas(aluno);
             telaConsultaBolsas.pack();
             dispose();
@@ -218,6 +220,7 @@ public class TelaLogin extends javax.swing.JFrame {
             return;
         }
         if (user instanceof Instituicao instituicao) {
+            InstSession.setinstituicaoLogado(instituicao);
             TelaGerenciamentoBolsas telaGerenciamentoBolsas = new TelaGerenciamentoBolsas(instituicao);
             telaGerenciamentoBolsas.pack();
             dispose();
